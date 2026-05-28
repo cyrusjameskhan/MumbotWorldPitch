@@ -430,25 +430,22 @@
   }
 
   /* ============ ORIGIN ============ */
-  .origin { padding: 90px 110px; display:grid; grid-template-columns: 0.95fr 0.9fr; gap: 78px; align-items: center; }
+  .origin { padding: 90px 110px; display:grid; grid-template-columns: 0.82fr 1.18fr; gap: 64px; align-items: center; }
   .origin .mycelium-frame {
     width: 100%;
-    height: 610px;
-    display: grid;
-    place-items: center;
+    max-width: 920px;
+    margin-inline: auto;
+    aspect-ratio: 2000 / 2500;
+    height: auto;
     overflow: hidden;
     border: 1px solid rgba(247,236,203,0.16);
     background: rgba(247,236,203,0.04);
-    background-image: url("assets/origin-mumbot-cjk.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
   }
-  .origin .right .mycelium-frame > img {
+  .origin .mycelium-frame > img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
     display: block;
+    object-fit: contain;
   }
   .origin .left h2 {
     font-family: "Mumbotfont", serif;
@@ -1028,6 +1025,50 @@
     display:block; height:100%; background: var(--ember); border-radius: 999px;
   }
 
+  /* ============ WEB INTRO (chapter break) ============ */
+  .web-intro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 140px;
+    position: relative;
+  }
+  .web-intro .eyebrow {
+    margin-bottom: 36px;
+    color: var(--spirit);
+    font-size: 24px;
+    letter-spacing: 0.22em;
+  }
+  .web-intro h2.title {
+    font-family: "Mumbotfont", serif;
+    font-size: 128px;
+    line-height: 0.92;
+    color: var(--cream);
+    letter-spacing: 0.04em;
+    margin: 0 0 12px;
+    text-wrap: balance;
+  }
+  .web-intro h2.title .web {
+    display: block;
+    font-size: 168px;
+    color: var(--ember);
+    letter-spacing: 0.06em;
+    margin-top: 8px;
+  }
+  .web-intro .lede {
+    font-family: "Newsreader", serif;
+    font-style: italic;
+    font-size: 36px;
+    color: var(--parchment);
+    opacity: 0.88;
+    max-width: 900px;
+    margin-top: 48px;
+    line-height: 1.45;
+    text-wrap: pretty;
+  }
+
   /* ============ CLOSING ============ */
   .closing { padding: 140px; text-align: center; position: relative;
     display:flex; flex-direction:column; justify-content:center; align-items: center; }
@@ -1326,8 +1367,10 @@
     </div>
 
     <div class="right">
-      <div class="mycelium-frame" role="img" aria-label="Mycelium on the Block collaboration artwork"></div>
-      <div class="caption">FIG. 02 · MYCELIUM ON THE BLOCK · 2021</div>
+      <div class="mycelium-frame">
+        <img src="assets/origin-mumbot-cjk.png" alt="Mycelium on the Block collaboration artwork" />
+      </div>
+      <div class="caption">MYCELIUM ON THE BLOCK</div>
     </div>
   </section>
 
@@ -1374,9 +1417,112 @@
   </section>
 
 
-  <!-- ============ 09 EVOLUTION / WIP ============ -->
+  <!-- ============ 09 3D VIEWPORT WIP ============ -->
+  <section data-label="3D WIP" class="bg-bark grain wip">
+    <div class="corner-mark tl mono">IX &middot; WORK IN PROGRESS</div>
+    <div class="corner-mark tr mono">IN-VIEWPORT · 3D</div>
+
+    <div class="head">
+      <div>
+        <div class="eyebrow" style="color: var(--spirit); margin-bottom: 18px;">MODELING · SCULPTING · LOOK-DEV</div>
+        <h2 class="mumbot">The world taking shape.</h2>
+      </div>
+      <p>From paper into walkable space. <strong>Characters, props and the portal-in-a-tree itself</strong> — each one passes through the viewport before stepping into the forest.</p>
+    </div>
+
+    <div class="wip-collage">
+      <div class="collage-cell c2"><img src="assets/slide10-collage-02-clay-forest.webp" alt="Clay render of forest campfire scene" /></div>
+      <div class="collage-cell c3"><img src="assets/slide10-collage-03-color-forest.webp" alt="Color forest scene with Mossy and bee" /></div>
+      <div class="collage-cell c4"><img src="assets/slide10-collage-04-tree-portal.webp" alt="Portal tree viewport model" /></div>
+      <div class="collage-cell c5"><img src="assets/slide10-collage-05-tree-model.webp" alt="Textured tree model viewport" /></div>
+      <div class="collage-cell c6"><img src="assets/slide10-collage-06-tree-views.webp" alt="Tree orthographic viewport views" /></div>
+      <div class="collage-cell c7"><img src="assets/slide10-collage-07-mossy-views.webp" alt="Mossy orthographic viewport views" /></div>
+      <div class="collage-cell c8"><img src="assets/slide10-collage-08-girl-rig.webp" alt="Girl character rig in viewport" /></div>
+      <div class="collage-cell c9"><img src="assets/slide10-collage-09-chair.webp" alt="Wood chair model viewport views" /></div>
+      <div class="collage-cell c10"><img src="assets/slide10-collage-10-bee.webp" alt="Bee model viewport views" /></div>
+      <div class="collage-cell c11"><img src="assets/slide10-collage-11-book-views.webp" alt="Book model viewport views" /></div>
+      <div class="collage-cell c12"><img src="assets/slide10-collage-12-books-open.webp" alt="Open book model viewport" /></div>
+      <div class="collage-cell c13"><img src="assets/slide10-collage-13-marudo-rig.webp" alt="Marudo character model viewport" /></div>
+      <div class="collage-cell c14"><img src="assets/slide10-collage-14-cloak-views.webp" alt="Cloak model viewport views" /></div>
+      <div class="collage-cell c15"><img src="assets/slide10-collage-15-mossy-close.webp" alt="Mossy close viewport model" /></div>
+      <div class="collage-cell c16"><img src="assets/slide10-collage-16-robot.webp" alt="Robot model viewport" /></div>
+    </div>
+  </section>
+
+
+  <!-- ============ 10 UNREAL DEMO GALLERY ============ -->
+  <section data-label="Unreal Demo" class="bg-bark grain unreal">
+    <div class="corner-mark tl mono">X · UNREAL DEMO</div>
+    <div class="corner-mark tr mono">FIRST SEED · 2021</div>
+
+    <div class="head">
+      <div>
+        <div class="eyebrow" style="color: var(--ember); margin-bottom: 18px;">WHERE THE WORLD FIRST BECAME A PLACE</div>
+        <h2 class="mumbot">The 2021 Unreal demo.</h2>
+      </div>
+      <p>Built in <strong>Unreal Engine</strong> — a first walkthrough of the forest, the campfire and our cast. The foundations of the world's look, lighting and mood were all sketched in here, then carried forward.</p>
+    </div>
+
+    <div class="unreal-gallery">
+    <div class="hero">
+      <img src="assets/unreal-campfire-portrait.jpg" alt="Mumbot World Unreal demo campfire scene in the forest" />
+      <div class="badge">UNREAL ENGINE · 2021</div>
+    </div>
+
+    <div class="thumbs">
+      <div class="thumb">
+        <img src="assets/unreal-sunset.png" alt="Forest sunset with mushrooms" />
+        <div class="caption">DAYLIGHT · FOREST</div>
+      </div>
+      <div class="thumb">
+        <img src="assets/unreal-hut.webp" alt="Cozy hut interior with fire" />
+        <div class="caption">LAB</div>
+      </div>
+      <div class="thumb">
+        <img src="assets/unreal-clay.webp" alt="Untextured clay render of the world" />
+        <div class="caption">AO VIEW</div>
+      </div>
+      <div class="thumb">
+        <img src="assets/unreal-shumi-normals.png" alt="Shumi Mushrumi character normals pass" />
+        <div class="caption">NORMALS VIEW</div>
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <!-- ============ 11 TRAILER ============ -->
+  <section data-label="Trailer" class="bg-bark grain trailer">
+    <div class="corner-mark tl mono">XI &middot; TRAILER</div>
+    <div class="corner-mark tr mono">MUMBOT WORLD &middot; 2022</div>
+
+    <div class="head">
+      <div>
+        <div class="eyebrow" style="color: var(--ember); margin-bottom: 18px;">THE WORLD IN MOTION</div>
+        <h2 class="mumbot">Watch the<br/>trailer.</h2>
+      </div>
+      <p>A short mood piece for the early world: the forest, the campfire, the characters, and the feeling we keep building toward.</p>
+    </div>
+
+    <div class="trailer-frame">
+      <video src="assets/mumbot-world-trailer.mp4" poster="assets/mumbot-world-trailer-poster.jpg" controls playsinline preload="metadata"></video>
+    </div>
+  </section>
+
+
+  <!-- ============ 12 MUMBOT WORLD WEB ============ -->
+  <section data-label="Mumbot World Web" class="bg-bark grain web-intro">
+    <div class="corner-mark tl mono">XII · NEXT STEP</div>
+    <div class="corner-mark tr mono">OPEN WEB</div>
+
+    <div class="eyebrow">FROM PROTOTYPE TO PLATFORM</div>
+    <h2 class="title mumbot">MUMBOT WORLD<span class="web">Web</span></h2>
+    <p class="lede">The forest moves to the browser — shareable, multiplayer, and built for everyone who has a link.</p>
+  </section>
+
+
+  <!-- ============ 13 EVOLUTION / WIP ============ -->
   <section data-label="Evolution / WIP" class="bg-bark grain evolution">
-    <div class="corner-mark tl mono">IX &middot; EVOLUTION / WIP</div>
+    <div class="corner-mark tl mono">XIII &middot; EVOLUTION / WIP</div>
     <div class="corner-mark tr mono">THE HUB IS BECOMING A VENUE</div>
 
     <div class="sketch">
@@ -1424,101 +1570,9 @@
   </section>
 
 
-  <!-- ============ 10 3D VIEWPORT WIP ============ -->
-  <section data-label="3D WIP" class="bg-bark grain wip">
-    <div class="corner-mark tl mono">X &middot; WORK IN PROGRESS</div>
-    <div class="corner-mark tr mono">IN-VIEWPORT · 3D</div>
-
-    <div class="head">
-      <div>
-        <div class="eyebrow" style="color: var(--spirit); margin-bottom: 18px;">MODELING · SCULPTING · LOOK-DEV</div>
-        <h2 class="mumbot">The world taking shape.</h2>
-      </div>
-      <p>From paper into walkable space. <strong>Characters, props and the portal-in-a-tree itself</strong> — each one passes through the viewport before stepping into the forest.</p>
-    </div>
-
-    <div class="wip-collage">
-      <div class="collage-cell c2"><img src="assets/slide10-collage-02-clay-forest.webp" alt="Clay render of forest campfire scene" /></div>
-      <div class="collage-cell c3"><img src="assets/slide10-collage-03-color-forest.webp" alt="Color forest scene with Mossy and bee" /></div>
-      <div class="collage-cell c4"><img src="assets/slide10-collage-04-tree-portal.webp" alt="Portal tree viewport model" /></div>
-      <div class="collage-cell c5"><img src="assets/slide10-collage-05-tree-model.webp" alt="Textured tree model viewport" /></div>
-      <div class="collage-cell c6"><img src="assets/slide10-collage-06-tree-views.webp" alt="Tree orthographic viewport views" /></div>
-      <div class="collage-cell c7"><img src="assets/slide10-collage-07-mossy-views.webp" alt="Mossy orthographic viewport views" /></div>
-      <div class="collage-cell c8"><img src="assets/slide10-collage-08-girl-rig.webp" alt="Girl character rig in viewport" /></div>
-      <div class="collage-cell c9"><img src="assets/slide10-collage-09-chair.webp" alt="Wood chair model viewport views" /></div>
-      <div class="collage-cell c10"><img src="assets/slide10-collage-10-bee.webp" alt="Bee model viewport views" /></div>
-      <div class="collage-cell c11"><img src="assets/slide10-collage-11-book-views.webp" alt="Book model viewport views" /></div>
-      <div class="collage-cell c12"><img src="assets/slide10-collage-12-books-open.webp" alt="Open book model viewport" /></div>
-      <div class="collage-cell c13"><img src="assets/slide10-collage-13-marudo-rig.webp" alt="Marudo character model viewport" /></div>
-      <div class="collage-cell c14"><img src="assets/slide10-collage-14-cloak-views.webp" alt="Cloak model viewport views" /></div>
-      <div class="collage-cell c15"><img src="assets/slide10-collage-15-mossy-close.webp" alt="Mossy close viewport model" /></div>
-      <div class="collage-cell c16"><img src="assets/slide10-collage-16-robot.webp" alt="Robot model viewport" /></div>
-    </div>
-  </section>
-
-
-  <!-- ============ 11 UNREAL DEMO GALLERY ============ -->
-  <section data-label="Unreal Demo" class="bg-bark grain unreal">
-    <div class="corner-mark tl mono">XI · UNREAL DEMO</div>
-    <div class="corner-mark tr mono">FIRST SEED · 2021</div>
-
-    <div class="head">
-      <div>
-        <div class="eyebrow" style="color: var(--ember); margin-bottom: 18px;">WHERE THE WORLD FIRST BECAME A PLACE</div>
-        <h2 class="mumbot">The 2021 Unreal demo.</h2>
-      </div>
-      <p>Built in <strong>Unreal Engine</strong> — a first walkthrough of the forest, the campfire and our cast. The foundations of the world's look, lighting and mood were all sketched in here, then carried forward.</p>
-    </div>
-
-    <div class="unreal-gallery">
-    <div class="hero">
-      <img src="assets/unreal-campfire-portrait.jpg" alt="Mumbot World Unreal demo campfire scene in the forest" />
-      <div class="badge">UNREAL ENGINE · 2021</div>
-    </div>
-
-    <div class="thumbs">
-      <div class="thumb">
-        <img src="assets/unreal-sunset.png" alt="Forest sunset with mushrooms" />
-        <div class="caption">DAYLIGHT · FOREST</div>
-      </div>
-      <div class="thumb">
-        <img src="assets/unreal-hut.webp" alt="Cozy hut interior with fire" />
-        <div class="caption">LAB</div>
-      </div>
-      <div class="thumb">
-        <img src="assets/unreal-clay.webp" alt="Untextured clay render of the world" />
-        <div class="caption">AO VIEW</div>
-      </div>
-      <div class="thumb">
-        <img src="assets/unreal-shumi-normals.png" alt="Shumi Mushrumi character normals pass" />
-        <div class="caption">NORMALS VIEW</div>
-      </div>
-    </div>
-    </div>
-  </section>
-
-  <!-- ============ 12 TRAILER ============ -->
-  <section data-label="Trailer" class="bg-bark grain trailer">
-    <div class="corner-mark tl mono">XII &middot; TRAILER</div>
-    <div class="corner-mark tr mono">MUMBOT WORLD &middot; 2022</div>
-
-    <div class="head">
-      <div>
-        <div class="eyebrow" style="color: var(--ember); margin-bottom: 18px;">THE WORLD IN MOTION</div>
-        <h2 class="mumbot">Watch the<br/>trailer.</h2>
-      </div>
-      <p>A short mood piece for the early world: the forest, the campfire, the characters, and the feeling we keep building toward.</p>
-    </div>
-
-    <div class="trailer-frame">
-      <video src="assets/mumbot-world-trailer.mp4" poster="assets/mumbot-world-trailer-poster.jpg" controls playsinline preload="metadata"></video>
-    </div>
-  </section>
-
-
-  <!-- ============ 13 TECH ============ -->
+  <!-- ============ 14 TECH ============ -->
   <section data-label="Tech" class="bg-bark grain tech">
-    <div class="corner-mark tl mono">XIII · TECH &amp; PLATFORM</div>
+    <div class="corner-mark tl mono">XIV · TECH &amp; PLATFORM</div>
     <div class="corner-mark tr mono">BUILT FOR EVERYONE</div>
 
     <header>
@@ -1529,7 +1583,7 @@
     <div class="grid">
       <div class="panel">
         <div class="label">RUNTIME · 01</div>
-        <h3 class="mumbot">three.js on the open web.</h3>
+        <h3 class="mumbot">3D on the open web</h3>
         <p>A WebGL runtime that runs in any modern browser — desktop, laptop, tablet, low-end machines. Share the world with a link.</p>
         <div class="stack" style="margin-top: 32px;">
           <div class="stack-row"><span>renderer</span><span>three.js / WebGL2</span></div>
@@ -1541,7 +1595,7 @@
 
       <div class="panel">
         <div class="label">EASE OF ACCESS · 02</div>
-        <h3 class="mumbot">No install. No account.</h3>
+        <h3 class="mumbot">No install.</h3>
         <p>You don't download a launcher, you don't make a login, you don't queue for a server. Click a link, you're in. Works on the laptop you already own, the phone in your pocket, the friend's screen you're borrowing.</p>
         <p style="margin-top: 24px; color: var(--spirit); font-family: 'JetBrains Mono', monospace; font-size: 24px; letter-spacing: 0.18em; text-transform: uppercase;">Open a link · step into the forest</p>
       </div>
@@ -1556,9 +1610,9 @@
   </section>
 
 
-  <!-- ============ 14 VIBE — campfire ============ -->
+  <!-- ============ 15 VIBE — campfire ============ -->
   <section data-label="Vibe" class="bg-bark grain vibe">
-    <div class="corner-mark tl mono">XIV · WHAT IT FEELS LIKE</div>
+    <div class="corner-mark tl mono">XV · WHAT IT FEELS LIKE</div>
     <div class="corner-mark tr mono">A CAMPFIRE ONLINE</div>
 
     <div class="left">
@@ -1580,9 +1634,9 @@
   </section>
 
 
-  <!-- ============ 15 LIVE EXPERIENCE ============ -->
+  <!-- ============ 16 LIVE EXPERIENCE ============ -->
   <section data-label="Live Experience" class="bg-bark grain live">
-    <div class="corner-mark tl mono">XV · LIVE EXPERIENCE</div>
+    <div class="corner-mark tl mono">XVI · LIVE EXPERIENCE</div>
     <div class="corner-mark tr mono">ZEROSPACE · NYC</div>
 
     <header>
@@ -1622,9 +1676,9 @@
   </section>
 
 
-  <!-- ============ 16 TEAM ============ -->
+  <!-- ============ 17 TEAM ============ -->
   <section data-label="Core Team" class="bg-bark grain team">
-    <div class="corner-mark tl mono">XVI · CORE TEAM</div>
+    <div class="corner-mark tl mono">XVII · CORE TEAM</div>
     <div class="corner-mark tr mono">TWO PEOPLE · ONE WORLD</div>
 
     <h2 class="mumbot">Made by two stubborn hands.</h2>
@@ -1665,9 +1719,9 @@
   </section>
 
 
-  <!-- ============ 17 TALENT ============ -->
+  <!-- ============ 18 TALENT ============ -->
   <section data-label="Talent Roster" class="bg-bark grain talent">
-    <div class="corner-mark tl mono">XVII · TALENT ROSTER</div>
+    <div class="corner-mark tl mono">XVIII · TALENT ROSTER</div>
     <div class="corner-mark tr mono">VOICES &amp; SOUND</div>
 
     <h2 class="mumbot">The people<br/>lending their voices.</h2>
@@ -1706,9 +1760,9 @@
   </section>
 
 
-  <!-- ============ 18 ROADMAP ============ -->
+  <!-- ============ 19 ROADMAP ============ -->
   <section data-label="Roadmap" class="bg-bark grain roadmap">
-    <div class="corner-mark tl mono">XVIII · ROADMAP</div>
+    <div class="corner-mark tl mono">XIX · ROADMAP</div>
     <div class="corner-mark tr mono">WHERE THE GRANT TAKES US</div>
 
     <h2 class="mumbot">A patient<br/>release plan.</h2>
@@ -1761,9 +1815,9 @@
   </section>
 
 
-  <!-- ============ 19 ASK ============ -->
+  <!-- ============ 20 ASK ============ -->
   <section data-label="The Ask" class="bg-bark grain ask">
-    <div class="corner-mark tl mono">XIX · THE ASK</div>
+    <div class="corner-mark tl mono">XX · THE ASK</div>
     <div class="corner-mark tr mono">PHASE 01 FUNDING</div>
 
     <div class="left">
@@ -1810,9 +1864,9 @@
   </section>
 
 
-  <!-- ============ 20 CLOSING ============ -->
+  <!-- ============ 21 CLOSING ============ -->
   <section data-label="Closing" class="bg-bark grain closing">
-    <div class="corner-mark tl mono">XX · THANK YOU</div>
+    <div class="corner-mark tl mono">XXI · THANK YOU</div>
     <div class="corner-mark tr mono">END · MMBT 001</div>
 
     <div class="eye"></div>
