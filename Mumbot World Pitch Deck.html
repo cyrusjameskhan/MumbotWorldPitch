@@ -1133,6 +1133,50 @@
   #tweaks-root { position: fixed; top: 0; left: 0; z-index: 9999; pointer-events: none; }
   #tweaks-root > * { pointer-events: auto; }
 
+  /* ============ Slide entrance animations (deck-animations.js) ============ */
+  @keyframes deck-fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(18px);
+      filter: blur(3px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
+  }
+
+  section.deck-entering .deck-fade-target:not(.deck-fade-in) {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  .deck-fade-target.deck-fade-in {
+    animation: deck-fade-up var(--deck-fade-ms, 1050ms) cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: var(--deck-delay, 0ms);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    section.deck-entering .deck-fade-target,
+    .deck-fade-target.deck-fade-in {
+      animation: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+      filter: none !important;
+    }
+  }
+
+  @media print {
+    section.deck-entering .deck-fade-target,
+    .deck-fade-target.deck-fade-in {
+      animation: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+      filter: none !important;
+    }
+  }
+
 </style>
 </head>
 <body>
@@ -1874,8 +1918,8 @@
     <p class="invite">There's a portal in a tree, and a small fire just past the clearing. We hope you'll come sit with us.</p>
 
     <div class="contacts">
-      <span>Cyrus James Khan<b>LEAD DEV · TECH DIRECTOR</b></span>
       <span>Jade Kuei — Mumbot<b>ART DIRECTOR · IP CREATOR</b></span>
+      <span>Cyrus James Khan<b>LEAD DEV · TECH DIRECTOR</b></span>
       <span>The World<b>MUMBOT.WORLD</b></span>
     </div>
   </section>
@@ -1934,6 +1978,7 @@
 
 <script src="image-slot.js"></script>
 <script src="deck-stage.js?v=fullscreen-rail-1"></script>
+<script src="deck-animations.js?v=4"></script>
 
 <script>
 (async () => {
