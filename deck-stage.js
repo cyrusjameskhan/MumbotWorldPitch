@@ -325,6 +325,14 @@
        for the 200ms around the toggle — so window-resize and rail-width
        drag (which also call _fit) don't lag behind the cursor. */
     .rail[data-user-hidden] { transform: translateX(-100%); }
+    :host([data-fullscreen]) .rail {
+      transform: translateX(calc(-100% - 1px));
+      transition: transform 180ms cubic-bezier(.3,.7,.4,1);
+      box-shadow: 18px 0 36px rgba(0,0,0,0.34);
+    }
+    :host([data-fullscreen][data-fullscreen-rail-open]) .rail {
+      transform: translateX(0);
+    }
     :host([data-rail-anim]) .rail { transition: transform 200ms cubic-bezier(.3,.7,.4,1); }
     :host([data-rail-anim]) .stage { transition: left 200ms cubic-bezier(.3,.7,.4,1); }
     :host([data-rail-anim]) .canvas { transition: transform 200ms cubic-bezier(.3,.7,.4,1); }
@@ -450,6 +458,7 @@
     .rail-resize[data-dragging] { background: rgba(255,255,255,0.12); }
     :host([no-rail]) .rail-resize,
     :host([noscale]) .rail-resize,
+    :host([data-fullscreen]) .rail-resize,
     .rail[data-presenting] + .rail-resize,
     .rail[data-user-hidden] + .rail-resize { display: none; }
 
@@ -1186,7 +1195,7 @@
       // corrects it.
       if (!this._railEnabled || !this._railVisible || this.hasAttribute('no-rail')
           || this.hasAttribute('noscale') || this._presenting || this._previewMode
-          || NARROW_MQ.matches) return 0;
+          || document.fullscreenElement || NARROW_MQ.matches) return 0;
       return this._railPx || 0;
     }
 
@@ -1239,6 +1248,8 @@
 
     _onFullscreenChange() {
       this._syncFullscreenButton();
+      if (!document.fullscreenElement) this.removeAttribute('data-fullscreen-rail-open');
+      this._syncRailHidden();
       this._fit();
     }
 
@@ -1253,6 +1264,21 @@
       else this.removeAttribute('data-fullscreen-unsupported');
     }
 
+    _syncFullscreenRail(e) {
+      if (!document.fullscreenElement || !this._rail || !this._railVisible
+          || this.hasAttribute('no-rail') || this.hasAttribute('noscale')) {
+        this.removeAttribute('data-fullscreen-rail-open');
+        return;
+      }
+
+      const edge = 28;
+      const closePast = (this._railPx || 188) + 42;
+      const x = e && typeof e.clientX === 'number' ? e.clientX : window.innerWidth;
+      if (x <= edge) this.setAttribute('data-fullscreen-rail-open', '');
+      else if (x > closePast) this.removeAttribute('data-fullscreen-rail-open');
+      this._rail.inert = !this.hasAttribute('data-fullscreen-rail-open');
+    }
+
     _onResize() {
       this._fit();
       // Crossing the narrow-viewport breakpoint reveals the rail — rerun the
@@ -1265,9 +1291,10 @@
       }
     }
 
-    _onMouseMove() {
+    _onMouseMove(e) {
       // Keep overlay visible while mouse moves; hide after idle.
       this._flashOverlay();
+      this._syncFullscreenRail(e);
     }
 
     _onMessage(e) {
@@ -1333,7 +1360,8 @@
       else this._rail.removeAttribute('data-user-hidden');
       // translateX hide leaves thumbs (tabIndex=0) in the tab order —
       // inert keeps them unfocusable while the rail is off-screen.
-      this._rail.inert = hard || !this._railVisible;
+      const fullscreenClosed = !!document.fullscreenElement && !this.hasAttribute('data-fullscreen-rail-open');
+      this._rail.inert = hard || !this._railVisible || fullscreenClosed;
     }
 
     _onTap(e) {
