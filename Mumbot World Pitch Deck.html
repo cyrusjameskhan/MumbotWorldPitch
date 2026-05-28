@@ -579,6 +579,41 @@
   .unreal .thumb img { width:100%; height:100%; object-fit: cover; display: block; }
   .unreal .thumb .caption { display: none; }
 
+  /* ============ TRAILER ============ */
+  .trailer { padding: 70px 110px; display: grid; grid-template-rows: auto minmax(0, 1fr); gap: 30px; }
+  .trailer .head { display:grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: end; }
+  .trailer h2 {
+    font-family: "Mumbotfont", serif;
+    font-size: 76px;
+    line-height: 0.98;
+    color: var(--cream);
+    letter-spacing: 0.02em;
+  }
+  .trailer .head p {
+    font-size: 24px;
+    line-height: 1.45;
+    color: var(--parchment);
+    opacity: 0.88;
+    text-wrap: pretty;
+    max-width: 720px;
+    margin-left: auto;
+    text-align: right;
+  }
+  .trailer-frame {
+    min-height: 0;
+    border: 1px solid rgba(247,236,203,0.18);
+    background: rgba(0,0,0,0.4);
+    box-shadow:
+      inset 0 0 80px rgba(0,0,0,0.5),
+      0 30px 60px -20px rgba(0,0,0,0.8);
+  }
+  .trailer-frame video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
   /* ============ WIP GALLERY (drawings & 3D viewport) ============ */
   .wip { padding: 80px 110px; display: grid; grid-template-rows: auto 1fr; gap: 36px; }
   .wip .head { display: grid; grid-template-columns: 1.1fr 1fr; gap: 60px; align-items: end; }
@@ -1462,9 +1497,28 @@
     </div>
   </section>
 
-  <!-- ============ 12 TECH ============ -->
+  <!-- ============ 12 TRAILER ============ -->
+  <section data-label="Trailer" class="bg-bark grain trailer">
+    <div class="corner-mark tl mono">XII &middot; TRAILER</div>
+    <div class="corner-mark tr mono">MUMBOT WORLD &middot; 2022</div>
+
+    <div class="head">
+      <div>
+        <div class="eyebrow" style="color: var(--ember); margin-bottom: 18px;">THE WORLD IN MOTION</div>
+        <h2 class="mumbot">Watch the<br/>trailer.</h2>
+      </div>
+      <p>A short mood piece for the early world: the forest, the campfire, the characters, and the feeling we keep building toward.</p>
+    </div>
+
+    <div class="trailer-frame">
+      <video src="assets/mumbot-world-trailer.mp4" poster="assets/mumbot-world-trailer-poster.jpg" controls playsinline preload="metadata"></video>
+    </div>
+  </section>
+
+
+  <!-- ============ 13 TECH ============ -->
   <section data-label="Tech" class="bg-bark grain tech">
-    <div class="corner-mark tl mono">XII · TECH &amp; PLATFORM</div>
+    <div class="corner-mark tl mono">XIII · TECH &amp; PLATFORM</div>
     <div class="corner-mark tr mono">BUILT FOR EVERYONE</div>
 
     <header>
@@ -1502,9 +1556,9 @@
   </section>
 
 
-  <!-- ============ 13 VIBE — campfire ============ -->
+  <!-- ============ 14 VIBE — campfire ============ -->
   <section data-label="Vibe" class="bg-bark grain vibe">
-    <div class="corner-mark tl mono">XIII · WHAT IT FEELS LIKE</div>
+    <div class="corner-mark tl mono">XIV · WHAT IT FEELS LIKE</div>
     <div class="corner-mark tr mono">A CAMPFIRE ONLINE</div>
 
     <div class="left">
@@ -1526,9 +1580,9 @@
   </section>
 
 
-  <!-- ============ 14 LIVE EXPERIENCE ============ -->
+  <!-- ============ 15 LIVE EXPERIENCE ============ -->
   <section data-label="Live Experience" class="bg-bark grain live">
-    <div class="corner-mark tl mono">XIV · LIVE EXPERIENCE</div>
+    <div class="corner-mark tl mono">XV · LIVE EXPERIENCE</div>
     <div class="corner-mark tr mono">ZEROSPACE · NYC</div>
 
     <header>
@@ -1568,9 +1622,9 @@
   </section>
 
 
-  <!-- ============ 15 TEAM ============ -->
+  <!-- ============ 16 TEAM ============ -->
   <section data-label="Core Team" class="bg-bark grain team">
-    <div class="corner-mark tl mono">XV · CORE TEAM</div>
+    <div class="corner-mark tl mono">XVI · CORE TEAM</div>
     <div class="corner-mark tr mono">TWO PEOPLE · ONE WORLD</div>
 
     <h2 class="mumbot">Made by two stubborn hands.</h2>
@@ -1611,9 +1665,9 @@
   </section>
 
 
-  <!-- ============ 16 TALENT ============ -->
+  <!-- ============ 17 TALENT ============ -->
   <section data-label="Talent Roster" class="bg-bark grain talent">
-    <div class="corner-mark tl mono">XVI · TALENT ROSTER</div>
+    <div class="corner-mark tl mono">XVII · TALENT ROSTER</div>
     <div class="corner-mark tr mono">VOICES &amp; SOUND</div>
 
     <h2 class="mumbot">The people<br/>lending their voices.</h2>
@@ -1652,9 +1706,9 @@
   </section>
 
 
-  <!-- ============ 17 ROADMAP ============ -->
+  <!-- ============ 18 ROADMAP ============ -->
   <section data-label="Roadmap" class="bg-bark grain roadmap">
-    <div class="corner-mark tl mono">XVII · ROADMAP</div>
+    <div class="corner-mark tl mono">XVIII · ROADMAP</div>
     <div class="corner-mark tr mono">WHERE THE GRANT TAKES US</div>
 
     <h2 class="mumbot">A patient<br/>release plan.</h2>
@@ -1707,9 +1761,9 @@
   </section>
 
 
-  <!-- ============ 18 ASK ============ -->
+  <!-- ============ 19 ASK ============ -->
   <section data-label="The Ask" class="bg-bark grain ask">
-    <div class="corner-mark tl mono">XVIII · THE ASK</div>
+    <div class="corner-mark tl mono">XIX · THE ASK</div>
     <div class="corner-mark tr mono">PHASE 01 FUNDING</div>
 
     <div class="left">
@@ -1756,9 +1810,9 @@
   </section>
 
 
-  <!-- ============ 19 CLOSING ============ -->
+  <!-- ============ 20 CLOSING ============ -->
   <section data-label="Closing" class="bg-bark grain closing">
-    <div class="corner-mark tl mono">XIX · THANK YOU</div>
+    <div class="corner-mark tl mono">XX · THANK YOU</div>
     <div class="corner-mark tr mono">END · MMBT 001</div>
 
     <div class="eye"></div>
