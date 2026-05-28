@@ -25,6 +25,7 @@
     '.concept-col', '.pillar-grid > *', '.timeline > *',
     '.closing .eye',
     'image-slot',
+    '[data-deck-fade-ms]',
   ].join(', ');
 
   const reducedMq = matchMedia('(prefers-reduced-motion: reduce)');
@@ -40,6 +41,7 @@
     slide.querySelectorAll('.deck-fade-target').forEach((el) => {
       el.classList.remove('deck-fade-in', 'deck-fade-target');
       el.style.removeProperty('--deck-delay');
+      el.style.removeProperty('--deck-fade-ms');
     });
     slide.classList.remove('deck-entering', 'deck-enter-done');
   };
@@ -84,17 +86,26 @@
     slide._deckAnimTimers = timers;
     slide.classList.add('deck-entering');
 
+    const fadeMsFor = (el) => {
+      const n = parseInt(el.getAttribute('data-deck-fade-ms'), 10);
+      return Number.isFinite(n) && n > 0 ? n : FADE_MS;
+    };
+
     const targets = collectFadeTargets(slide);
     let t = 0;
+    let maxEnd = 0;
 
     for (const el of targets) {
+      const fadeMs = fadeMsFor(el);
       el.classList.add('deck-fade-target');
+      el.style.setProperty('--deck-fade-ms', fadeMs + 'ms');
       el.style.setProperty('--deck-delay', t + 'ms');
       timers.push(
         setTimeout(() => {
           el.classList.add('deck-fade-in');
         }, t),
       );
+      maxEnd = Math.max(maxEnd, t + fadeMs);
       t += STAGGER_MS;
     }
 
@@ -102,7 +113,7 @@
       setTimeout(() => {
         slide.classList.remove('deck-entering');
         slide.classList.add('deck-enter-done');
-      }, t + FADE_MS + 120),
+      }, maxEnd + 120),
     );
   };
 
