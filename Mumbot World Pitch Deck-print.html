@@ -364,24 +364,6 @@
     color: var(--parchment); opacity: 0.88;
     text-wrap: pretty;
   }
-  .pillar .glyph {
-    margin-top: auto;
-    align-self: flex-start;
-    width: 56px; height: 56px;
-    border: 1px solid rgba(247,236,203,0.35);
-    border-radius: 50%;
-    position: relative;
-    color: var(--spirit);
-  }
-  .pillar .glyph::before, .pillar .glyph::after { content:""; position:absolute; background: currentColor; }
-  .pillar.p1 .glyph::before { left:50%; top:14px; bottom:14px; width:2px; transform:translateX(-50%); }
-  .pillar.p1 .glyph::after  { top:50%;  left:14px; right:14px; height:2px; transform:translateY(-50%); }
-  .pillar.p2 .glyph { border-radius: 4px; transform: rotate(45deg); }
-  .pillar.p2 .glyph::before { inset: 30%; border:2px solid currentColor; background:none;}
-  .pillar.p3 .glyph::before { inset: 12px; border:2px solid currentColor; border-radius:50%; background:none; }
-  .pillar.p3 .glyph::after  { inset: 22px; border:2px solid currentColor; border-radius:50%; background:none; }
-  .pillar.p4 .glyph::before { left:50%; top:6px; bottom:6px; width:2px; transform:translateX(-50%); background: currentColor; }
-  .pillar.p4 .glyph::after  { inset: 14px; border:2px solid currentColor; border-radius: 0 50% 0 50%; background: none; }
 
   /* ============ JOURNEY ============ */
   .journey { padding: 110px 120px; }
@@ -430,16 +412,35 @@
   }
 
   /* ============ ORIGIN ============ */
-  .origin { padding: 90px 110px; display:grid; grid-template-columns: 0.82fr 1.18fr; gap: 64px; align-items: center; }
+  .origin {
+    padding: 90px 110px;
+    display: grid;
+    grid-template-columns: 0.82fr 1.18fr;
+    grid-template-rows: auto auto;
+    column-gap: 64px;
+    row-gap: 20px;
+    align-items: center;
+  }
+  .origin .right { display: contents; }
+  .origin .left {
+    grid-column: 1;
+    grid-row: 1;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
   .origin .mycelium-frame {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: center;
+    justify-self: center;
     width: 100%;
-    max-width: 920px;
+    max-width: 665px;
     margin-inline: auto;
     aspect-ratio: 2000 / 2500;
     height: auto;
     overflow: hidden;
-    border: 1px solid rgba(247,236,203,0.16);
-    background: rgba(247,236,203,0.04);
   }
   .origin .mycelium-frame > img {
     width: 100%;
@@ -458,9 +459,12 @@
   .origin .left p { font-size: 24px; line-height: 1.5; color: var(--parchment); margin-bottom: 22px; text-wrap: pretty; opacity: 0.9; }
   .origin .left p strong { color: var(--cream); font-weight: 500; }
   .origin .left p em { color: var(--blush); font-style: normal; }
-  .origin .right { display:grid; gap: 20px; min-width: 0; align-content: center; }
   .origin .right .slot-frame { flex: 1; min-height: 0; }
   .origin .right .caption {
+    grid-column: 2;
+    grid-row: 2;
+    justify-self: center;
+    text-align: center;
     font-family: "JetBrains Mono", monospace;
     font-size: 24px; letter-spacing: 0.18em; text-transform: uppercase;
     color: var(--parchment); opacity: 0.65;
@@ -1278,34 +1282,30 @@
 
     <header>
       <div class="eyebrow" style="color: var(--ember); margin-bottom: 22px;">WHAT YOU DO IN MUMBOT WORLD</div>
-      <h2 class="mumbot">Explore · Befriend · Solve · Unlock.</h2>
+      <h2 class="mumbot">Chill · Explore · Befriend · Unlock.</h2>
       <p class="lede">No combat, no fail-states, no leaderboard. Mumbot World is built around four soft loops — quiet activities that reward attention rather than reaction.</p>
     </header>
 
     <div class="grid">
       <div class="pillar p1">
         <div class="num">01</div>
-        <h3 class="mumbot">Explore the forest.</h3>
-        <p>Wander a hand-built ancient woodland of clearings, glades, caves and stranger places. Every corner has been touched by hand.</p>
-        <div class="glyph"></div>
+        <h3 class="mumbot">Chill.</h3>
+        <p>Sit by the fire, listen to the forest, watch the light move. The world is meant to be lived in slowly — presence is its own reward.</p>
       </div>
       <div class="pillar p2">
         <div class="num">02</div>
-        <h3 class="mumbot">Befriend nature spirits.</h3>
-        <p>Listen, gift, sit awhile. Each spirit has its own rhythm — earn trust and they will open small pockets of the world to you.</p>
-        <div class="glyph"></div>
+        <h3 class="mumbot">Explore.</h3>
+        <p>Wander a hand-built ancient woodland of clearings, glades, caves and stranger places. Every corner has been touched by hand.</p>
       </div>
       <div class="pillar p3">
         <div class="num">03</div>
-        <h3 class="mumbot">Solve quiet mysteries.</h3>
-        <p>Puzzles woven into the ecosystem itself — moss that remembers, mushrooms that count, stones that hum on the right night.</p>
-        <div class="glyph"></div>
+        <h3 class="mumbot">Befriend.</h3>
+        <p>Listen, gift, sit awhile. Each spirit has its own rhythm — earn trust and they will open small pockets of the world to you.</p>
       </div>
       <div class="pillar p4">
         <div class="num">04</div>
-        <h3 class="mumbot">Unlock the portals.</h3>
-        <p>A portal in a tree leads to the dying distant future. What you carry through, and what you bring back, is up to you.</p>
-        <div class="glyph"></div>
+        <h3 class="mumbot">Unlock.</h3>
+        <p>Quiet mysteries, special encounters, and portals — moss that remembers, stones that hum on the right night, and doorways to the distant future.</p>
       </div>
     </div>
   </section>
@@ -1509,20 +1509,9 @@
   </section>
 
 
-  <!-- ============ 12 MUMBOT WORLD WEB ============ -->
-  <section data-label="Mumbot World Web" class="bg-bark grain web-intro">
-    <div class="corner-mark tl mono">XII · NEXT STEP</div>
-    <div class="corner-mark tr mono">OPEN WEB</div>
-
-    <div class="eyebrow">FROM PROTOTYPE TO PLATFORM</div>
-    <h2 class="title mumbot">MUMBOT WORLD<span class="web">Web</span></h2>
-    <p class="lede">The forest moves to the browser — shareable, multiplayer, and built for everyone who has a link.</p>
-  </section>
-
-
-  <!-- ============ 13 EVOLUTION / WIP ============ -->
+  <!-- ============ 12 EVOLUTION / WIP ============ -->
   <section data-label="Evolution / WIP" class="bg-bark grain evolution">
-    <div class="corner-mark tl mono">XIII &middot; EVOLUTION / WIP</div>
+    <div class="corner-mark tl mono">XII &middot; EVOLUTION / WIP</div>
     <div class="corner-mark tr mono">THE HUB IS BECOMING A VENUE</div>
 
     <div class="sketch">
@@ -1567,6 +1556,17 @@
         </div>
       </div>
     </div>
+  </section>
+
+
+  <!-- ============ 13 MUMBOT WORLD WEB ============ -->
+  <section data-label="Mumbot World Web" class="bg-bark grain web-intro">
+    <div class="corner-mark tl mono">XIII · NEXT STEP</div>
+    <div class="corner-mark tr mono">OPEN WEB</div>
+
+    <div class="eyebrow">FROM PROTOTYPE TO PLATFORM</div>
+    <h2 class="title mumbot">MUMBOT WORLD<span class="web">Web</span></h2>
+    <p class="lede">The forest moves to the browser — shareable, multiplayer, and built for everyone who has a link.</p>
   </section>
 
 
