@@ -430,7 +430,7 @@
   }
 
   /* ============ ORIGIN ============ */
-  .origin { padding: 90px 110px; display:grid; grid-template-columns: 0.9fr 1.1fr; gap: 78px; align-items: center; }
+  .origin { padding: 90px 110px; display:grid; grid-template-columns: 0.95fr 0.9fr; gap: 78px; align-items: center; }
   .origin .mycelium-frame {
     width: 100%;
     height: 610px;
@@ -439,12 +439,14 @@
     overflow: hidden;
     border: 1px solid rgba(247,236,203,0.16);
     background: rgba(247,236,203,0.04);
+    background-image: url("assets/origin-mumbot-cjk.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
   }
-  .origin .mycelium-frame img {
-    max-width: 100%;
-    max-height: 100%;
-    width: auto;
-    height: auto;
+  .origin .right .mycelium-frame > img {
+    width: 100%;
+    height: 100%;
     object-fit: contain;
     display: block;
   }
@@ -637,10 +639,9 @@
     display: block;
   }
   .wip-collage > .wip-cell { display: none; }
-  .wip-collage .c1 { left: 0; top: 0; width: 23.5%; height: 100%; }
-  .wip-collage .c2 { left: 24.2%; top: 0; width: 24.8%; height: 28.5%; }
-  .wip-collage .c3 { left: 49.7%; top: 0; width: 24.8%; height: 28.5%; }
-  .wip-collage .c4 { left: 75.2%; top: 0; width: 24.8%; height: 28.5%; }
+  .wip-collage .c2 { left: 12.7%; top: 0; width: 24.6%; height: 28.5%; }
+  .wip-collage .c3 { left: 37.7%; top: 0; width: 24.6%; height: 28.5%; }
+  .wip-collage .c4 { left: 62.7%; top: 0; width: 24.6%; height: 28.5%; }
   .wip-collage .c5,
   .wip-collage .c6,
   .wip-collage .c7,
@@ -652,7 +653,7 @@
   .wip-collage .c13,
   .wip-collage .c14,
   .wip-collage .c15,
-  .wip-collage .c16 { width: 11.5%; aspect-ratio: 1 / 1; }
+  .wip-collage .c16 { width: 12.2%; aspect-ratio: 1 / 1; }
   .wip-collage .c5,
   .wip-collage .c6,
   .wip-collage .c7,
@@ -666,17 +667,17 @@
   .wip-collage .c15,
   .wip-collage .c16 { top: 63.5%; }
   .wip-collage .c5,
-  .wip-collage .c11 { left: 24.2%; }
+  .wip-collage .c11 { left: 12.7%; }
   .wip-collage .c6,
-  .wip-collage .c12 { left: 36.8%; }
+  .wip-collage .c12 { left: 25.2%; }
   .wip-collage .c7,
-  .wip-collage .c13 { left: 49.4%; }
+  .wip-collage .c13 { left: 37.7%; }
   .wip-collage .c8,
-  .wip-collage .c14 { left: 62%; }
+  .wip-collage .c14 { left: 50.2%; }
   .wip-collage .c9,
-  .wip-collage .c15 { left: 74.6%; }
+  .wip-collage .c15 { left: 62.7%; }
   .wip-collage .c10,
-  .wip-collage .c16 { left: 87.2%; }
+  .wip-collage .c16 { left: 75.2%; }
 
   /* Hero + side-thumbs layout (for 3D viewport slide) */
   .wip-split {
@@ -1285,9 +1286,7 @@
     </div>
 
     <div class="right">
-      <div class="mycelium-frame">
-        <img src="assets/origin-mumbot-cjk.png" alt="Mycelium on the Block collaboration artwork" />
-      </div>
+      <div class="mycelium-frame" role="img" aria-label="Mycelium on the Block collaboration artwork"></div>
       <div class="caption">FIG. 02 · MYCELIUM ON THE BLOCK · 2021</div>
     </div>
   </section>
@@ -1438,7 +1437,6 @@
     </div>
 
     <div class="wip-collage">
-      <div class="collage-cell c1"><img src="assets/slide10-collage-01-normal-forest.jpg" alt="Normal pass forest with ghost and mushrooms" /></div>
       <div class="collage-cell c2"><img src="assets/slide10-collage-02-clay-forest.webp" alt="Clay render of forest campfire scene" /></div>
       <div class="collage-cell c3"><img src="assets/slide10-collage-03-color-forest.webp" alt="Color forest scene with Mossy and bee" /></div>
       <div class="collage-cell c4"><img src="assets/slide10-collage-04-tree-portal.webp" alt="Portal tree viewport model" /></div>
