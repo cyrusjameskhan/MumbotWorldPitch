@@ -430,16 +430,21 @@
   }
 
   /* ============ ORIGIN ============ */
-  .origin { padding: 70px 90px; display:grid; place-items:center; }
+  .origin { padding: 90px 110px; display:grid; grid-template-columns: 0.9fr 1.1fr; gap: 78px; align-items: center; }
   .origin .mycelium-frame {
     width: 100%;
-    height: 100%;
+    height: 610px;
     display: grid;
     place-items: center;
+    overflow: hidden;
+    border: 1px solid rgba(247,236,203,0.16);
+    background: rgba(247,236,203,0.04);
   }
   .origin .mycelium-frame img {
-    width: 100%;
-    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
     object-fit: contain;
     display: block;
   }
@@ -454,7 +459,7 @@
   .origin .left p { font-size: 24px; line-height: 1.5; color: var(--parchment); margin-bottom: 22px; text-wrap: pretty; opacity: 0.9; }
   .origin .left p strong { color: var(--cream); font-weight: 500; }
   .origin .left p em { color: var(--blush); font-style: normal; }
-  .origin .right { display:flex; flex-direction: column; gap: 28px; }
+  .origin .right { display:grid; gap: 20px; min-width: 0; align-content: center; }
   .origin .right .slot-frame { flex: 1; min-height: 0; }
   .origin .right .caption {
     font-family: "JetBrains Mono", monospace;
@@ -1267,9 +1272,23 @@
 
 
   <!-- ============ 07 ORIGIN ============ -->
-  <section data-label="Origin" class="bg-bark origin">
-    <div class="mycelium-frame">
-      <img src="assets/origin-mumbot-cjk.png" alt="Mycelium on the Block collaboration artwork" />
+  <section data-label="Origin" class="bg-bark grain origin">
+    <div class="corner-mark tl mono">VII · ORIGIN STORY</div>
+    <div class="corner-mark tr mono">JADE × CYRUS</div>
+
+    <div class="left">
+      <div class="eyebrow" style="color: var(--blush); margin-bottom: 22px;">HOW TWO ARTISTS BUILT A WORLD</div>
+      <h2 class="mumbot">It started<br/>with mycelium.</h2>
+      <p>Mumbot World began as the universe of artist and storyteller <strong>Jade Kuei (MUMBOT)</strong> — a multimedia mythology told through toys, paintings, characters and stories.</p>
+      <p>Her first collaboration with <strong>Cyrus James Khan</strong> — a piece called <em>Mycelium on the Block</em> — brought the world into digital form for the first time. It sat quietly for months before being collected by <strong>Gary Vaynerchuk</strong>, a moment that opened the door to everything after.</p>
+      <p>That collaboration revealed a strong creative synergy: Jade authoring the world's soul through her characters and 2D universe, Cyrus directing how it looks, lights and breathes in 3D.</p>
+    </div>
+
+    <div class="right">
+      <div class="mycelium-frame">
+        <img src="assets/origin-mumbot-cjk.png" alt="Mycelium on the Block collaboration artwork" />
+      </div>
+      <div class="caption">FIG. 02 · MYCELIUM ON THE BLOCK · 2021</div>
     </div>
   </section>
 
