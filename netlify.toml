@@ -1,0 +1,19 @@
+[build]
+  publish = "."
+  command = ""
+
+[[redirects]]
+  from = "/"
+  to = "/Mumbot%20World%20Pitch%20Deck.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/deck"
+  to = "/Mumbot%20World%20Pitch%20Deck.html"
+  status = 200
+
+[[redirects]]
+  from = "/print"
+  to = "/Mumbot%20World%20Pitch%20Deck-print.html"
+  status = 200
