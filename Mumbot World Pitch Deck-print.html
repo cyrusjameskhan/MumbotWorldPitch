@@ -539,7 +539,7 @@
   }
 
   /* ============ UNREAL DEMO GALLERY ============ */
-  .unreal { padding: 70px 110px; display: grid; grid-template-rows: auto 391px auto; gap: 28px; }
+  .unreal { padding: 70px 110px; display: grid; grid-template-rows: auto minmax(0, 1fr); gap: 28px; }
   .unreal .head { display:grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: end; }
   .unreal h2 {
     font-family: "Mumbotfont", serif;
@@ -553,6 +553,12 @@
     text-wrap: pretty; max-width: 720px; margin-left: auto; text-align: right;
   }
   .unreal .head p strong { color: var(--cream); font-weight: 500; }
+  .unreal-gallery {
+    display: grid;
+    grid-template-columns: 0.68fr 1.32fr;
+    gap: 16px;
+    min-height: 0;
+  }
   .unreal .hero {
     position: relative;
     overflow: hidden;
@@ -565,10 +571,9 @@
     width: 100%; height: 100%; object-fit: cover; display: block;
   }
   .unreal .hero .badge { display: none; }
-  .unreal .thumbs { display:grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .unreal .thumbs { display:grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(2, minmax(0, 1fr)); gap: 16px; min-height: 0; }
   .unreal .thumb {
     position: relative; overflow: hidden;
-    aspect-ratio: 16/9;
     border: 1px solid rgba(247,236,203,0.15);
   }
   .unreal .thumb img { width:100%; height:100%; object-fit: cover; display: block; }
@@ -1305,8 +1310,9 @@
       <p>Built in <strong>Unreal Engine</strong> — a first walkthrough of the forest, the campfire and our cast. The foundations of the world's look, lighting and mood were all sketched in here, then carried forward.</p>
     </div>
 
+    <div class="unreal-gallery">
     <div class="hero">
-      <img src="assets/unreal-hero-logo.webp" alt="Mumbot World — Unreal demo hero shot, campfire scene with characters" />
+      <img src="assets/unreal-campfire-portrait.jpg" alt="Mumbot World Unreal demo campfire scene in the forest" />
       <div class="badge">UNREAL ENGINE · 2021</div>
     </div>
 
@@ -1327,6 +1333,7 @@
         <img src="assets/unreal-shumi-normals.png" alt="Shumi Mushrumi character normals pass" />
         <div class="caption">NORMALS VIEW</div>
       </div>
+    </div>
     </div>
   </section>
 
