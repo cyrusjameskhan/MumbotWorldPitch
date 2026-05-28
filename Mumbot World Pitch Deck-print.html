@@ -430,7 +430,19 @@
   }
 
   /* ============ ORIGIN ============ */
-  .origin { padding: 90px 120px; display:grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: stretch; }
+  .origin { padding: 70px 90px; display:grid; place-items:center; }
+  .origin .mycelium-frame {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+  }
+  .origin .mycelium-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
   .origin .left h2 {
     font-family: "Mumbotfont", serif;
     font-size: 80px;
@@ -448,6 +460,75 @@
     font-family: "JetBrains Mono", monospace;
     font-size: 24px; letter-spacing: 0.18em; text-transform: uppercase;
     color: var(--parchment); opacity: 0.65;
+  }
+
+  /* ============ EVOLUTION / WIP ============ */
+  .evolution { padding: 80px 110px; display:grid; grid-template-columns: 0.92fr 1.08fr; gap: 54px; align-items: stretch; }
+  .evolution .sketch {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(247,236,203,0.18);
+    background: linear-gradient(180deg, #f7eccb 0%, #ead8a8 100%);
+    box-shadow:
+      inset 0 0 70px rgba(80,56,32,0.18),
+      0 24px 46px -24px rgba(0,0,0,0.8);
+  }
+  .evolution .sketch img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    mix-blend-mode: multiply;
+    display: block;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  .evolution .content { display:flex; flex-direction: column; justify-content: center; min-width: 0; }
+  .evolution h2 {
+    font-family: "Mumbotfont", serif;
+    font-size: 76px;
+    line-height: 0.98;
+    color: var(--cream);
+    letter-spacing: 0.02em;
+    margin-bottom: 28px;
+  }
+  .evolution .lede {
+    font-size: 25px;
+    line-height: 1.45;
+    color: var(--parchment);
+    opacity: 0.9;
+    max-width: 760px;
+    margin-bottom: 34px;
+  }
+  .evolution-grid {
+    display:grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+  .evo-card {
+    border: 1px solid rgba(247,236,203,0.16);
+    background: linear-gradient(180deg, rgba(40,55,38,0.34), rgba(20,17,13,0.56));
+    padding: 22px 22px 24px;
+    min-height: 134px;
+  }
+  .evo-card .num {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 18px;
+    letter-spacing: 0.2em;
+    color: var(--ember);
+    margin-bottom: 10px;
+  }
+  .evo-card h3 {
+    font-family: "Mumbotfont", serif;
+    font-size: 32px;
+    line-height: 1.02;
+    color: var(--cream);
+    margin-bottom: 10px;
+  }
+  .evo-card p {
+    font-size: 20px;
+    line-height: 1.35;
+    color: var(--parchment);
+    opacity: 0.86;
   }
 
   /* ============ UNREAL DEMO GALLERY ============ */
@@ -1186,26 +1267,9 @@
 
 
   <!-- ============ 07 ORIGIN ============ -->
-  <section data-label="Origin" class="bg-bark grain origin">
-    <div class="corner-mark tl mono">VII · ORIGIN STORY</div>
-    <div class="corner-mark tr mono">JADE × CYRUS</div>
-
-    <div class="left">
-      <div class="eyebrow" style="color: var(--blush); margin-bottom: 22px;">HOW TWO ARTISTS BUILT A WORLD</div>
-      <h2 class="mumbot">It started<br/>with mycelium.</h2>
-      <p>Mumbot World began as the universe of artist and storyteller <strong>Jade Kuei (MUMBOT)</strong> — a multimedia mythology told through toys, paintings, characters and stories.</p>
-      <p>Her first collaboration with <strong>Cyrus James Khan</strong> — a piece called <em>Mycelium on the Block</em> — brought the world into digital form for the first time. It sat quietly for months before being collected by <strong>Gary Vaynerchuk</strong>, a moment that opened the door to everything after.</p>
-      <p>That collaboration revealed a strong creative synergy: Jade authoring the world's soul through her characters and 2D universe, Cyrus directing how it looks, lights and breathes in 3D. The MUMBOT WORLD game is the natural next doorway — a place to move through, rest inside, and emotionally connect with.</p>
-    </div>
-
-    <div class="right">
-      <div class="slot-frame" style="flex: 2;">
-        <image-slot id="origin-mycelium" shape="rect" src="assets/origin-mumbot-cjk.png" placeholder="Mycelium on the Block / early collab art"></image-slot>
-        <div class="slot-caption">FIG. 02 · MYCELIUM ON THE BLOCK · 2021</div>
-      </div>
-      <div class="slot-frame" style="flex: 1;">
-        <image-slot id="origin-cassette" shape="rect" src="assets/wip-cassette.webp" placeholder="DNA: Gary Vee × Mumbot cassette"></image-slot>
-      </div>
+  <section data-label="Origin" class="bg-bark origin">
+    <div class="mycelium-frame">
+      <img src="assets/origin-mumbot-cjk.png" alt="Mycelium on the Block collaboration artwork" />
     </div>
   </section>
 
@@ -1272,10 +1336,6 @@
         <div class="caption">MARUDO · TRAILER NOTES</div>
       </div>
       <div class="wip-cell paper">
-        <img src="assets/concept-hub-brainstorm.webp" alt="Mumbot World hub brainstorm" />
-        <div class="caption">HUB · BRAINSTORM</div>
-      </div>
-      <div class="wip-cell paper">
         <img src="assets/concept-spellbook.webp" alt="Spellbook painting" />
         <div class="caption">SPELLBOOK · PAINTING</div>
       </div>
@@ -1287,9 +1347,59 @@
   </section>
 
 
-  <!-- ============ 10 3D VIEWPORT WIP ============ -->
+  <!-- ============ 10 EVOLUTION / WIP ============ -->
+  <section data-label="Evolution / WIP" class="bg-bark grain evolution">
+    <div class="corner-mark tl mono">X &middot; EVOLUTION / WIP</div>
+    <div class="corner-mark tr mono">THE HUB IS BECOMING A VENUE</div>
+
+    <div class="sketch">
+      <img src="assets/concept-hub-brainstorm.webp" alt="Mumbot World hub sketch and mechanics brainstorm" />
+    </div>
+
+    <div class="content">
+      <div class="eyebrow" style="color: var(--ember); margin-bottom: 18px;">WHERE THE DESIGN IS MOVING</div>
+      <h2 class="mumbot">From game loop<br/>to living hub.</h2>
+      <p class="lede">The core pillars stay intact, but the format is evolving from a solo demo into a shared online place: timed gatherings, artist drops, unlockable moments, and listening rooms for music and podcasts.</p>
+
+      <div class="evolution-grid">
+        <div class="evo-card">
+          <div class="num">01</div>
+          <h3 class="mumbot">Shared online space.</h3>
+          <p>A low-friction place to meet, wander, sit by the fire, and feel present together.</p>
+        </div>
+        <div class="evo-card">
+          <div class="num">02</div>
+          <h3 class="mumbot">Unlockables.</h3>
+          <p>Soft rewards tied to exploration, events, collaborations, and returning to the world.</p>
+        </div>
+        <div class="evo-card">
+          <div class="num">03</div>
+          <h3 class="mumbot">Timed events.</h3>
+          <p>Seasonal happenings, campfire moments, and live windows that make the forest feel alive.</p>
+        </div>
+        <div class="evo-card">
+          <div class="num">04</div>
+          <h3 class="mumbot">Artist collaborations.</h3>
+          <p>Guest artists can leave objects, rituals, sounds, and temporary places inside the hub.</p>
+        </div>
+        <div class="evo-card">
+          <div class="num">05</div>
+          <h3 class="mumbot">Listening spaces.</h3>
+          <p>Music and podcast rooms built for hanging out, not scrolling past.</p>
+        </div>
+        <div class="evo-card">
+          <div class="num">06</div>
+          <h3 class="mumbot">WIP map.</h3>
+          <p>The sketch is the operating map: a flexible venue layered on top of the world.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============ 11 3D VIEWPORT WIP ============ -->
   <section data-label="3D WIP" class="bg-bark grain wip">
-    <div class="corner-mark tl mono">X · WORK IN PROGRESS</div>
+    <div class="corner-mark tl mono">XI &middot; WORK IN PROGRESS</div>
     <div class="corner-mark tr mono">IN-VIEWPORT · 3D</div>
 
     <div class="head">
@@ -1321,9 +1431,9 @@
   </section>
 
 
-  <!-- ============ 11 TECH ============ -->
+  <!-- ============ 12 TECH ============ -->
   <section data-label="Tech" class="bg-bark grain tech">
-    <div class="corner-mark tl mono">XI · TECH &amp; PLATFORM</div>
+    <div class="corner-mark tl mono">XII · TECH &amp; PLATFORM</div>
     <div class="corner-mark tr mono">BUILT FOR EVERYONE</div>
 
     <header>
@@ -1361,9 +1471,9 @@
   </section>
 
 
-  <!-- ============ 12 VIBE — campfire ============ -->
+  <!-- ============ 13 VIBE — campfire ============ -->
   <section data-label="Vibe" class="bg-bark grain vibe">
-    <div class="corner-mark tl mono">XII · WHAT IT FEELS LIKE</div>
+    <div class="corner-mark tl mono">XIII · WHAT IT FEELS LIKE</div>
     <div class="corner-mark tr mono">A CAMPFIRE ONLINE</div>
 
     <div class="left">
@@ -1385,9 +1495,9 @@
   </section>
 
 
-  <!-- ============ 13 LIVE EXPERIENCE ============ -->
+  <!-- ============ 14 LIVE EXPERIENCE ============ -->
   <section data-label="Live Experience" class="bg-bark grain live">
-    <div class="corner-mark tl mono">XIII · LIVE EXPERIENCE</div>
+    <div class="corner-mark tl mono">XIV · LIVE EXPERIENCE</div>
     <div class="corner-mark tr mono">ZEROSPACE · NYC</div>
 
     <header>
@@ -1427,9 +1537,9 @@
   </section>
 
 
-  <!-- ============ 14 TEAM ============ -->
+  <!-- ============ 15 TEAM ============ -->
   <section data-label="Core Team" class="bg-bark grain team">
-    <div class="corner-mark tl mono">XIV · CORE TEAM</div>
+    <div class="corner-mark tl mono">XV · CORE TEAM</div>
     <div class="corner-mark tr mono">TWO PEOPLE · ONE WORLD</div>
 
     <h2 class="mumbot">Made by two stubborn hands.</h2>
@@ -1470,9 +1580,9 @@
   </section>
 
 
-  <!-- ============ 15 TALENT ============ -->
+  <!-- ============ 16 TALENT ============ -->
   <section data-label="Talent Roster" class="bg-bark grain talent">
-    <div class="corner-mark tl mono">XV · TALENT ROSTER</div>
+    <div class="corner-mark tl mono">XVI · TALENT ROSTER</div>
     <div class="corner-mark tr mono">VOICES &amp; SOUND</div>
 
     <h2 class="mumbot">The people<br/>lending their voices.</h2>
@@ -1511,9 +1621,9 @@
   </section>
 
 
-  <!-- ============ 16 ROADMAP ============ -->
+  <!-- ============ 17 ROADMAP ============ -->
   <section data-label="Roadmap" class="bg-bark grain roadmap">
-    <div class="corner-mark tl mono">XVI · ROADMAP</div>
+    <div class="corner-mark tl mono">XVII · ROADMAP</div>
     <div class="corner-mark tr mono">WHERE THE GRANT TAKES US</div>
 
     <h2 class="mumbot">A patient<br/>release plan.</h2>
@@ -1566,9 +1676,9 @@
   </section>
 
 
-  <!-- ============ 17 ASK ============ -->
+  <!-- ============ 18 ASK ============ -->
   <section data-label="The Ask" class="bg-bark grain ask">
-    <div class="corner-mark tl mono">XVII · THE ASK</div>
+    <div class="corner-mark tl mono">XVIII · THE ASK</div>
     <div class="corner-mark tr mono">PHASE 01 FUNDING</div>
 
     <div class="left">
@@ -1615,9 +1725,9 @@
   </section>
 
 
-  <!-- ============ 18 CLOSING ============ -->
+  <!-- ============ 19 CLOSING ============ -->
   <section data-label="Closing" class="bg-bark grain closing">
-    <div class="corner-mark tl mono">XVIII · THANK YOU</div>
+    <div class="corner-mark tl mono">XIX · THANK YOU</div>
     <div class="corner-mark tr mono">END · MMBT 001</div>
 
     <div class="eye"></div>
