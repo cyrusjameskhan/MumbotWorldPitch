@@ -231,6 +231,10 @@
     .btn:focus-visible { outline: none; }
     .btn::-moz-focus-inner { border: 0; }
     .btn svg { width: 14px; height: 14px; display: block; }
+    .btn.fullscreen .icon-exit { display: none; }
+    :host([data-fullscreen]) .btn.fullscreen .icon-enter { display: none; }
+    :host([data-fullscreen]) .btn.fullscreen .icon-exit { display: block; }
+    :host([data-fullscreen-unsupported]) .btn.fullscreen { display: none; }
     .btn.reset {
       font-size: 11px;
       font-weight: 500;
@@ -581,6 +585,7 @@
       this._onMouseMove = this._onMouseMove.bind(this);
       this._onTap = this._onTap.bind(this);
       this._onMessage = this._onMessage.bind(this);
+      this._onFullscreenChange = this._onFullscreenChange.bind(this);
       // Capture-phase close so a click anywhere dismisses the menu, but
       // ignore clicks that land inside the menu itself — otherwise the
       // capture handler runs before the menu's own (bubble) handler and
@@ -611,6 +616,7 @@
       window.addEventListener('mousemove', this._onMouseMove, { passive: true });
       window.addEventListener('message', this._onMessage);
       window.addEventListener('click', this._onDocClick, true);
+      document.addEventListener('fullscreenchange', this._onFullscreenChange);
       this.addEventListener('click', this._onTap);
       // Initial collection + layout happens via slotchange, which fires on mount.
       this._enableRail();
@@ -799,6 +805,7 @@
       window.removeEventListener('mousemove', this._onMouseMove);
       window.removeEventListener('message', this._onMessage);
       window.removeEventListener('click', this._onDocClick, true);
+      document.removeEventListener('fullscreenchange', this._onFullscreenChange);
       this.removeEventListener('click', this._onTap);
       if (this._hideTimer) clearTimeout(this._hideTimer);
       if (this._mouseIdleTimer) clearTimeout(this._mouseIdleTimer);
@@ -861,11 +868,20 @@
         </button>
         <span class="divider"></span>
         <button class="btn reset" type="button" aria-label="Reset to first slide" title="Reset (R)">Reset<span class="kbd">R</span></button>
+        <button class="btn fullscreen" type="button" aria-label="Enter fullscreen" title="Enter fullscreen">
+          <svg class="icon-enter" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M6 2H2v4M10 2h4v4M14 10v4h-4M2 10v4h4"/>
+          </svg>
+          <svg class="icon-exit" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M6 2v4H2M10 2v4h4M14 10h-4v4M2 10h4v4"/>
+          </svg>
+        </button>
       `;
 
       overlay.querySelector('.prev').addEventListener('click', () => this._advance(-1, 'click'));
       overlay.querySelector('.next').addEventListener('click', () => this._advance(1, 'click'));
       overlay.querySelector('.reset').addEventListener('click', () => this._go(0, 'click'));
+      overlay.querySelector('.fullscreen').addEventListener('click', () => this._toggleFullscreen());
 
       // Thumbnail rail + context menu. Thumbnails are populated in
       // _renderRail() after _collectSlides().
@@ -968,6 +984,8 @@
       this._confirm = confirm;
       this._countEl = overlay.querySelector('.current');
       this._totalEl = overlay.querySelector('.total');
+      this._fullscreenBtn = overlay.querySelector('.fullscreen');
+      this._syncFullscreenButton();
 
       // Restore persisted rail width.
       let rw = 188;
@@ -1194,6 +1212,45 @@
       const vh = window.innerHeight;
       const s = Math.min(vw / this.designWidth, vh / this.designHeight);
       this._canvas.style.transform = `scale(${s})`;
+    }
+
+    _fullscreenTarget() {
+      return document.documentElement || document.body;
+    }
+
+    _fullscreenEnabled() {
+      const target = this._fullscreenTarget();
+      return !!(document.fullscreenEnabled && target && target.requestFullscreen);
+    }
+
+    async _toggleFullscreen() {
+      if (!this._fullscreenEnabled()) {
+        this.setAttribute('data-fullscreen-unsupported', '');
+        return;
+      }
+      try {
+        if (document.fullscreenElement) await document.exitFullscreen();
+        else await this._fullscreenTarget().requestFullscreen();
+      } catch (err) {
+        this._flashOverlay();
+      }
+      this._syncFullscreenButton();
+    }
+
+    _onFullscreenChange() {
+      this._syncFullscreenButton();
+      this._fit();
+    }
+
+    _syncFullscreenButton() {
+      if (!this._fullscreenBtn) return;
+      const active = !!document.fullscreenElement;
+      this.toggleAttribute('data-fullscreen', active);
+      const label = active ? 'Exit fullscreen' : 'Enter fullscreen';
+      this._fullscreenBtn.setAttribute('aria-label', label);
+      this._fullscreenBtn.setAttribute('title', label);
+      if (!this._fullscreenEnabled()) this.setAttribute('data-fullscreen-unsupported', '');
+      else this.removeAttribute('data-fullscreen-unsupported');
     }
 
     _onResize() {
