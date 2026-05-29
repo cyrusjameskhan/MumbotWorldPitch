@@ -9,7 +9,7 @@
   // Do not list `.grain` — it lives on the <section> itself, so closest()
   // would skip every element on every slide.
   const DECOR =
-    '.corner-mark, .stars, .ghost, .ember-floaty, .ground, .eye, .ember, .divider';
+    '.corner-mark, .stars, .ghost, .ember-floaty, .ground, .ember, .divider';
 
   const FADE_SELECTORS = [
     '.eyebrow',
@@ -23,7 +23,6 @@
     '.hero', '.thumbs > .thumb', '.side-thumbs > *', '.thumb-card',
     '.wip-cell',
     '.concept-col', '.pillar-grid > *', '.timeline > *',
-    '.closing .eye',
     'image-slot',
     '[data-deck-fade-ms]',
   ].join(', ');

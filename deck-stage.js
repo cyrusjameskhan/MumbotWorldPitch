@@ -55,10 +55,15 @@
  *
  * Usage:
  *   <style>deck-stage:not(:defined){visibility:hidden}</style>
- *   <deck-stage width="1920" height="1080">
+ *   <deck-stage width="1920" height="1080" ambient-audio="assets/forest.mp3">
  *     <section data-label="Title">...</section>
  *     <section data-label="Agenda">...</section>
  *   </deck-stage>
+ *
+ * Optional `ambient-audio` — URL of a looping background track with a mute
+ * toggle in the bottom toolbar (beside fullscreen). Playback starts after
+ * the first navigation click or unmute (browser autoplay policy). Mute state
+ * persists in localStorage (`deck-stage.ambientMuted`).
  *   <script src="deck-stage.js"></script>
  *
  * The :not(:defined) rule prevents a flash of the first slide at its
@@ -144,7 +149,7 @@
       position: relative;
       transform-origin: center center;
       flex-shrink: 0;
-      background: #fff;
+      background: #000;
       will-change: transform;
     }
 
@@ -235,6 +240,11 @@
     :host([data-fullscreen]) .btn.fullscreen .icon-enter { display: none; }
     :host([data-fullscreen]) .btn.fullscreen .icon-exit { display: block; }
     :host([data-fullscreen-unsupported]) .btn.fullscreen { display: none; }
+    .btn.ambient { display: none; }
+    :host([data-ambient-audio]) .btn.ambient { display: inline-flex; }
+    .btn.ambient .icon-muted { display: none; }
+    .btn.ambient[data-muted] .icon-unmuted { display: none; }
+    .btn.ambient[data-muted] .icon-muted { display: block; }
     .btn.reset {
       font-size: 11px;
       font-weight: 500;
@@ -825,6 +835,13 @@
       if (this._liveObserver) this._liveObserver.disconnect();
       if (this._railObserver) this._railObserver.disconnect();
       if (this._onTweakChange) window.removeEventListener('tweakchange', this._onTweakChange);
+      if (this._ambientAudio) {
+        this._ambientAudio.pause();
+        this._ambientAudio = null;
+      }
+      if (this._ambientKick && this._overlay) {
+        this._overlay.removeEventListener('click', this._ambientKick);
+      }
     }
 
     attributeChangedCallback() {
@@ -877,6 +894,17 @@
         </button>
         <span class="divider"></span>
         <button class="btn reset" type="button" aria-label="Reset to first slide" title="Reset (R)">Reset<span class="kbd">R</span></button>
+        <button class="btn ambient" type="button" aria-label="Unmute forest ambience" title="Unmute forest ambience" data-muted>
+          <svg class="icon-unmuted" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M2.5 5.5v5h2.5L8 13V3L5 5.5H2.5z"/>
+            <path d="M10.2 5.4a3.6 3.6 0 0 1 0 5.2"/>
+            <path d="M12 4a6 6 0 0 1 0 8"/>
+          </svg>
+          <svg class="icon-muted" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M2.5 5.5v5h2.5L8 13V3L5 5.5H2.5z"/>
+            <path d="M10.5 6.5l5 5M15.5 6.5l-5 5"/>
+          </svg>
+        </button>
         <button class="btn fullscreen" type="button" aria-label="Enter fullscreen" title="Enter fullscreen">
           <svg class="icon-enter" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M6 2H2v4M10 2h4v4M14 10v4h-4M2 10v4h4"/>
@@ -890,6 +918,7 @@
       overlay.querySelector('.prev').addEventListener('click', () => this._advance(-1, 'click'));
       overlay.querySelector('.next').addEventListener('click', () => this._advance(1, 'click'));
       overlay.querySelector('.reset').addEventListener('click', () => this._go(0, 'click'));
+      overlay.querySelector('.ambient').addEventListener('click', () => this._toggleAmbientMute());
       overlay.querySelector('.fullscreen').addEventListener('click', () => this._toggleFullscreen());
 
       // Thumbnail rail + context menu. Thumbnails are populated in
@@ -994,7 +1023,9 @@
       this._countEl = overlay.querySelector('.current');
       this._totalEl = overlay.querySelector('.total');
       this._fullscreenBtn = overlay.querySelector('.fullscreen');
+      this._ambientBtn = overlay.querySelector('.ambient');
       this._syncFullscreenButton();
+      this._initAmbientAudio();
 
       // Restore persisted rail width.
       let rw = 188;
@@ -1174,6 +1205,10 @@
 
       this._prevIndex = curr;
       if (showOverlay) this._flashOverlay();
+      if (this._tryPlayAmbient && reason !== 'init'
+          && (reason === 'keyboard' || reason === 'click' || reason === 'tap')) {
+        this._tryPlayAmbient();
+      }
     }
 
     _flashOverlay() {
@@ -1262,6 +1297,53 @@
       this._fullscreenBtn.setAttribute('title', label);
       if (!this._fullscreenEnabled()) this.setAttribute('data-fullscreen-unsupported', '');
       else this.removeAttribute('data-fullscreen-unsupported');
+    }
+
+    _initAmbientAudio() {
+      const src = (this.getAttribute('ambient-audio') || '').trim();
+      if (!src || /[?&]_snthumb=/.test(location.search)) {
+        this.removeAttribute('data-ambient-audio');
+        return;
+      }
+      this.setAttribute('data-ambient-audio', '');
+      let muted = true;
+      try {
+        const s = localStorage.getItem('deck-stage.ambientMuted');
+        if (s === '0') muted = false;
+        else if (s === '1') muted = true;
+      } catch (err) {}
+      const audio = new Audio(src);
+      audio.loop = true;
+      audio.preload = 'auto';
+      audio.volume = 0.42;
+      audio.muted = muted;
+      this._ambientAudio = audio;
+      this._tryPlayAmbient = () => {
+        if (!this._ambientAudio || this._ambientAudio.muted) return;
+        this._ambientAudio.play().catch(() => {});
+      };
+      this._ambientKick = () => this._tryPlayAmbient();
+      this._overlay.addEventListener('click', this._ambientKick);
+      this._syncAmbientButton();
+    }
+
+    _toggleAmbientMute() {
+      if (!this._ambientAudio) return;
+      this._ambientAudio.muted = !this._ambientAudio.muted;
+      try {
+        localStorage.setItem('deck-stage.ambientMuted', this._ambientAudio.muted ? '1' : '0');
+      } catch (err) {}
+      if (!this._ambientAudio.muted) this._tryPlayAmbient();
+      this._syncAmbientButton();
+    }
+
+    _syncAmbientButton() {
+      if (!this._ambientBtn || !this._ambientAudio) return;
+      const muted = this._ambientAudio.muted;
+      this._ambientBtn.toggleAttribute('data-muted', muted);
+      const label = muted ? 'Unmute forest ambience' : 'Mute forest ambience';
+      this._ambientBtn.setAttribute('aria-label', label);
+      this._ambientBtn.setAttribute('title', label);
     }
 
     _syncFullscreenRail(e) {

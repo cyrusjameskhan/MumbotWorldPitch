@@ -7,13 +7,32 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,300;1,6..72,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,300;1,6..72,400&display=swap" rel="stylesheet" />
 
 <style>
   @font-face {
     font-family: "Mumbotfont";
     src: url("assets/Mumbotfont-Regular.ttf") format("truetype");
     font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "Futura";
+    src: local("Futura"), local("Futura Book"), local("Futura PT Book"),
+         url("assets/Futura-Book.woff2") format("woff2"),
+         url("assets/Futura-Book.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Futura";
+    src: local("Futura Medium"), local("Futura-Medium"), local("Futura PT Medium"),
+         url("assets/Futura-Medium.woff2") format("woff2"),
+         url("assets/Futura-Medium.ttf") format("truetype");
+    font-weight: 500;
     font-style: normal;
     font-display: swap;
   }
@@ -35,6 +54,7 @@
     --ember:       #d04a2b;     /* hot ember / high-red */
     --ember-amber: #e0a55a;     /* original warm amber */
     --portal:      #8e8acf;     /* mystical purple */
+    --font-futura: "Futura", "Futura PT", "Futura Std", "Century Gothic", "Trebuchet MS", sans-serif;
   }
 
   html, body { margin:0; padding:0; background:#000; color:var(--cream); }
@@ -56,7 +76,7 @@
   }
 
   .mumbot { font-family: "Mumbotfont", "Newsreader", serif; letter-spacing: 0.02em; }
-  .mono   { font-family: "JetBrains Mono", ui-monospace, monospace; letter-spacing: 0.02em; }
+  .mono   { font-family: var(--font-futura); font-weight: 500; letter-spacing: 0.08em; }
 
   /* ============ Reusable backgrounds ============ */
 
@@ -97,7 +117,7 @@
   /* Page chrome, corner marks + footer */
   .corner-mark {
     position: absolute;
-    font-family: "JetBrains Mono", monospace;
+    font-family: var(--font-futura);
     font-size: 24px;
     letter-spacing: 0.22em;
     text-transform: uppercase;
@@ -132,7 +152,7 @@
 
   /* Section eyebrow */
   .eyebrow {
-    font-family: "JetBrains Mono", monospace;
+    font-family: var(--font-futura);
     font-size: 24px;
     letter-spacing: 0.28em;
     text-transform: uppercase;
@@ -162,7 +182,7 @@
   .slot-caption {
     position: absolute;
     top: 16px; left: 20px; right: 20px;
-    font-family: "JetBrains Mono", monospace;
+    font-family: var(--font-futura);
     font-size: 24px;
     letter-spacing: 0.22em;
     text-transform: uppercase;
@@ -236,7 +256,7 @@
   }
   .cover .meta {
     display:flex; gap:80px; justify-content:center;
-    font-family: "JetBrains Mono", monospace;
+    font-family: var(--font-futura);
     font-size: 24px; letter-spacing: 0.24em; text-transform: uppercase;
     color: rgba(247,236,203,0.65);
   }
@@ -293,7 +313,7 @@
     margin-top: 48px;
   }
   .world .feels span {
-    font-family: "JetBrains Mono", monospace;
+    font-family: var(--font-futura);
     font-size: 24px; letter-spacing: 0.18em; text-transform: uppercase;
     padding: 10px 20px;
     border: 1px solid rgba(247,236,203,0.25);
@@ -327,7 +347,7 @@
     line-height: 1.05;
   }
   .char-card .role {
-    font-family: "JetBrains Mono", monospace;
+    font-family: var(--font-futura);
     font-size: 24px; letter-spacing: 0.18em; text-transform: uppercase;
     color: var(--blush); margin-top: 8px;
   }
@@ -355,7 +375,7 @@
     display:flex; flex-direction: column;
   }
   .pillar .num {
-    font-family: "JetBrains Mono", monospace;
+    font-family: var(--font-futura);
     font-size: 24px; letter-spacing: 0.28em;
     color: var(--ember); opacity: 0.9;
   }
@@ -406,7 +426,7 @@
   }
   .tstop.now::before { background: var(--ember); box-shadow: 0 0 20px var(--ember); }
   .tstop .year {
-    font-family: "JetBrains Mono", monospace;
+    font-family: var(--font-futura);
     font-size: 24px; letter-spacing: 0.18em; color: var(--ember);
     margin-bottom: 14px;
   }
@@ -474,7 +494,7 @@
     grid-row: 2;
     justify-self: center;
     text-align: center;
-    font-family: "JetBrains Mono", monospace;
+    font-family: var(--font-futura);
     font-size: 24px; letter-spacing: 0.18em; text-transform: uppercase;
     color: var(--parchment); opacity: 0.65;
   }
@@ -528,7 +548,7 @@
     min-height: 134px;
   }
   .evo-card .num {
-    font-family: "JetBrains Mono", monospace;
+    font-family: var(--font-futura);
     font-size: 18px;
     letter-spacing: 0.2em;
     color: var(--ember);
@@ -682,6 +702,26 @@
       inset 0 0 44px rgba(0,0,0,0.32),
       0 16px 28px -22px rgba(0,0,0,0.75);
   }
+  .bg-parchment .wip-grid .wip-cell {
+    border: none;
+    background: transparent;
+    box-shadow: none;
+  }
+  .bg-parchment .wip-cell.paper {
+    background: transparent;
+  }
+  .bg-parchment .wip-collage .collage-cell {
+    border: none;
+    background: transparent;
+    box-shadow: none;
+  }
+  .bg-parchment.wip h2 { color: var(--ink); }
+  .bg-parchment.wip .head p {
+    color: var(--ink-soft);
+    opacity: 1;
+  }
+  .bg-parchment.wip .head p strong { color: var(--ink); font-weight: 500; }
+  .bg-parchment.wip .head p em { color: var(--ink-soft); font-style: italic; }
   .wip-collage .collage-cell img {
     width: 100%;
     height: 100%;
@@ -764,7 +804,7 @@
     min-height: 460px;
   }
   .tech .panel .label {
-    font-family: "JetBrains Mono", monospace;
+    font-family: var(--font-futura);
     font-size: 24px; letter-spacing: 0.24em; text-transform: uppercase;
     color: var(--spirit); opacity: 0.9;
   }
@@ -787,7 +827,7 @@
     display:flex; justify-content: space-between; gap: 14px;
     padding: 14px 0;
     border-bottom: 1px solid rgba(247,236,203,0.12);
-    font-family: "JetBrains Mono", monospace;
+    font-family: var(--font-futura);
     font-size: 24px; letter-spacing: 0.04em;
   }
   .tech .stack-row span:first-child { color: var(--ember); }
@@ -855,7 +895,7 @@
     border-top: 1px solid rgba(247,236,203,0.18);
   }
   .live .meta .col .lbl {
-    font-family: "JetBrains Mono", monospace;
+    font-family: var(--font-futura);
     font-size: 24px; letter-spacing: 0.24em; text-transform: uppercase;
     color: var(--ember);
     margin: 18px 0 10px;
@@ -883,26 +923,48 @@
   .team .grid { display:grid; grid-template-columns: 1fr 1fr; gap: 70px; }
   .person { display:grid; grid-template-columns: 220px 1fr; gap: 36px; }
   .person .slot-frame { width: 220px; height: 260px; }
+  .team .person .slot-frame {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow:
+      inset 0 0 48px rgba(0,0,0,0.32),
+      0 10px 24px -8px rgba(0,0,0,0.42);
+  }
   .person .name {
     font-family: "Mumbotfont", serif;
     font-size: 44px; color: var(--cream); line-height: 1.04; letter-spacing: 0.02em;
   }
   .person .role {
-    font-family: "JetBrains Mono", monospace;
+    font-family: var(--font-futura);
     font-size: 24px; letter-spacing: 0.18em; text-transform: uppercase;
     color: var(--blush); margin: 14px 0 22px;
   }
-  .person ul { margin: 0; padding: 0; list-style: none; }
-  .person li {
-    font-size: 24px; line-height: 1.45; color: var(--parchment);
-    padding-left: 22px; position: relative; margin-bottom: 12px;
+  .person ul,
+  .phase ul { margin: 0; padding: 0; list-style: none; }
+  .team .person ul li {
+    font-size: 21px;
+    line-height: 1.45;
+    color: var(--parchment);
+    opacity: 1;
+    padding-left: 20px;
+    position: relative;
+    margin-bottom: 10px;
     text-wrap: pretty;
   }
-  .person li::before {
-    content:""; position:absolute; left: 0; top: 17px;
+  .team .person ul li::before {
+    content:""; position:absolute; left: 0; top: 14px;
     width: 10px; height: 1px; background: var(--ember);
   }
-
+  .roadmap .phase ul li {
+    font-size: 24px;
+    line-height: 1.45;
+    color: var(--parchment);
+    opacity: 1;
+    padding-left: 22px;
+    position: relative;
+    margin-bottom: 12px;
+    text-wrap: pretty;
+  }
   /* ============ TALENT ============ */
   .talent { padding: 110px 120px; }
   .talent h2 {
@@ -915,7 +977,7 @@
   }
   .talent .grid { display:grid; grid-template-columns: 1fr 1fr; gap: 60px 80px; }
   .talent .group .label {
-    font-family: "JetBrains Mono", monospace;
+    font-family: var(--font-futura);
     font-size: 24px; letter-spacing: 0.28em; text-transform: uppercase;
     color: var(--ember); margin-bottom: 28px;
     padding-bottom: 18px;
@@ -932,7 +994,7 @@
     text-wrap: pretty;
   }
   .talent .credit .handles {
-    font-family: "JetBrains Mono", monospace;
+    font-family: var(--font-futura);
     font-size: 24px; letter-spacing: 0.12em;
     color: var(--spirit); opacity: 0.85; margin-top: 10px;
   }
@@ -959,7 +1021,7 @@
   }
   .phase.now { border-color: var(--ember); background: linear-gradient(180deg, rgba(80,60,30,0.35), rgba(20,17,13,0.7)); }
   .phase .ph {
-    font-family: "JetBrains Mono", monospace;
+    font-family: var(--font-futura);
     font-size: 24px; letter-spacing: 0.18em; text-transform: uppercase;
     color: var(--ember);
     display:flex; justify-content: space-between; align-items: center;
@@ -971,13 +1033,8 @@
     color: var(--cream);
     margin-top: 22px; line-height: 1.05;
   }
-  .phase ul { margin: 22px 0 0; padding: 0; list-style: none; }
-  .phase li {
-    font-size: 24px; line-height: 1.45; color: var(--parchment); opacity: 0.88;
-    padding-left: 22px; position: relative; margin-bottom: 12px;
-    text-wrap: pretty;
-  }
-  .phase li::before {
+  .phase ul { margin: 22px 0 0; }
+  .roadmap .phase ul li::before {
     content:"·"; position: absolute; left: 0; color: var(--ember);
     font-size: 26px; line-height: 0.6;
   }
@@ -1006,12 +1063,12 @@
     letter-spacing: -0.01em;
   }
   .ask .amount .unit {
-    font-family: "JetBrains Mono", monospace;
+    font-family: var(--font-futura);
     font-size: 24px; letter-spacing: 0.24em; text-transform: uppercase;
     color: var(--parchment);
   }
   .ask .right h3 {
-    font-family: "JetBrains Mono", monospace;
+    font-family: var(--font-futura);
     font-size: 24px; letter-spacing: 0.28em; text-transform: uppercase;
     color: var(--ember); margin-bottom: 28px;
     padding-bottom: 18px; border-bottom: 1px solid rgba(247,236,203,0.22);
@@ -1081,19 +1138,20 @@
     line-height: 1.45;
     text-wrap: pretty;
   }
+  .bg-parchment.web-intro h2.title {
+    color: var(--ink);
+    text-shadow: none;
+  }
+  .bg-parchment.web-intro h2.title .web { color: var(--ember); }
+  .bg-parchment.web-intro .lede {
+    color: var(--ink-soft);
+    opacity: 1;
+  }
+  .bg-parchment.web-intro .eyebrow { color: var(--ink-soft); }
 
   /* ============ CLOSING ============ */
   .closing { padding: 140px; text-align: center; position: relative;
     display:flex; flex-direction:column; justify-content:center; align-items: center; }
-  .closing .eye {
-    width: 80px; height: 80px; border: 1px solid rgba(247,236,203,0.4);
-    border-radius: 50%; position: relative; margin-bottom: 60px;
-  }
-  .closing .eye::before, .closing .eye::after {
-    content:""; position:absolute; background: var(--cream);
-  }
-  .closing .eye::before { left:50%; top:14px; bottom:14px; width:1px; transform:translateX(-50%); }
-  .closing .eye::after  { top:50%;  left:14px; right:14px; height:1px; transform:translateY(-50%); }
   .closing h2 {
     font-family: "Mumbotfont", serif;
     font-size: 110px; line-height: 0.98; color: var(--cream);
@@ -1110,11 +1168,20 @@
   }
   .closing .contacts {
     display: flex; gap: 80px; justify-content: center;
-    font-family: "JetBrains Mono", monospace;
+    font-family: var(--font-futura);
     font-size: 24px; letter-spacing: 0.18em; text-transform: uppercase;
     color: rgba(247,236,203,0.7);
   }
   .closing .contacts b { display:block; color: var(--cream); font-weight: 500; margin-top: 12px; font-size: 24px; letter-spacing: 0.12em; }
+  .bg-parchment.closing h2 { color: var(--ink); }
+  .bg-parchment.closing p.invite {
+    color: var(--ink-soft);
+    opacity: 1;
+  }
+  .bg-parchment.closing .contacts {
+    color: rgba(43, 29, 16, 0.65);
+  }
+  .bg-parchment.closing .contacts b { color: var(--ink); }
 
   /* small star/ember helpers */
   .ember-floaty {
@@ -1207,7 +1274,7 @@
 </head>
 <body>
 
-<deck-stage width="1920" height="1080">
+<deck-stage width="1920" height="1080" ambient-audio="assets/forestsound.WAV">
 
   <!-- ============ 01 COVER ============ -->
   <section data-label="Cover" class="bg-bark grain cover">
@@ -1267,165 +1334,9 @@
   </section>
 
 
-  <!-- ============ 03 THE WORLD ============ -->
-  <section data-label="The World" class="bg-bark grain world">
-    <div class="corner-mark tl mono">III · THE WORLD</div>
-    <div class="corner-mark tr mono">A LIVING ECOSYSTEM</div>
-
-    <div>
-      <div class="eyebrow" style="color: var(--blush); margin-bottom: 26px;">SETTING &amp; MOOD</div>
-      <h2 class="mumbot">A soft<br/>but strange<br/>world.</h2>
-      <p class="lede">
-        The forest is the home of <strong>ghosts, forest spirits, mushroom beings, moss creatures, crystal spirits, skulls and bees</strong>, beings that feel both playful and slightly mysterious.
-      </p>
-      <p class="lede" style="margin-top: 22px;">
-        The tone is <em>gentle, curious, cozy, a little haunted</em>. Not horror, even when ghosts and skulls appear. More like a living ecosystem of friendship, growth, nature, memory and imagination.
-      </p>
-
-      <div class="feels">
-        <span>cozy</span><span>haunted</span><span>handmade</span>
-        <span>curious</span><span>ancient</span><span>strange-beautiful</span>
-      </div>
-    </div>
-
-    <div class="slot-frame" style="height: 760px;">
-      <image-slot id="world-mood" shape="rect" src="assets/web-campfire-night.png" placeholder="Drop a wide world / forest screenshot"></image-slot>
-      <div class="slot-caption">FIG. 01 · WORLD MOOD, DROP A FOREST CAPTURE</div>
-    </div>
-  </section>
-
-
-  <!-- ============ 04 CHARACTERS ============ -->
-  <section data-label="Characters" class="bg-bark grain chars">
-    <div class="corner-mark tl mono">IV · CHARACTERS</div>
-    <div class="corner-mark tr mono">SPIRITS · FRIENDS · GHOSTS</div>
-
-    <header>
-      <h2 class="mumbot">Friends in the forest.</h2>
-      <p>A small cast of beings, each carrying a different part of the world's mood. Not enemies to defeat, friendships to be earned.</p>
-    </header>
-
-    <div class="grid">
-      <div class="char-card">
-        <div class="slot-frame">
-          <image-slot id="char-girl" shape="rect" src="assets/char-girl.jpg" placeholder="Girl From the Forest Floor"></image-slot>
-        </div>
-        <div class="name mumbot">Girl From the Forest Floor</div>
-        <div class="role">PROTAGONIST · WANDERER</div>
-        <p class="bio">A child of the woods who walks softly between worlds, gathering small mysteries and small kindnesses.</p>
-      </div>
-
-      <div class="char-card">
-        <div class="slot-frame">
-          <image-slot id="char-aughostus" shape="rect" src="assets/char-aughostus.jpg" placeholder="Aughostus the ghost"></image-slot>
-        </div>
-        <div class="name mumbot">Aughostus</div>
-        <div class="role">CO-PROTAGONIST · GHOST</div>
-        <p class="bio">A gentle ghost who keeps the player company. Equal parts companion, narrator, and quiet trickster.</p>
-      </div>
-
-      <div class="char-card">
-        <div class="slot-frame">
-          <image-slot id="char-mossy" shape="rect" src="assets/char-mossy.jpg" placeholder="Mossy"></image-slot>
-        </div>
-        <div class="name mumbot">Mossy</div>
-        <div class="role">NATURE SPIRIT · MOSS</div>
-        <p class="bio">An elder of the undergrowth. Slow to speak, wise to listen, and very fond of damp stones.</p>
-      </div>
-
-      <div class="char-card">
-        <div class="slot-frame">
-          <image-slot id="char-shumi" shape="rect" src="assets/char-shumi.jpg" placeholder="Shumi Mushrumi"></image-slot>
-        </div>
-        <div class="name mumbot">Shumi Mushrumi</div>
-        <div class="role">NATURE SPIRIT · MUSHROOM</div>
-        <p class="bio">A mushroom being from the deeper grove. Curious, watchful, and slightly fluorescent after dark.</p>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ============ 05 GAMEPLAY PILLARS ============ -->
-  <section data-label="Gameplay" class="bg-bark grain pillars">
-    <div class="corner-mark tl mono">V · GAMEPLAY</div>
-    <div class="corner-mark tr mono">FOUR PILLARS</div>
-
-    <header>
-      <div class="eyebrow" style="color: var(--ember); margin-bottom: 22px;">WHAT YOU DO IN MUMBOT WORLD WEB</div>
-      <h2 class="mumbot">Chill · Explore · Befriend · Unlock.</h2>
-      <p class="lede">No combat, no fail-states, no leaderboard. Mumbot World Web is built around four soft loops, quiet activities that reward attention rather than reaction.</p>
-    </header>
-
-    <div class="grid">
-      <div class="pillar p1">
-        <div class="num">01</div>
-        <h3 class="mumbot">Chill.</h3>
-        <p>Sit by the fire, listen to the forest, watch the light move. The world is meant to be lived in slowly, presence is its own reward.</p>
-      </div>
-      <div class="pillar p2">
-        <div class="num">02</div>
-        <h3 class="mumbot">Explore.</h3>
-        <p>Wander a hand-built ancient woodland of clearings, glades, caves and stranger places. Every corner has been touched by hand.</p>
-      </div>
-      <div class="pillar p3">
-        <div class="num">03</div>
-        <h3 class="mumbot">Befriend.</h3>
-        <p>Listen, gift, sit awhile. Each spirit has its own rhythm, earn trust and they will open small pockets of the world to you.</p>
-      </div>
-      <div class="pillar p4">
-        <div class="num">04</div>
-        <h3 class="mumbot">Unlock.</h3>
-        <p>Quiet mysteries, special encounters, and portals, moss that remembers, stones that hum on the right night, and doorways to the distant future.</p>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ============ 06 JOURNEY ============ -->
-  <section data-label="Journey" class="bg-bark grain journey">
-    <div class="corner-mark tl mono">VI · JOURNEY</div>
-    <div class="corner-mark tr mono">FROM UNREAL → WEB</div>
-
-    <header>
-      <h2 class="mumbot">A patient walk<br/>through the forest.</h2>
-      <p>The Mumbot World Game Demo took its first shape in Unreal Engine in 2021. Life got in the way, we paused, we picked it back up. Today it lives as Mumbot World Web, built on three.js, easy to drop into, shared from day one, and multiplayer from the ground up.</p>
-    </header>
-
-    <div class="timeline">
-      <div class="row">
-        <div class="tstop">
-          <div class="year">2021, 22</div>
-          <h4 class="mumbot">First seed.</h4>
-          <p>Initial Mumbot World Game Demo in Unreal Engine. The mood, the protagonist, the portal-in-a-tree all take shape.</p>
-        </div>
-        <div class="tstop">
-          <div class="year">2023, 24</div>
-          <h4 class="mumbot">Quiet years.</h4>
-          <p>Life pulls in other directions. The world sleeps but doesn't disappear, concept art, lore, music continue in the background.</p>
-        </div>
-        <div class="tstop">
-          <div class="year">2025</div>
-          <h4 class="mumbot">Re-awakening.</h4>
-          <p>Project resumes. We re-evaluate the format and ask a simple question: how do we get more people inside this world?</p>
-        </div>
-        <div class="tstop">
-          <div class="year">2026</div>
-          <h4 class="mumbot">Pivot to web.</h4>
-          <p>Mumbot World Web rebuilt on three.js. Frictionless to join, multiplayer baked in from day one. The barrier to entry becomes a URL.</p>
-        </div>
-        <div class="tstop now">
-          <div class="year">NOW</div>
-          <h4 class="mumbot">Phase 01 demo.</h4>
-          <p>A first demo people can join. A campfire online. The seed of everything that comes next.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ============ 07 ORIGIN ============ -->
+  <!-- ============ 03 ORIGIN ============ -->
   <section data-label="Origin" class="bg-bark grain origin">
-    <div class="corner-mark tl mono">VII · ORIGIN STORY</div>
+    <div class="corner-mark tl mono">III · ORIGIN STORY</div>
     <div class="corner-mark tr mono">JADE × CYRUS</div>
 
     <div class="left">
@@ -1445,9 +1356,9 @@
   </section>
 
 
-  <!-- ============ 08 CONCEPTS & DRAWINGS ============ -->
+  <!-- ============ 04 CONCEPTS & DRAWINGS ============ -->
   <section data-label="Concepts" class="bg-bark grain wip">
-    <div class="corner-mark tl mono">VIII · CONCEPTS</div>
+    <div class="corner-mark tl mono">IV · CONCEPTS</div>
     <div class="corner-mark tr mono">FROM THE SKETCHBOOK</div>
 
     <div class="head">
@@ -1487,9 +1398,9 @@
   </section>
 
 
-  <!-- ============ 09 3D VIEWPORT WIP ============ -->
+  <!-- ============ 05 3D VIEWPORT WIP ============ -->
   <section data-label="3D WIP" class="bg-bark grain wip">
-    <div class="corner-mark tl mono">IX &middot; WORK IN PROGRESS</div>
+    <div class="corner-mark tl mono">V &middot; WORK IN PROGRESS</div>
     <div class="corner-mark tr mono">IN-VIEWPORT · 3D</div>
 
     <div class="head">
@@ -1497,7 +1408,7 @@
         <div class="eyebrow" style="color: var(--spirit); margin-bottom: 18px;">MODELING · SCULPTING · LOOK-DEV</div>
         <h2 class="mumbot">The world taking shape.</h2>
       </div>
-      <p>From paper into walkable space. <strong>Characters, props and the portal-in-a-tree itself</strong>, each one passes through the viewport before stepping into the forest.</p>
+      <p>From paper into walkable space. <strong>Characters, props and the portal-in-a-tree itself</strong>, each one passes through the viewport before stepping into Unreal.</p>
     </div>
 
     <div class="wip-collage">
@@ -1520,9 +1431,9 @@
   </section>
 
 
-  <!-- ============ 10 UNREAL DEMO GALLERY ============ -->
+  <!-- ============ 06 UNREAL DEMO GALLERY ============ -->
   <section data-label="Unreal Demo" class="bg-bark grain unreal">
-    <div class="corner-mark tl mono">X · UNREAL DEMO</div>
+    <div class="corner-mark tl mono">VI · UNREAL DEMO</div>
     <div class="corner-mark tr mono">FIRST SEED · 2021</div>
 
     <div class="head">
@@ -1560,9 +1471,10 @@
     </div>
   </section>
 
-  <!-- ============ 11 TRAILER ============ -->
+
+  <!-- ============ 07 TRAILER ============ -->
   <section data-label="Trailer" class="bg-bark grain trailer">
-    <div class="corner-mark tl mono">XI &middot; TRAILER</div>
+    <div class="corner-mark tl mono">VII &middot; TRAILER</div>
     <div class="corner-mark tr mono">MUMBOT WORLD GAME DEMO &middot; 2022</div>
 
     <div class="head">
@@ -1579,9 +1491,9 @@
   </section>
 
 
-  <!-- ============ 12 EVOLUTION / WIP ============ -->
+  <!-- ============ 08 EVOLUTION / WIP ============ -->
   <section data-label="Evolution / WIP" class="bg-bark grain evolution">
-    <div class="corner-mark tl mono">XII &middot; EVOLUTION / WIP</div>
+    <div class="corner-mark tl mono">VIII &middot; EVOLUTION / WIP</div>
     <div class="corner-mark tr mono">THE HUB IS BECOMING A VENUE</div>
 
     <div class="sketch">
@@ -1629,9 +1541,9 @@
   </section>
 
 
-  <!-- ============ 13 MUMBOT WORLD WEB ============ -->
-  <section data-label="Mumbot World Web" class="bg-bark grain web-intro">
-    <div class="corner-mark tl mono">XIII · NEXT STEP</div>
+  <!-- ============ 09 MUMBOT WORLD WEB ============ -->
+  <section data-label="Mumbot World Web" class="bg-parchment grain web-intro">
+    <div class="corner-mark tl mono">IX · NEXT STEP</div>
     <div class="corner-mark tr mono">OPEN WEB</div>
 
     <div class="eyebrow">FROM PROTOTYPE TO PLATFORM</div>
@@ -1640,9 +1552,123 @@
   </section>
 
 
-  <!-- ============ 14 TECH ============ -->
+  <!-- ============ 10 THE WORLD ============ -->
+  <section data-label="The World" class="bg-bark grain world">
+    <div class="corner-mark tl mono">X · THE WORLD</div>
+    <div class="corner-mark tr mono">A LIVING ECOSYSTEM</div>
+
+    <div>
+      <div class="eyebrow" style="color: var(--blush); margin-bottom: 26px;">SETTING &amp; MOOD</div>
+      <h2 class="mumbot">A soft<br/>but strange<br/>world.</h2>
+      <p class="lede">
+        The forest is the home of <strong>ghosts, forest spirits, mushroom beings, moss creatures, crystal spirits, skulls and bees</strong>, beings that feel both playful and slightly mysterious.
+      </p>
+      <p class="lede" style="margin-top: 22px;">
+        The tone is <em>gentle, curious, cozy, a little haunted</em>. Not horror, even when ghosts and skulls appear. More like a living ecosystem of friendship, growth, nature, memory and imagination.
+      </p>
+
+      <div class="feels">
+        <span>cozy</span><span>haunted</span><span>handmade</span>
+        <span>curious</span><span>ancient</span><span>strange-beautiful</span>
+      </div>
+    </div>
+
+    <div class="slot-frame" style="height: 760px;">
+      <image-slot id="world-mood" shape="rect" src="assets/web-campfire-night.png" placeholder="Drop a wide world / forest screenshot"></image-slot>
+      <div class="slot-caption">FIG. 01 · WORLD MOOD, DROP A FOREST CAPTURE</div>
+    </div>
+  </section>
+
+
+  <!-- ============ 11 CHARACTERS ============ -->
+  <section data-label="Characters" class="bg-bark grain chars">
+    <div class="corner-mark tl mono">XI · CHARACTERS</div>
+    <div class="corner-mark tr mono">SPIRITS · FRIENDS · GHOSTS</div>
+
+    <header>
+      <h2 class="mumbot">Friends in the forest.</h2>
+      <p>A small cast of beings, each carrying a different part of the world's mood. Not enemies to defeat, friendships to be earned.</p>
+    </header>
+
+    <div class="grid">
+      <div class="char-card">
+        <div class="slot-frame">
+          <image-slot id="char-girl" shape="rect" src="assets/char-girl.jpg" placeholder="Girl From the Forest Floor"></image-slot>
+        </div>
+        <div class="name mumbot">Girl From the Forest Floor</div>
+        <div class="role">PROTAGONIST · WANDERER</div>
+        <p class="bio">A child of the woods who walks softly between worlds, gathering small mysteries and small kindnesses.</p>
+      </div>
+
+      <div class="char-card">
+        <div class="slot-frame">
+          <image-slot id="char-aughostus" shape="rect" src="assets/char-aughostus.jpg" placeholder="Aughostus the ghost"></image-slot>
+        </div>
+        <div class="name mumbot">Aughostus</div>
+        <div class="role">CO-PROTAGONIST · GHOST</div>
+        <p class="bio">A gentle ghost who keeps the player company. Equal parts companion, narrator, and quiet trickster.</p>
+      </div>
+
+      <div class="char-card">
+        <div class="slot-frame">
+          <image-slot id="char-mossy" shape="rect" src="assets/char-mossy.jpg" placeholder="Mossy"></image-slot>
+        </div>
+        <div class="name mumbot">Mossy</div>
+        <div class="role">NATURE SPIRIT · MOSS</div>
+        <p class="bio">An elder of the undergrowth. Slow to speak, wise to listen, and very fond of damp stones.</p>
+      </div>
+
+      <div class="char-card">
+        <div class="slot-frame">
+          <image-slot id="char-shumi" shape="rect" src="assets/char-shumi.jpg" placeholder="Shumi Mushrumi"></image-slot>
+        </div>
+        <div class="name mumbot">Shumi Mushrumi</div>
+        <div class="role">NATURE SPIRIT · MUSHROOM</div>
+        <p class="bio">A mushroom being from the deeper grove. Curious, watchful, and slightly fluorescent after dark.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============ 12 GAMEPLAY PILLARS ============ -->
+  <section data-label="Gameplay" class="bg-bark grain pillars">
+    <div class="corner-mark tl mono">XII · GAMEPLAY</div>
+    <div class="corner-mark tr mono">FOUR PILLARS</div>
+
+    <header>
+      <div class="eyebrow" style="color: var(--ember); margin-bottom: 22px;">WHAT YOU DO IN MUMBOT WORLD WEB</div>
+      <h2 class="mumbot">Chill · Explore · Befriend · Unlock.</h2>
+      <p class="lede">No combat, no fail-states, no leaderboard. Mumbot World Web is built around four soft loops, quiet activities that reward attention rather than reaction.</p>
+    </header>
+
+    <div class="grid">
+      <div class="pillar p1">
+        <div class="num">01</div>
+        <h3 class="mumbot">Chill.</h3>
+        <p>Sit by the fire, listen to the forest, watch the light move. The world is meant to be lived in slowly, presence is its own reward.</p>
+      </div>
+      <div class="pillar p2">
+        <div class="num">02</div>
+        <h3 class="mumbot">Explore.</h3>
+        <p>Wander a hand-built ancient woodland of clearings, glades, caves and stranger places. Every corner has been touched by hand.</p>
+      </div>
+      <div class="pillar p3">
+        <div class="num">03</div>
+        <h3 class="mumbot">Befriend.</h3>
+        <p>Listen, gift, sit awhile. Each spirit has its own rhythm, earn trust and they will open small pockets of the world to you.</p>
+      </div>
+      <div class="pillar p4">
+        <div class="num">04</div>
+        <h3 class="mumbot">Unlock.</h3>
+        <p>Quiet mysteries, special encounters, and portals, moss that remembers, stones that hum on the right night, and doorways to the distant future.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============ 13 TECH ============ -->
   <section data-label="Tech" class="bg-bark grain tech">
-    <div class="corner-mark tl mono">XIV · TECH &amp; PLATFORM</div>
+    <div class="corner-mark tl mono">XIII · TECH &amp; PLATFORM</div>
     <div class="corner-mark tr mono">BUILT FOR EVERYONE</div>
 
     <header>
@@ -1667,22 +1693,22 @@
         <div class="label">EASE OF ACCESS · 02</div>
         <h3 class="mumbot">No install.</h3>
         <p>You don't download a launcher, you don't make a login, you don't queue for a server. Click a link, you're in. Works on the laptop you already own, the phone in your pocket, the friend's screen you're borrowing.</p>
-        <p style="margin-top: 24px; color: var(--spirit); font-family: 'JetBrains Mono', monospace; font-size: 24px; letter-spacing: 0.18em; text-transform: uppercase;">Open a link · step into the forest</p>
+        <p style="margin-top: 24px; color: var(--spirit); font-family: var(--font-futura); font-size: 24px; letter-spacing: 0.18em; text-transform: uppercase;">Open a link · step into the forest</p>
       </div>
 
       <div class="panel">
         <div class="label">MULTIPLAYER · 03</div>
         <h3 class="mumbot">Together, gently.</h3>
         <p>Small shared worlds where players bump into each other softly. Co-presence is the point, wave at a stranger, sit at the campfire, walk a path together.</p>
-        <p style="margin-top: 24px; color: var(--ember); font-family: 'JetBrains Mono', monospace; font-size: 24px; letter-spacing: 0.18em; text-transform: uppercase;">A campfire online</p>
+        <p style="margin-top: 24px; color: var(--ember); font-family: var(--font-futura); font-size: 24px; letter-spacing: 0.18em; text-transform: uppercase;">A campfire online</p>
       </div>
     </div>
   </section>
 
 
-  <!-- ============ 15 VIBE, campfire ============ -->
+  <!-- ============ 14 VIBE, campfire ============ -->
   <section data-label="Vibe" class="bg-bark grain vibe">
-    <div class="corner-mark tl mono">XV · WHAT IT FEELS LIKE</div>
+    <div class="corner-mark tl mono">XIV · WHAT IT FEELS LIKE</div>
     <div class="corner-mark tr mono">A CAMPFIRE ONLINE</div>
 
     <div class="left">
@@ -1700,6 +1726,48 @@
         <div class="slot-caption">FIG. 03 · WEB BUILD · ATMOSPHERE</div>
       </div>
       <div class="fire"></div>
+    </div>
+  </section>
+
+
+  <!-- ============ 15 JOURNEY ============ -->
+  <section data-label="Journey" class="bg-bark grain journey">
+    <div class="corner-mark tl mono">XV · JOURNEY</div>
+    <div class="corner-mark tr mono">FROM MYCELIUM → WEB</div>
+
+    <header>
+      <h2 class="mumbot">A patient walk<br/>through the forest.</h2>
+      <p>The Mumbot World Game Demo took its first shape in Unreal Engine in 2021. Life got in the way, we paused, we picked it back up. Today it lives as Mumbot World Web, built on three.js, easy to drop into, shared from day one, and multiplayer from the ground up.</p>
+    </header>
+
+    <div class="timeline">
+      <div class="row">
+        <div class="tstop">
+          <div class="year">2021, 22</div>
+          <h4 class="mumbot">First seed.</h4>
+          <p>Initial Mumbot World Game Demo in Unreal Engine. The mood, the protagonist, the portal-in-a-tree all take shape.</p>
+        </div>
+        <div class="tstop">
+          <div class="year">2023, 24</div>
+          <h4 class="mumbot">Quiet years.</h4>
+          <p>Life pulls in other directions. The world sleeps but doesn't disappear, concept art, lore, music continue in the background.</p>
+        </div>
+        <div class="tstop">
+          <div class="year">2025</div>
+          <h4 class="mumbot">Re-awakening.</h4>
+          <p>Project resumes. We re-evaluate the format and ask a simple question: how do we get more people inside this world?</p>
+        </div>
+        <div class="tstop">
+          <div class="year">2026</div>
+          <h4 class="mumbot">Pivot to web.</h4>
+          <p>Mumbot World Web rebuilt on three.js. Frictionless to join, multiplayer baked in from day one. The barrier to entry becomes a URL.</p>
+        </div>
+        <div class="tstop now">
+          <div class="year">NOW</div>
+          <h4 class="mumbot">Phase 01 demo.</h4>
+          <p>A first demo people can join. A campfire online. The seed of everything that comes next.</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1756,23 +1824,25 @@
     <div class="grid">
       <div class="person">
         <div class="slot-frame">
-          <image-slot id="team-cyrus" shape="rect" src="assets/cyrus.jpg" placeholder="Cyrus James Khan portrait"></image-slot>
+          <image-slot id="team-cyrus" shape="rounded" radius="12" src="assets/cyrus.jpg" placeholder="Cyrus James Khan portrait"></image-slot>
         </div>
         <div>
           <div class="name mumbot">Cyrus James Khan</div>
           <div class="role">LEAD DEVELOPER · TECH &amp; 3D ART DIRECTION</div>
           <ul>
-            <li>15+ years as a 3D generalist in TV, film and gaming</li>
+            <li>15+ years as digital artist, 3D generalist and technologist</li>
             <li>Directs the 3D art, lighting, look-dev, mood &amp; atmosphere</li>
-            <li>Environments, animation, pipelines, Unreal &amp; web 3D</li>
+            <li>Environments, animation, pipelines, programming, Unreal &amp; web 3D</li>
             <li>Translates Jade's 2D universe into a place you can walk through</li>
+            <li>Developing his own IP including independent video games, immersive VR pieces, and live performances and installations.</li>
+            <li>Produced interactive works for National Geographic, Okinawa Institute of Science and Technology, and Central Group. Has worked with numerous production studios such as Kantana, Unformat, StudioX and Supreme.</li>
           </ul>
         </div>
       </div>
 
       <div class="person">
         <div class="slot-frame">
-          <image-slot id="team-jade" shape="rect" src="assets/jade.jpg" placeholder="Jade Kuei (MUMBOT) portrait"></image-slot>
+          <image-slot id="team-jade" shape="rounded" radius="12" src="assets/jade.jpg" placeholder="Jade Kuei (MUMBOT) portrait"></image-slot>
         </div>
         <div>
           <div class="name mumbot">Jade Kuei, MUMBOT</div>
@@ -1935,11 +2005,10 @@
 
 
   <!-- ============ 21 CLOSING ============ -->
-  <section data-label="Closing" class="bg-bark grain closing">
+  <section data-label="Closing" class="bg-parchment grain closing">
     <div class="corner-mark tl mono">XXI · THANK YOU</div>
     <div class="corner-mark tr mono">END · MMBT 001</div>
 
-    <div class="eye"></div>
     <h2 class="mumbot">Thank you for<br/>walking with us.</h2>
     <p class="invite">There's a portal in a tree, and a small fire just past the clearing. We hope you'll come sit with us.</p>
 
@@ -2003,7 +2072,7 @@
 </script>
 
 <script src="image-slot.js"></script>
-<script src="deck-stage.js?v=fullscreen-rail-1"></script>
+<script src="deck-stage.js?v=ambient-audio-3"></script>
 <script src="deck-animations.js?v=5"></script>
 
 <script>
