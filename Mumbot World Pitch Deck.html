@@ -569,29 +569,50 @@
   }
 
   /* ============ UNREAL DEMO GALLERY ============ */
-  .unreal { padding: 70px 110px; display: grid; grid-template-rows: auto minmax(0, 1fr); gap: 28px; }
-  .unreal .head { display:grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: end; }
+  .unreal {
+    padding: 96px 100px 52px;
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr);
+    gap: 22px;
+  }
+  .unreal .head {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 48px;
+    align-items: end;
+    min-height: 0;
+  }
   .unreal h2 {
     font-family: "Mumbotfont", serif;
-    font-size: 76px;
-    line-height: 0.98;
+    font-size: 62px;
+    line-height: 1;
     color: var(--cream);
     letter-spacing: 0.02em;
   }
   .unreal .head p {
-    font-size: 24px; line-height: 1.45; color: var(--parchment); opacity: 0.88;
-    text-wrap: pretty; max-width: 720px; margin-left: auto; text-align: right;
+    font-size: 22px;
+    line-height: 1.4;
+    color: var(--parchment);
+    opacity: 0.88;
+    text-wrap: pretty;
+    max-width: 640px;
+    margin-left: auto;
+    text-align: right;
   }
   .unreal .head p strong { color: var(--cream); font-weight: 500; }
   .unreal-gallery {
     display: grid;
-    grid-template-columns: 0.68fr 1.32fr;
-    gap: 16px;
+    grid-template-columns: 1.05fr 0.95fr;
+    grid-template-rows: minmax(0, 1fr) auto;
+    gap: 14px;
     min-height: 0;
   }
   .unreal .hero {
+    grid-column: 1;
+    grid-row: 1;
     position: relative;
     overflow: hidden;
+    min-height: 0;
     border: 1px solid rgba(247,236,203,0.18);
     box-shadow:
       inset 0 0 80px rgba(0,0,0,0.5),
@@ -601,12 +622,30 @@
     width: 100%; height: 100%; object-fit: cover; display: block;
   }
   .unreal .hero .badge { display: none; }
-  .unreal .thumbs { display:grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(2, minmax(0, 1fr)); gap: 16px; min-height: 0; }
+  .unreal .thumbs {
+    grid-column: 2;
+    grid-row: 1;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    min-height: 0;
+  }
   .unreal .thumb {
-    position: relative; overflow: hidden;
+    position: relative;
+    overflow: hidden;
+    min-height: 0;
     border: 1px solid rgba(247,236,203,0.15);
   }
-  .unreal .thumb img { width:100%; height:100%; object-fit: cover; display: block; }
+  .unreal .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .unreal .thumb.wide {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    aspect-ratio: 2.35 / 1;
+    max-height: 252px;
+    min-height: 0;
+  }
+  .unreal .thumb.wide img { object-position: center 42%; }
   .unreal .thumb .caption { display: none; }
 
   /* ============ TRAILER ============ */
@@ -722,6 +761,48 @@
   }
   .bg-parchment.wip .head p strong { color: var(--ink); font-weight: 500; }
   .bg-parchment.wip .head p em { color: var(--ink-soft); font-style: italic; }
+  .concepts.wip {
+    padding: 96px 72px 52px;
+    gap: 24px;
+  }
+  .concepts.wip .head {
+    gap: 40px;
+    align-items: end;
+    min-height: 0;
+  }
+  .concepts.wip h2 { font-size: 60px; line-height: 1; }
+  .concepts.wip .head p { font-size: 21px; max-width: 580px; line-height: 1.4; }
+
+  .concepts-collage {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr) 1.28fr;
+    grid-template-rows: 1fr 1fr 1.05fr;
+    gap: 12px;
+    min-height: 0;
+  }
+  .concepts-collage .collage-cell {
+    overflow: hidden;
+    min-width: 0;
+    min-height: 0;
+    border: none;
+    background: transparent;
+    box-shadow: none;
+  }
+  .concepts-collage .collage-cell img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    display: block;
+  }
+  .concepts-collage .cc1 { grid-area: 1 / 1; }
+  .concepts-collage .cc2 { grid-area: 1 / 2; }
+  .concepts-collage .cc3 { grid-area: 1 / 3; }
+  .concepts-collage .cc4 { grid-area: 1 / 4 / 3 / 5; }
+  .concepts-collage .cc5 { grid-area: 2 / 1; }
+  .concepts-collage .cc6 { grid-area: 2 / 2; }
+  .concepts-collage .cc7 { grid-area: 2 / 3; }
+  .concepts-collage .cc8 { grid-area: 3 / 1 / 4 / 4; }
   .wip-collage .collage-cell img {
     width: 100%;
     height: 100%;
@@ -1357,7 +1438,7 @@
 
 
   <!-- ============ 04 CONCEPTS & DRAWINGS ============ -->
-  <section data-label="Concepts" class="bg-bark grain wip">
+  <section data-label="Concepts" class="bg-bark grain wip concepts">
     <div class="corner-mark tl mono">IV · CONCEPTS</div>
     <div class="corner-mark tr mono">FROM THE SKETCHBOOK</div>
 
@@ -1369,31 +1450,15 @@
       <p>Before the forest becomes a place you can walk through, it lives in <strong>Jade's sketchbooks</strong> and <em>napkin brainstorms</em>, the slow, handmade thinking that gives the world its soul.</p>
     </div>
 
-    <div class="wip-grid">
-      <div class="wip-cell paper">
-        <img src="assets/concept-forest-floor-story.webp" alt="Forest Floor pencil illustration with Mumbot characters" />
-        <div class="caption">FOREST FLOOR · PENCIL</div>
-      </div>
-      <div class="wip-cell paper">
-        <img src="assets/concept-girl-ghost.webp" alt="Girl from the Forest Floor and Aughostus, pencil concept" />
-        <div class="caption">GIRL &amp; GHOST · PENCIL</div>
-      </div>
-      <div class="wip-cell paper">
-        <img src="assets/concept-tree-lab-sketch.webp" alt="Tree lab sketch with character inside a forest doorway" />
-        <div class="caption">TREE LAB · SKETCH</div>
-      </div>
-      <div class="wip-cell paper">
-        <img src="assets/concept-marudo.webp" alt="Marudo trailer notes" />
-        <div class="caption">MARUDO · TRAILER NOTES</div>
-      </div>
-      <div class="wip-cell paper">
-        <img src="assets/concept-spellbook.webp" alt="Spellbook painting" />
-        <div class="caption">SPELLBOOK · PAINTING</div>
-      </div>
-      <div class="wip-cell paper">
-        <img src="assets/concept-shumi-turnaround.webp" alt="Shumi Mushrumi character turnaround" />
-        <div class="caption">SHUMI MUSHRUMI · TURNAROUND</div>
-      </div>
+    <div class="concepts-collage">
+      <div class="collage-cell cc1"><img src="assets/concept-forest-floor-story.webp" alt="Forest Floor pencil illustration with Mumbot characters" /></div>
+      <div class="collage-cell cc2"><img src="assets/concept-girl-ghost.webp" alt="Girl from the Forest Floor and Aughostus, pencil concept" /></div>
+      <div class="collage-cell cc3"><img src="assets/concept-tree-lab-sketch.webp" alt="Tree lab sketch with character inside a forest doorway" /></div>
+      <div class="collage-cell cc4"><img src="assets/concept-world-map.png" alt="Hand-drawn Mumbot World map with Cloud Realm, Mushroom Village, and Crystal Caves" /></div>
+      <div class="collage-cell cc5"><img src="assets/concept-marudo.webp" alt="Marudo trailer notes" /></div>
+      <div class="collage-cell cc6"><img src="assets/concept-spellbook.webp" alt="Spellbook painting" /></div>
+      <div class="collage-cell cc7"><img src="assets/concept-shumi-turnaround.webp" alt="Shumi Mushrumi character turnaround" /></div>
+      <div class="collage-cell cc8"><img src="assets/concept-campfire-sketch.png" alt="Old Grey's Grove campfire scene pencil sketch" /></div>
     </div>
   </section>
 
@@ -1459,14 +1524,10 @@
         <img src="assets/unreal-hut.webp" alt="Cozy hut interior with fire" />
         <div class="caption">LAB</div>
       </div>
-      <div class="thumb">
-        <img src="assets/unreal-clay.webp" alt="Untextured clay render of the world" />
-        <div class="caption">AO VIEW</div>
-      </div>
-      <div class="thumb">
-        <img src="assets/unreal-shumi-normals.png" alt="Shumi Mushrumi character normals pass" />
-        <div class="caption">NORMALS VIEW</div>
-      </div>
+    </div>
+    <div class="thumb wide">
+      <img src="assets/unreal-forest-wide.png" alt="Mumbot World forest at night with campfire, glowing mushrooms and magical lighting" />
+      <div class="caption">FOREST · NIGHT</div>
     </div>
     </div>
   </section>

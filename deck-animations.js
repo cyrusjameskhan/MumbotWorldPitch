@@ -20,7 +20,7 @@
     '.grid > *', '.alloc-row', '.contacts > span',
     'header', '.collage-cell', '.phase-card', '.phase',
     '.bee-item', '.roadmap-step', '.roadmap-col',
-    '.hero', '.thumbs > .thumb', '.side-thumbs > *', '.thumb-card',
+    '.hero', '.thumbs > .thumb', '.unreal-gallery > .thumb.wide', '.side-thumbs > *', '.thumb-card',
     '.wip-cell',
     '.concept-col', '.pillar-grid > *', '.timeline > *',
     'image-slot',
