@@ -500,21 +500,20 @@
   }
 
   /* ============ EVOLUTION / WIP ============ */
-  .evolution { padding: 80px 110px; display:grid; grid-template-columns: 0.92fr 1.08fr; gap: 54px; align-items: stretch; }
+  .evolution { padding: 80px 110px; display:grid; grid-template-columns: 0.92fr 1.08fr; grid-template-rows: minmax(0, 1fr); gap: 54px; align-items: stretch; }
   .evolution .sketch {
     position: relative;
     overflow: hidden;
     border: 1px solid rgba(247,236,203,0.18);
-    background: linear-gradient(180deg, #f7eccb 0%, #ead8a8 100%);
-    box-shadow:
-      inset 0 0 70px rgba(80,56,32,0.18),
-      0 24px 46px -24px rgba(0,0,0,0.8);
+    background: #292861;
+    box-shadow: 0 24px 46px -24px rgba(0,0,0,0.8);
   }
   .evolution .sketch img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
-    mix-blend-mode: multiply;
+    /* Trim only the portrait's empty purple margins; keep all lettering visible. */
+    object-fit: cover;
+    object-position: center;
     display: block;
     padding: 20px;
     box-sizing: border-box;
@@ -526,7 +525,7 @@
     line-height: 0.98;
     color: var(--cream);
     letter-spacing: 0.02em;
-    margin-bottom: 28px;
+    margin-bottom: 20px;
   }
   .evolution .lede {
     font-size: 25px;
@@ -534,17 +533,18 @@
     color: var(--parchment);
     opacity: 0.9;
     max-width: 760px;
-    margin-bottom: 34px;
+    margin-bottom: 24px;
   }
   .evolution-grid {
     display:grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 16px;
+    gap: 14px;
   }
   .evo-card {
+    box-sizing: border-box;
     border: 1px solid rgba(247,236,203,0.16);
     background: linear-gradient(180deg, rgba(40,55,38,0.34), rgba(20,17,13,0.56));
-    padding: 22px 22px 24px;
+    padding: 14px 20px;
     min-height: 134px;
   }
   .evo-card .num {
@@ -559,7 +559,7 @@
     font-size: 32px;
     line-height: 1.02;
     color: var(--cream);
-    margin-bottom: 10px;
+    margin-bottom: 6px;
   }
   .evo-card p {
     font-size: 20px;
@@ -1299,7 +1299,7 @@
 
   .deck-fade-target.deck-fade-in {
     animation: deck-fade-up var(--deck-fade-ms, 1050ms) cubic-bezier(0.16, 1, 0.3, 1) both;
-    animation-delay: var(--deck-delay, 0ms);
+    animation-delay: 0ms;
   }
 
   @keyframes deck-fade-linger {
@@ -1334,14 +1334,174 @@
     }
   }
 
+
+  /* Pitch revision: retain the forest palette and lettering while giving each slide a clear role. */
+  section a { color: var(--spirit); text-underline-offset: 5px; }
+  section a:hover { color: var(--cream); }
+  .bg-parchment a { color: var(--ink); }
+  .bg-parchment a:hover { color: var(--ink-soft); }
+  section .eyebrow { opacity: 1; }
+  .cover .sub { font-size: 44px; }
+  .cover .meta { gap: 60px; }
+  .cover .meta span b { font-size: 22px; }
+  .cover h1.title .game { font-size: 60px; }
+  .rev { padding: 110px 110px 90px; }
+  .rev *, .product-intro *, .delivery * { box-sizing: border-box; }
+  .rev figure { margin: 0; min-height: 0; }
+  .rev img { display: block; max-width: 100%; }
+  .rev h2 { font-family: "Mumbotfont", serif; font-size: 82px; line-height: 1; color: var(--cream); }
+  .rev p { font-family: var(--font-futura); font-size: 27px; line-height: 1.4; color: var(--parchment); }
+  .rev .lede { font-size: 29px; line-height: 1.4; }
+  .rev strong { color: var(--cream); font-weight: 500; }
+  .rev .eyebrow { color: var(--blush); margin-bottom: 22px; font-size: 22px; }
+  .rev-head { display: grid; grid-template-columns: 1.1fr 1fr; gap: 80px; align-items: end; }
+  .rev-head p { max-width: 660px; justify-self: end; }
+  .rev figcaption { font: 20px/1.4 var(--font-futura); letter-spacing: .13em; color: var(--parchment); padding-top: 16px; }
+  .detail-label { display: block; font: 22px/1.3 var(--font-futura); letter-spacing: .15em; color: var(--spirit); margin-bottom: 18px; }
+
+  .product-intro { padding: 120px 150px 100px; display: flex; flex-direction: column; align-items: center; text-align: center; }
+  .product-intro .eyebrow { color: var(--ink-soft); margin-bottom: 24px; }
+  .product-intro h2 { font-size: 132px; line-height: .95; color: var(--ink); margin-bottom: 30px; }
+  .product-statement { font: italic 41px/1.3 "Newsreader", serif; max-width: 1320px; color: var(--ink); }
+  .product-details { display: grid; grid-template-columns: repeat(3, 1fr); gap: 56px; border-top: 1px solid rgba(43,29,16,.25); padding-top: 28px; margin-top: 42px; text-align: left; }
+  .product-details .detail-label { color: var(--ink-soft); font-size: 21px; margin-bottom: 12px; }
+  .product-details p { font: 26px/1.4 var(--font-futura); color: var(--ink); }
+
+  .chars { padding: 110px 120px 90px; }
+  .chars header { gap: 70px; margin-bottom: 44px; }
+  .chars header p { max-width: 700px; font-size: 26px; line-height: 1.4; }
+  .chars h2 { font-size: 74px; }
+  .char-card .name { font-size: 32px; min-height: 70px; }
+  .char-card .role { font-size: 22px; line-height: 1.4; letter-spacing: .14em; }
+  .characters-caption { font: 21px/1.4 var(--font-futura); letter-spacing: .16em; color: var(--parchment); margin-top: 42px; }
+
+  .pillars { padding: 110px 120px 90px; display: grid; grid-template-rows: auto minmax(0,1fr) auto; gap: 34px; }
+  .pillars header { max-width: none; margin-bottom: 0; }
+  .pillars h2 { font-size: 67px; margin-bottom: 24px; }
+  .pillars .lede { max-width: 1380px; font-size: 28px; line-height: 1.4; }
+  .pillars .grid { min-height: 0; }
+  .pillar { box-sizing: border-box; min-height: 0; padding: 32px 30px; }
+  .pillar h3 { font-size: 42px; }
+  .pillar p { font-size: 26px; line-height: 1.4; margin-top: 24px; }
+  .return-line { font: 27px/1.4 var(--font-futura); color: var(--parchment); }
+  .return-line strong { color: var(--spirit); font-weight: 500; }
+
+  .prototype { display: grid; grid-template-columns: .95fr 1.05fr; gap: 70px; align-items: center; }
+  .prototype h2 { margin-bottom: 28px; }
+  .prototype .lede { margin-bottom: 28px; }
+  .status-row { border-top: 1px solid rgba(247,236,203,.18); padding: 18px 0; }
+  .status-row span { display: block; color: var(--spirit); font: 20px/1.3 var(--font-futura); letter-spacing: .14em; margin-bottom: 8px; }
+  .status-row p { font-size: 25px; }
+  .prototype-image { height: 810px; display: grid; grid-template-rows: minmax(0,1fr) auto; }
+  .prototype-image img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+  .prototype-image figcaption { text-align: center; }
+  .origin .left p { font-size: 28px; line-height: 1.45; margin-bottom: 28px; }
+
+  .audience { display: grid; grid-template-rows: auto minmax(0,1fr) auto; gap: 32px; }
+  .audience-body { display: grid; grid-template-columns: 1.2fr .85fr; gap: 60px; min-height: 0; align-items: center; }
+  .audience-body figure { display: grid; grid-template-rows: minmax(0,1fr) auto; height: 100%; max-height: 100%; }
+  .audience-body img { width: 100%; height: 100%; min-height: 0; object-fit: contain; }
+  .campaign-amount { font: 104px/1 "Newsreader", serif; color: var(--ember-amber); }
+  .fact-label { font: 22px/1.4 var(--font-futura); letter-spacing: .14em; color: var(--spirit); margin: 10px 0 20px; }
+  .audience-facts > p { font-size: 25px; }
+  .evidence-line { border-top: 1px solid rgba(247,236,203,.18); margin-top: 24px; padding-top: 18px; }
+  .evidence-line strong { font: 29px/1.3 var(--font-futura); }
+  .evidence-line p { font-size: 25px; margin-top: 6px; }
+  .source-line { display: flex; justify-content: space-between; gap: 40px; font: 20px/1.4 var(--font-futura); color: var(--parchment); border-top: 1px solid rgba(247,236,203,.2); padding-top: 18px; }
+  .source-line > span:first-child { max-width: 1060px; }
+  .source-line > span:last-child { white-space: nowrap; }
+  .live h2 { font-size: 76px; }
+  .live .meta .col h4 { font-size: 30px; }
+  .live .meta .col .lbl { color: var(--ember-amber); }
+  .evolution h2 { font-size: 73px; }
+  .evolution .evo-card .num { color: var(--ember-amber); }
+
+  .revenue { display: grid; grid-template-rows: auto minmax(0,1fr) auto; gap: 32px; }
+  .revenue-table { display: grid; grid-template-rows: repeat(3,1fr); min-height: 0; }
+  .revenue-row { display: grid; grid-template-columns: .95fr 1.25fr 1.1fr; align-items: center; gap: 46px; border-top: 1px solid rgba(247,236,203,.3); padding: 24px 0; }
+  .revenue-name { display: flex; align-items: start; gap: 22px; }
+  .revenue-name > span { font: 22px/1.3 var(--font-futura); color: var(--ember-amber); padding-top: 4px; }
+  .revenue-name h3 { font-size: 43px; line-height: 1.05; }
+  .revenue-row p { font-size: 26px; line-height: 1.35; }
+  .revenue-row .revenue-example { color: var(--parchment-lo); }
+  .revenue-next { border-top: 1px solid rgba(247,236,203,.3); padding-top: 22px; }
+  .revenue-next p { font-size: 24px; margin: 0 0 10px; }
+
+  .partnership { display: grid; grid-template-columns: .85fr 1.15fr; gap: 80px; align-items: center; }
+  .partner-art { height: 870px; display: grid; grid-template-rows: minmax(0,1fr) auto; }
+  .partner-art img { width: 100%; height: 100%; object-fit: contain; }
+  .partner-art figcaption { text-align: center; font-size: 18px; }
+  .partner-copy h2 { margin-bottom: 26px; }
+  .partner-copy .lede { margin-bottom: 26px; }
+  .partner-detail { border-top: 1px solid rgba(247,236,203,.2); padding: 17px 0; }
+  .partner-detail h3 { font: 27px/1.3 var(--font-futura); color: var(--spirit); margin-bottom: 9px; }
+  .partner-detail p { font-size: 25px; }
+  .partner-copy .partner-source { font-size: 20px; line-height: 1.4; margin-top: 12px; }
+
+  .team h2 { font-size: 76px; line-height: 1; margin-bottom: 45px; }
+  .team .person .role { font-size: 21px; line-height: 1.4; letter-spacing: .13em; }
+  .team .person ul li { font-size: 24px; line-height: 1.4; margin-bottom: 18px; }
+  .team-footer { font: 21px/1.4 var(--font-futura); letter-spacing: .12em; color: var(--spirit); border-top: 1px solid rgba(247,236,203,.2); margin-top: 46px; padding-top: 24px; }
+
+  .delivery { display: grid; grid-template-rows: auto minmax(0,1fr) auto; gap: 40px; }
+  .delivery-phases { display: grid; grid-template-columns: repeat(3,1fr); gap: 55px; min-height: 0; }
+  .delivery-phase { border-top: 2px solid var(--ember-amber); padding-top: 26px; display: flex; flex-direction: column; }
+  .delivery-phase h3 { font-size: 45px; line-height: 1.05; margin: 8px 0 24px; }
+  .delivery-phase > p { font-size: 27px; }
+  .milestone { border-top: 1px solid rgba(247,236,203,.2); margin-top: auto; min-height: 138px; padding-top: 22px; font: 25px/1.4 var(--font-futura); color: var(--parchment); }
+  .milestone strong { display: block; color: var(--spirit); font-size: 22px; margin-bottom: 8px; }
+  .delivery-later { display: grid; grid-template-columns: 300px 1fr; gap: 42px; border-top: 1px solid rgba(247,236,203,.3); padding-top: 25px; }
+  .delivery-later > strong { font: 22px/1.4 var(--font-futura); letter-spacing: .12em; color: var(--ember-amber); }
+  .delivery-later p { font-size: 25px; }
+
+  .funding { display: grid; grid-template-columns: 1.05fr 1fr; gap: 80px; align-items: center; }
+  .funding h2 { font-size: 80px; margin-bottom: 25px; }
+  .funding-amount { font: 84px/1.05 "Newsreader",serif; color: var(--ember-amber); letter-spacing: -.025em; white-space: nowrap; margin-bottom: 25px; }
+  .funding-amount span { display: block; font: 23px/1.4 var(--font-futura); letter-spacing: .18em; margin-bottom: 4px; }
+  .funding .lede { font-size: 27px; margin-bottom: 20px; }
+  .funding-scope { border-top: 1px solid rgba(247,236,203,.2); padding-top: 15px; margin-top: 15px; }
+  .funding-scope h3 { font: 25px/1.3 var(--font-futura); color: var(--spirit); margin-bottom: 8px; }
+  .funding-scope p { font-size: 24px; }
+  .funding .funding-note { font-size: 20px; line-height: 1.4; margin-top: 18px; }
+  .allocation-title { font: 24px/1.4 var(--font-futura); letter-spacing: .15em; color: var(--ember-amber); margin-bottom: 28px; }
+  .funding-row { display: grid; grid-template-columns: 90px 1fr; align-items: start; gap: 25px; border-top: 1px solid rgba(247,236,203,.2); padding: 20px 0; }
+  .funding-row b { font: 40px/1.1 "Newsreader",serif; color: var(--ember-amber); }
+  .funding-row strong { font: 28px/1.3 var(--font-futura); }
+  .funding-row p { font-size: 23px; margin-top: 7px; }
+  .funding .allocation-result { font-size: 24px; border-top: 1px solid rgba(247,236,203,.3); padding-top: 23px; }
+
+  .closing .invite { margin-bottom: 48px; }
+  .closing-links { display: flex; justify-content: center; gap: 65px; margin-top: 44px; font: 29px/1.4 var(--font-futura); }
+  .appendix-note { position: absolute; bottom: 42px; font: 19px/1.4 var(--font-futura); letter-spacing: .12em; color: var(--ink-soft); }
+  .unreal-gallery { grid-template-columns: 1.08fr 1fr; grid-template-rows: minmax(0,1fr) minmax(0,1fr); }
+  .unreal-gallery .hero { grid-row: 1 / 3; }
+  .unreal-gallery .thumbs { grid-column: 2; grid-row: 1; grid-template-columns: 1fr 1fr; grid-template-rows: minmax(0,1fr); }
+  .unreal-gallery .thumb.wide { grid-column: 2; grid-row: 2; aspect-ratio: auto; max-height: none; }
+  .unreal-gallery .thumb.wide img { height: 100%; width: 100%; object-fit: cover; }
+  .tech { padding: 110px 120px 90px; display: grid; grid-template-rows: auto minmax(0,1fr); gap: 45px; }
+  .tech header { margin-bottom: 0; }
+  .tech h2 { font-size: 74px; }
+  .tech .panel { min-height: 0; box-sizing: border-box; padding: 30px; }
+  .tech .panel p { font-size: 25px; line-height: 1.4; }
+  .tech .stack-row { font-size: 21px; }
+  .journey h2 { font-size: 77px; }
+  .journey header { margin-bottom: 60px; }
+  .journey .year { color: var(--ember-amber); }
+  .talent h2 { margin-bottom: 46px; }
+  .talent-status { border-top: 1px solid rgba(247,236,203,.25); padding-top: 26px; margin-top: 20px; font: 25px/1.4 var(--font-futura); color: var(--parchment); }
+
+  @media print {
+    section a { text-decoration: underline; }
+    .source-line, .appendix-note { break-inside: avoid; }
+  }
+
 </style>
 </head>
 <body>
 
 <deck-stage width="1920" height="1080" ambient-audio="assets/forestsound.WAV">
 
-  <!-- ============ 01 COVER ============ -->
-  <section data-label="Cover" class="bg-bark grain cover">
+<section data-label="Cover" class="bg-bark grain cover">
     <div class="stars">
       <i style="left:8%;  top:12%"></i>
       <i style="left:18%; top:6%"></i>
@@ -1364,12 +1524,12 @@
 
     <div style="position: relative; z-index: 2;">
       <div class="eyebrow" style="margin-bottom: 30px; color: var(--ember); font-size: 24px;">A PITCH FROM THE FOREST FLOOR · 2026</div>
-      <h1 class="title mumbot">MUMBOT WORLD<span class="game">the game</span></h1>
-      <p class="sub">A magical ancient forest, a portal in a tree, and a small handful of spirits waiting to be befriended.</p>
+      <h1 class="title mumbot">MUMBOT WORLD<span class="game">Web</span></h1>
+      <p class="sub">A shared world of art, play and gathering.</p>
       <div class="meta">
         <span>Created by<b>Jade Kuei &amp; Cyrus James Khan</b></span>
-        <span>Format<b>Web Game</b></span>
-        <span>Stage<b>Phase 01 · Grant Pitch</b></span>
+        <span>Format<b>Browser-based world</b></span>
+        <span>Stage<b>Phase 01 · Funding proposal</b></span>
       </div>
     </div>
 
@@ -1377,254 +1537,25 @@
     <div class="corner-mark tr mono">EST. 2021</div>
   </section>
 
+<section data-label="The Product" class="bg-parchment grain product-intro">
+  <div class="corner-mark tl mono">II · THE PRODUCT</div><div class="corner-mark tr mono">MUMBOT WORLD WEB</div>
+  <div class="eyebrow">A SHARED WORLD IN YOUR BROWSER</div>
+  <h2 class="mumbot">A campfire<br/>online</h2>
+  <p class="product-statement">We’re building a browser-based world where visitors explore Mumbot’s forest, meet its characters and gather around art and music.</p>
+  <div class="product-details">
+    <div><span class="detail-label">WHO IT IS FOR</span><p>Mumbot fans and collectors, the Ghost Club community, and people drawn to gentle exploration.</p></div>
+    <div><span class="detail-label">WHERE WE ARE</span><p>Existing character art and an early Unreal demo, with a browser prototype in development.</p></div>
+    <div><span class="detail-label">WHAT COMES NEXT</span><p>Phase 01: a tested, joinable forest experience and the foundations for shared gatherings.</p></div>
+  </div>
+</section>
 
-  <!-- ============ 02 VISION ============ -->
-  <section data-label="Vision" class="bg-parchment grain vision">
-    <div class="corner-mark tl mono">II · VISION</div>
-    <div class="corner-mark tr mono">MUMBOT UNIVERSE</div>
-
-    <p class="quote">
-      <span class="open">“</span>An explorative adventure through a magical ancient forest where players befriend nature spirits, solve mysteries, unlock portals and discover a world of wonder.<span class="close">”</span>
-    </p>
-
-    <div class="rule"></div>
-
-    <p class="body">
-      The mysterious adventures of <strong style="color:var(--ink); font-weight:500;">Girl From the Forest Floor</strong>, <strong style="color:var(--ink); font-weight:500;">Aughostus the ghost</strong>, their nature spirit friends and their daily life in a magical ancient forest, connected to the dying distant future human world, through a portal in a tree.
-    </p>
-
-    <div class="corner-mark bl mono">FILED ON PARCHMENT</div>
-    <div class="corner-mark br mono">PG. 02</div>
-  </section>
-
-
-  <!-- ============ 03 ORIGIN ============ -->
-  <section data-label="Origin" class="bg-bark grain origin">
-    <div class="corner-mark tl mono">III · ORIGIN STORY</div>
-    <div class="corner-mark tr mono">JADE × CYRUS</div>
-
-    <div class="left">
-      <div class="eyebrow" style="color: var(--blush); margin-bottom: 22px;">HOW TWO ARTISTS BUILT A WORLD</div>
-      <h2 class="mumbot">It started<br/>with mycelium.</h2>
-      <p>It began as the universe of artist and storyteller <strong>Jade Kuei (MUMBOT)</strong>, a multimedia mythology told through toys, paintings, characters and stories.</p>
-      <p>Her first collaboration with <strong>Cyrus James Khan</strong>, a piece called <em>Mycelium on the Block</em>, brought the world into digital form for the first time. It sat quietly for months before being collected by <strong>Gary Vaynerchuk</strong>, a moment that ignited a lot of momentum.</p>
-      <p>That collaboration revealed a strong creative synergy: Jade authoring the world's soul through her characters and 2D universe, Cyrus directing how it looks, lights and breathes in 3D.</p>
-    </div>
-
-    <div class="right">
-      <div class="mycelium-frame">
-        <img src="assets/origin-mumbot-cjk.png" alt="Mycelium on the Block collaboration artwork" />
-      </div>
-      <div class="caption">MYCELIUM ON THE BLOCK</div>
-    </div>
-  </section>
-
-
-  <!-- ============ 04 CONCEPTS & DRAWINGS ============ -->
-  <section data-label="Concepts" class="bg-bark grain wip concepts">
-    <div class="corner-mark tl mono">IV · CONCEPTS</div>
-    <div class="corner-mark tr mono">FROM THE SKETCHBOOK</div>
-
-    <div class="head">
-      <div>
-        <div class="eyebrow" style="color: var(--ember); margin-bottom: 18px;">DRAWINGS · PAINTINGS · BRAINSTORMS</div>
-        <h2 class="mumbot">The world on paper.</h2>
-      </div>
-      <p>Before the forest becomes a place you can walk through, it lives in <strong>Jade's sketchbooks</strong> and <em>napkin brainstorms</em>, the slow, handmade thinking that gives the world its soul.</p>
-    </div>
-
-    <div class="concepts-sheet">
-      <img src="assets/concept-sketchbook-sheet.png" alt="Mumbot World sketchbook sheet — world map, tree lab, Old Grey's Grove campfire, character turnarounds, and item reaction brainstorms" />
-    </div>
-  </section>
-
-
-  <!-- ============ 05 3D VIEWPORT WIP ============ -->
-  <section data-label="3D WIP" class="bg-bark grain wip">
-    <div class="corner-mark tl mono">V &middot; WORK IN PROGRESS</div>
-    <div class="corner-mark tr mono">IN-VIEWPORT · 3D</div>
-
-    <div class="head">
-      <div>
-        <div class="eyebrow" style="color: var(--spirit); margin-bottom: 18px;">MODELING · SCULPTING · LOOK-DEV</div>
-        <h2 class="mumbot">The world taking shape.</h2>
-      </div>
-      <p>From paper into walkable space. <strong>Characters, props and the portal-in-a-tree itself</strong>, each one passes through the viewport before stepping into Unreal.</p>
-    </div>
-
-    <div class="wip-collage">
-      <div class="collage-cell c2"><img src="assets/slide10-collage-02-clay-forest.webp" alt="Clay render of forest campfire scene" /></div>
-      <div class="collage-cell c3"><img src="assets/slide10-collage-03-color-forest.webp" alt="Color forest scene with Mossy and bee" /></div>
-      <div class="collage-cell c4"><img src="assets/slide10-collage-04-tree-portal.webp" alt="Portal tree viewport model" /></div>
-      <div class="collage-cell c5"><img src="assets/slide10-collage-05-tree-model.webp" alt="Textured tree model viewport" /></div>
-      <div class="collage-cell c6"><img src="assets/slide10-collage-06-tree-views.webp" alt="Tree orthographic viewport views" /></div>
-      <div class="collage-cell c7"><img src="assets/slide10-collage-07-mossy-views.webp" alt="Mossy orthographic viewport views" /></div>
-      <div class="collage-cell c8"><img src="assets/slide10-collage-08-girl-rig.webp" alt="Girl character rig in viewport" /></div>
-      <div class="collage-cell c9"><img src="assets/slide10-collage-09-chair.webp" alt="Wood chair model viewport views" /></div>
-      <div class="collage-cell c10"><img src="assets/slide10-collage-10-bee.webp" alt="Bee model viewport views" /></div>
-      <div class="collage-cell c11"><img src="assets/slide10-collage-11-book-views.webp" alt="Book model viewport views" /></div>
-      <div class="collage-cell c12"><img src="assets/slide10-collage-12-books-open.webp" alt="Open book model viewport" /></div>
-      <div class="collage-cell c13"><img src="assets/slide10-collage-13-marudo-rig.webp" alt="Marudo character model viewport" /></div>
-      <div class="collage-cell c14"><img src="assets/slide10-collage-14-cloak-views.webp" alt="Cloak model viewport views" /></div>
-      <div class="collage-cell c15"><img src="assets/slide10-collage-15-mossy-close.webp" alt="Mossy close viewport model" /></div>
-      <div class="collage-cell c16"><img src="assets/slide10-collage-16-robot.webp" alt="Robot model viewport" /></div>
-    </div>
-  </section>
-
-
-  <!-- ============ 06 UNREAL DEMO GALLERY ============ -->
-  <section data-label="Unreal Demo" class="bg-bark grain unreal">
-    <div class="corner-mark tl mono">VI · UNREAL DEMO</div>
-    <div class="corner-mark tr mono">FIRST SEED · 2021</div>
-
-    <div class="head">
-      <div>
-        <div class="eyebrow" style="color: var(--ember); margin-bottom: 18px;">WHERE THE WORLD FIRST BECAME A PLACE</div>
-        <h2 class="mumbot">The Mumbot World Game Demo.</h2>
-      </div>
-      <p>Built in <strong>Unreal Engine</strong>, a first walkthrough of the forest, the campfire and our cast. The foundations of the world's look, lighting and mood were all sketched in here, then carried forward.</p>
-    </div>
-
-    <div class="unreal-gallery">
-    <div class="hero">
-      <img src="assets/unreal-campfire-portrait.jpg" alt="Mumbot World Game Demo campfire scene in the forest" />
-      <div class="badge">UNREAL ENGINE · 2021</div>
-    </div>
-
-    <div class="thumbs">
-      <div class="thumb">
-        <img src="assets/unreal-sunset.png" alt="Forest sunset with mushrooms" />
-        <div class="caption">DAYLIGHT · FOREST</div>
-      </div>
-      <div class="thumb">
-        <img src="assets/unreal-hut.webp" alt="Cozy hut interior with fire" />
-        <div class="caption">LAB</div>
-      </div>
-    </div>
-    <div class="thumb wide">
-      <img src="assets/unreal-forest-wide.png" alt="Mumbot World forest at night with campfire, glowing mushrooms and magical lighting" />
-      <div class="caption">FOREST · NIGHT</div>
-    </div>
-    </div>
-  </section>
-
-
-  <!-- ============ 07 TRAILER ============ -->
-  <section data-label="Trailer" class="bg-bark grain trailer">
-    <div class="corner-mark tl mono">VII &middot; TRAILER</div>
-    <div class="corner-mark tr mono">MUMBOT WORLD GAME DEMO &middot; 2022</div>
-
-    <div class="head">
-      <div>
-        <div class="eyebrow" style="color: var(--ember); margin-bottom: 18px;">THE WORLD IN MOTION</div>
-        <h2 class="mumbot">Watch the<br/>trailer.</h2>
-      </div>
-      <p>A short mood piece for the early world: the forest, the campfire, the characters, and the feeling we keep building toward.</p>
-    </div>
-
-    <div class="trailer-frame">
-      <video src="assets/mumbot-world-trailer.mp4" poster="assets/mumbot-world-trailer-poster.jpg" controls playsinline preload="metadata"></video>
-    </div>
-  </section>
-
-
-  <!-- ============ 08 EVOLUTION / WIP ============ -->
-  <section data-label="Evolution / WIP" class="bg-bark grain evolution">
-    <div class="corner-mark tl mono">VIII &middot; EVOLUTION / WIP</div>
-    <div class="corner-mark tr mono">THE HUB IS BECOMING A VENUE</div>
-
-    <div class="sketch">
-      <img src="assets/interactive-hub-brainstorm.webp" alt="Brainstorm sketch for the Mumbot World Web interactive hub" data-deck-fade-ms="5000" />
-    </div>
-
-    <div class="content">
-      <div class="eyebrow" style="color: var(--ember); margin-bottom: 18px;">WHERE THE DESIGN IS MOVING</div>
-      <h2 class="mumbot">From brainstorm<br/>to living hub.</h2>
-      <p class="lede">The core pillars stay intact, but the format is evolving from a solo demo into a shared online place: timed gatherings, artist drops, unlockable moments, and listening rooms for music and podcasts.</p>
-
-      <div class="evolution-grid">
-        <div class="evo-card">
-          <div class="num">01</div>
-          <h3 class="mumbot">Shared online space.</h3>
-          <p>A low-friction place to meet, wander, sit by the fire, and feel present together.</p>
-        </div>
-        <div class="evo-card">
-          <div class="num">02</div>
-          <h3 class="mumbot">Unlockables.</h3>
-          <p>Soft rewards tied to exploration, events, collaborations, and returning to the world.</p>
-        </div>
-        <div class="evo-card">
-          <div class="num">03</div>
-          <h3 class="mumbot">Timed events.</h3>
-          <p>Seasonal happenings, campfire moments, and live windows that make the forest feel alive.</p>
-        </div>
-        <div class="evo-card">
-          <div class="num">04</div>
-          <h3 class="mumbot">Artist collaborations.</h3>
-          <p>Guest artists can leave objects, rituals, sounds, and temporary places inside the hub.</p>
-        </div>
-        <div class="evo-card">
-          <div class="num">05</div>
-          <h3 class="mumbot">Listening spaces.</h3>
-          <p>Music and podcast rooms built for hanging out, not scrolling past.</p>
-        </div>
-        <div class="evo-card">
-          <div class="num">06</div>
-          <h3 class="mumbot">WIP map.</h3>
-          <p>The sketch is the operating map: a flexible venue layered on top of the world.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ============ 09 MUMBOT WORLD WEB ============ -->
-  <section data-label="Mumbot World Web" class="bg-parchment grain web-intro">
-    <div class="corner-mark tl mono">IX · NEXT STEP</div>
-    <div class="corner-mark tr mono">OPEN WEB</div>
-
-    <div class="eyebrow">FROM PROTOTYPE TO PLATFORM</div>
-    <h2 class="title mumbot">MUMBOT WORLD<span class="web">Web</span></h2>
-    <p class="lede">The forest moves to the browser, shareable, multiplayer, and built for everyone who has a link.</p>
-  </section>
-
-
-  <!-- ============ 10 THE WORLD ============ -->
-  <section data-label="The World" class="bg-bark grain world">
-    <div class="corner-mark tl mono">X · THE WORLD</div>
-    <div class="corner-mark tr mono">A LIVING ECOSYSTEM</div>
-
-    <div>
-      <div class="eyebrow" style="color: var(--blush); margin-bottom: 26px;">SETTING &amp; MOOD</div>
-      <h2 class="mumbot">A soft<br/>but strange<br/>world.</h2>
-      <p class="lede">
-        The forest is the home of <strong>ghosts, forest spirits, mushroom beings, moss creatures, crystal spirits, skulls and bees</strong>, beings that feel both playful and slightly mysterious.
-      </p>
-      <p class="lede" style="margin-top: 22px;">
-        The tone is <em>gentle, curious, cozy, a little haunted</em>. Not horror, even when ghosts and skulls appear. More like a living ecosystem of friendship, growth, nature, memory and imagination.
-      </p>
-
-      <div class="feels">
-        <span>cozy</span><span>haunted</span><span>handmade</span>
-        <span>curious</span><span>ancient</span><span>strange-beautiful</span>
-      </div>
-    </div>
-
-    <div class="slot-frame" style="height: 760px;">
-      <image-slot id="world-mood" shape="rect" src="assets/web-campfire-night.png" placeholder="Drop a wide world / forest screenshot"></image-slot>
-      <div class="slot-caption">FIG. 01 · WORLD MOOD, DROP A FOREST CAPTURE</div>
-    </div>
-  </section>
-
-
-  <!-- ============ 11 CHARACTERS ============ -->
-  <section data-label="Characters" class="bg-bark grain chars">
-    <div class="corner-mark tl mono">XI · CHARACTERS</div>
+<section data-label="World &amp; Characters" class="bg-bark grain chars">
+    <div class="corner-mark tl mono">III · WORLD &AMP; CHARACTERS</div>
     <div class="corner-mark tr mono">SPIRITS · FRIENDS · GHOSTS</div>
 
     <header>
-      <h2 class="mumbot">Friends in the forest.</h2>
-      <p>A small cast of beings, each carrying a different part of the world's mood. Not enemies to defeat, friendships to be earned.</p>
+      <h2 class="mumbot">Friends in the forest</h2>
+      <p>A magical forest connected by a portal in a tree to a distant human future. Meet the characters at the heart of Mumbot’s artwork, toys and stories.</p>
     </header>
 
     <div class="grid">
@@ -1632,7 +1563,7 @@
         <div class="slot-frame">
           <image-slot id="char-girl" shape="rect" src="assets/char-girl.jpg" placeholder="Girl From the Forest Floor"></image-slot>
         </div>
-        <div class="name mumbot">Girl From the Forest Floor</div>
+        <div class="name mumbot">Girl From<br/>the Forest Floor</div>
         <div class="role">PROTAGONIST · WANDERER</div>
         <p class="bio">A child of the woods who walks softly between worlds, gathering small mysteries and small kindnesses.</p>
       </div>
@@ -1664,162 +1595,106 @@
         <p class="bio">A mushroom being from the deeper grove. Curious, watchful, and slightly fluorescent after dark.</p>
       </div>
     </div>
-  </section>
+  <p class="characters-caption">THE SAME CHARACTERS, ACROSS DRAWING, DIGITAL ART AND COLLECTIBLES</p>
+</section>
 
-
-  <!-- ============ 12 GAMEPLAY PILLARS ============ -->
-  <section data-label="Gameplay" class="bg-bark grain pillars">
-    <div class="corner-mark tl mono">XII · GAMEPLAY</div>
+<section data-label="Visitor Experience" class="bg-bark grain pillars">
+    <div class="corner-mark tl mono">IV · VISITOR EXPERIENCE</div>
     <div class="corner-mark tr mono">FOUR PILLARS</div>
 
     <header>
       <div class="eyebrow" style="color: var(--ember); margin-bottom: 22px;">WHAT YOU DO IN MUMBOT WORLD WEB</div>
-      <h2 class="mumbot">Chill · Explore · Befriend · Unlock.</h2>
-      <p class="lede">No combat, no fail-states, no leaderboard. Mumbot World Web is built around four soft loops, quiet activities that reward attention rather than reaction.</p>
+      <h2 class="mumbot">Chill · Explore · Befriend · Unlock</h2>
+      <p class="lede">A proposed first visit: arrive at the campfire, meet a spirit and follow a short trail to an artwork or gathering.</p>
     </header>
 
     <div class="grid">
       <div class="pillar p1">
         <div class="num">01</div>
-        <h3 class="mumbot">Chill.</h3>
-        <p>Sit by the fire, listen to the forest, watch the light move. The world is meant to be lived in slowly, presence is its own reward.</p>
+        <h3 class="mumbot">Chill</h3>
+        <p>Sit by the fire, listen to the forest and spend time together at your own pace.</p>
       </div>
       <div class="pillar p2">
         <div class="num">02</div>
-        <h3 class="mumbot">Explore.</h3>
-        <p>Wander a hand-built ancient woodland of clearings, glades, caves and stranger places. Every corner has been touched by hand.</p>
+        <h3 class="mumbot">Explore</h3>
+        <p>Follow woodland paths to hidden artwork, clearings and portals into other parts of the world.</p>
       </div>
       <div class="pillar p3">
         <div class="num">03</div>
-        <h3 class="mumbot">Befriend.</h3>
-        <p>Listen, gift, sit awhile. Each spirit has its own rhythm, earn trust and they will open small pockets of the world to you.</p>
+        <h3 class="mumbot">Befriend</h3>
+        <p>Meet the forest’s spirits. Small interactions reveal their personalities and stories.</p>
       </div>
       <div class="pillar p4">
         <div class="num">04</div>
-        <h3 class="mumbot">Unlock.</h3>
-        <p>Quiet mysteries, special encounters, and portals, moss that remembers, stones that hum on the right night, and doorways to the distant future.</p>
+        <h3 class="mumbot">Unlock</h3>
+        <p>Discover keepsakes and special encounters through exploration and community events.</p>
       </div>
     </div>
-  </section>
+  <p class="return-line"><strong>A reason to return:</strong> new guest artwork, seasonal discoveries and scheduled gatherings.</p>
+</section>
 
+<section data-label="Browser Prototype" class="bg-bark grain prototype rev">
+<div class="corner-mark tl mono">V · BROWSER PROTOTYPE</div>
+<div class="corner-mark tr mono">IN DEVELOPMENT · PHASE 01</div>
 
-  <!-- ============ 13 TECH ============ -->
-  <section data-label="Tech" class="bg-bark grain tech">
-    <div class="corner-mark tl mono">XIII · TECH &amp; PLATFORM</div>
-    <div class="corner-mark tr mono">BUILT FOR EVERYONE</div>
+  <div class="prototype-copy">
+    <div class="eyebrow">THE FOREST ON THE OPEN WEB</div>
+    <h2 class="mumbot">The browser<br/>prototype</h2>
+    <p class="lede">The forest’s visual direction is taking shape in a browser build. Phase 01 turns that work into a joinable experience for visitors.</p>
+    <div class="status-row"><span>IN DEVELOPMENT</span><p>Forest scenes, character presentation and the mood of the campfire.</p></div>
+    <div class="status-row"><span>PHASE 01 DELIVERY</span><p>A playable route, shared-play foundations and testing on a defined set of browsers and devices.</p></div>
+    <div class="status-row"><span>VALIDATION</span><p>Playtests will establish join reliability, performance and how visitors use the world together.</p></div>
+  </div>
+  <figure class="prototype-image"><img src="assets/web-campfire-night.png" alt="Mumbot World browser prototype: characters gathered around a campfire"/><figcaption>BROWSER PROTOTYPE · FOREST ATMOSPHERE</figcaption></figure>
 
-    <header>
-      <h2 class="mumbot">No download.<br/>Just a URL.</h2>
-      <p>We built Mumbot World Web on the open web so that anyone, on any device, can step into the forest. Easy to drop into and built to hang out in together, those aren't features, they're the foundation.</p>
-    </header>
+</section>
 
-    <div class="grid">
-      <div class="panel">
-        <div class="label">RUNTIME · 01</div>
-        <h3 class="mumbot">3D on the open web</h3>
-        <p>A WebGL runtime that runs in any modern browser, desktop, laptop, tablet, low-end machines. Share the world with a link.</p>
-        <div class="stack" style="margin-top: 32px;">
-          <div class="stack-row"><span>renderer</span><span>three.js / WebGL2</span></div>
-          <div class="stack-row"><span>delivery</span><span>web · no install</span></div>
-          <div class="stack-row"><span>devices</span><span>desktop · tablet · mobile</span></div>
-          <div class="stack-row"><span>assets</span><span>handcrafted 3D · spirits</span></div>
-        </div>
-      </div>
-
-      <div class="panel">
-        <div class="label">EASE OF ACCESS · 02</div>
-        <h3 class="mumbot">No install.</h3>
-        <p>You don't download a launcher, you don't make a login, you don't queue for a server. Click a link, you're in. Works on the laptop you already own, the phone in your pocket, the friend's screen you're borrowing.</p>
-        <p style="margin-top: 24px; color: var(--spirit); font-family: var(--font-futura); font-size: 24px; letter-spacing: 0.18em; text-transform: uppercase;">Open a link · step into the forest</p>
-      </div>
-
-      <div class="panel">
-        <div class="label">MULTIPLAYER · 03</div>
-        <h3 class="mumbot">Together, gently.</h3>
-        <p>Small shared worlds where players bump into each other softly. Co-presence is the point, wave at a stranger, sit at the campfire, walk a path together.</p>
-        <p style="margin-top: 24px; color: var(--ember); font-family: var(--font-futura); font-size: 24px; letter-spacing: 0.18em; text-transform: uppercase;">A campfire online</p>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ============ 14 VIBE, campfire ============ -->
-  <section data-label="Vibe" class="bg-bark grain vibe">
-    <div class="corner-mark tl mono">XIV · WHAT IT FEELS LIKE</div>
-    <div class="corner-mark tr mono">A CAMPFIRE ONLINE</div>
+<section data-label="Origin" class="bg-bark grain origin">
+    <div class="corner-mark tl mono">VI · ORIGIN</div>
+    <div class="corner-mark tr mono">JADE × CYRUS</div>
 
     <div class="left">
-      <div class="eyebrow" style="color: var(--ember); margin-bottom: 26px;">THE FEELING WE'RE PROTECTING</div>
-      <blockquote>
-        "Not a game you beat.<br/>A place you visit".
-      </blockquote>
-      <h2 class="mumbot">A campfire,<br/>online.</h2>
-      <p>Mumbot World Web is built around a single emotional north star: a small, magical, handmade universe you can step into when the rest of the world is too loud. A place to rest, befriend, wander, and gently belong.</p>
-    </div>
-
-    <div class="right">
-      <div class="slot-frame">
-        <image-slot id="vibe-campfire" shape="rect" src="assets/web-campfire-night.png" placeholder="In-game atmosphere · night · campfire"></image-slot>
-        <div class="slot-caption">FIG. 03 · WEB BUILD · ATMOSPHERE</div>
+  <div class="eyebrow" style="color:var(--blush);margin-bottom:22px">JADE KUEI × CYRUS JAMES KHAN</div>
+  <h2 class="mumbot">It started<br/>with mycelium</h2>
+  <p><strong>Jade Kuei (MUMBOT)</strong> created the characters and stories behind a universe of artwork, toys and collectibles.</p>
+  <p>Her collaboration with <strong>Cyrus James Khan</strong>, <em>Mycelium on the Block</em>, brought that universe into 3D.</p>
+  <p>Jade leads the characters and storytelling. Cyrus develops the environments, lighting and interactive experience.</p>
+</div><div class="right">
+      <div class="mycelium-frame">
+        <img src="assets/origin-mumbot-cjk.png" alt="Mycelium on the Block collaboration artwork" />
       </div>
-      <div class="fire"></div>
+      <div class="caption">MYCELIUM ON THE BLOCK</div>
     </div>
   </section>
 
+<section data-label="Audience & Releases" class="bg-bark grain audience rev">
+<div class="corner-mark tl mono">VII · AUDIENCE & RELEASES</div>
+<div class="corner-mark tr mono">EXISTING MUMBOT ACTIVITY</div>
 
-  <!-- ============ 15 JOURNEY ============ -->
-  <section data-label="Journey" class="bg-bark grain journey">
-    <div class="corner-mark tl mono">XV · JOURNEY</div>
-    <div class="corner-mark tr mono">FROM MYCELIUM → WEB</div>
-
-    <header>
-      <h2 class="mumbot">A patient walk<br/>through the forest.</h2>
-      <p>The Mumbot World Game Demo took its first shape in Unreal Engine in 2021. Life got in the way, we paused, we picked it back up. Today it lives as Mumbot World Web, built on three.js, easy to drop into, shared from day one, and multiplayer from the ground up.</p>
-    </header>
-
-    <div class="timeline">
-      <div class="row">
-        <div class="tstop">
-          <div class="year">2021, 22</div>
-          <h4 class="mumbot">First seed.</h4>
-          <p>Initial Mumbot World Game Demo in Unreal Engine. The mood, the protagonist, the portal-in-a-tree all take shape.</p>
-        </div>
-        <div class="tstop">
-          <div class="year">2023, 24</div>
-          <h4 class="mumbot">Quiet years.</h4>
-          <p>Life pulls in other directions. The world sleeps but doesn't disappear, concept art, lore, music continue in the background.</p>
-        </div>
-        <div class="tstop">
-          <div class="year">2025</div>
-          <h4 class="mumbot">Re-awakening.</h4>
-          <p>Project resumes. We re-evaluate the format and ask a simple question: how do we get more people inside this world?</p>
-        </div>
-        <div class="tstop">
-          <div class="year">2026</div>
-          <h4 class="mumbot">Pivot to web.</h4>
-          <p>Mumbot World Web rebuilt on three.js. Frictionless to join, multiplayer baked in from day one. The barrier to entry becomes a URL.</p>
-        </div>
-        <div class="tstop now">
-          <div class="year">NOW</div>
-          <h4 class="mumbot">Phase 01 demo.</h4>
-          <p>A first demo people can join. A campfire online. The seed of everything that comes next.</p>
-        </div>
-      </div>
+  <header class="rev-head"><h2 class="mumbot">Audience<br/>and releases</h2><p>Mumbot’s artwork, products and Ghost Club community provide a starting audience for the browser world.</p></header>
+  <div class="audience-body">
+    <figure><img src="assets/gfff-kickstarter.jpg" alt="Girl From the Forest Floor vinyl figure campaign artwork"/><figcaption>GIRL FROM THE FOREST FLOOR · VINYL FIGURE</figcaption></figure>
+    <div class="audience-facts">
+      <div class="campaign-amount">$37,261</div><div class="fact-label">PLEDGED BY 156 BACKERS</div>
+      <p>The figure campaign exceeded its US$33,000 goal. Created by Clutter Magazine, March–April 2026.</p>
+      <div class="evidence-line"><strong>Character products</strong><p>Art, figures, plush and apparel already give people ways to collect the world.</p></div>
+      <div class="evidence-line"><strong>Ghost Club</strong><p>An existing creative community to invite into early gatherings and playtests.</p></div>
     </div>
-  </section>
+  </div>
+  <footer class="source-line"><span>Physical-product support; browser participation and repeat visits remain to be tested.</span><span><a href="https://www.kickstarter.com/projects/clutter/mumbots-girl-from-the-forest-floor-vinyl-figure" target="_blank" rel="noopener noreferrer">Campaign ↗</a> · <a href="https://mumbotworld.com/" target="_blank" rel="noopener noreferrer">Mumbot World ↗</a></span></footer>
 
+</section>
 
-  <!-- ============ 16 LIVE EXPERIENCE ============ -->
-  <section data-label="Live Experience" class="bg-bark grain live">
-    <div class="corner-mark tl mono">XVI · LIVE EXPERIENCE</div>
+<section data-label="Live Experience" class="bg-bark grain live">
+    <div class="corner-mark tl mono">VIII · LIVE EXPERIENCE</div>
     <div class="corner-mark tr mono">ZEROSPACE · NYC</div>
 
     <header>
       <div>
         <div class="eyebrow" style="color: var(--ember); margin-bottom: 22px;">FIELD TEST · NFT.NYC · ZEROSPACE STUDIO</div>
-        <h2 class="mumbot">We've already<br/>lit the fire.</h2>
+        <h2 class="mumbot">Mumbot World<br/>at Zerospace</h2>
       </div>
-      <p>During NFT.NYC we were invited into <strong style="color:var(--cream); font-weight:500;">Zerospace Studio's</strong> virtual production facility, and we took the chance to find out what the world feels like at scale.</p>
+      <p>At <strong style="color:var(--cream);font-weight:500">Zerospace Studio in NYC</strong>, the early Unreal world became a shared physical setting during NFT.NYC.</p>
     </header>
 
     <div class="stage">
@@ -1834,29 +1709,104 @@
     <div class="meta">
       <div class="col">
         <div class="lbl">WHERE</div>
-        <h4 class="mumbot">Zerospace, NYC.</h4>
-        <p>A virtual production stage, huge LED walls, room for everyone, lit by the world itself.</p>
+        <h4 class="mumbot">Zerospace, NYC</h4>
+        <p>A virtual production stage with large LED walls displaying the forest.</p>
       </div>
       <div class="col">
         <div class="lbl">WHAT</div>
-        <h4 class="mumbot">Improvised &amp; immersive.</h4>
+        <h4 class="mumbot">A shared campfire</h4>
         <p>We projected the Mumbot World Game Demo onto the stage and gathered friends to sit together around the digital campfire.</p>
       </div>
       <div class="col">
         <div class="lbl">WHY IT MATTERED</div>
-        <h4 class="mumbot">Proof of cozyness.</h4>
-        <p>The world held the room. People stayed, hung out, and we got to experiment with framings the screen alone can't reach.</p>
+        <h4 class="mumbot">Beyond the screen</h4>
+        <p>The installation demonstrates a format to adapt for galleries, exhibitions and live events.</p>
       </div>
     </div>
   </section>
 
+<section data-label="Hub Possibilities" class="bg-bark grain evolution">
+    <div class="corner-mark tl mono">IX · HUB POSSIBILITIES</div>
+    <div class="corner-mark tr mono">LONG-TERM POSSIBILITIES</div>
 
-  <!-- ============ 17 TEAM ============ -->
-  <section data-label="Core Team" class="bg-bark grain team">
-    <div class="corner-mark tl mono">XVII · CORE TEAM</div>
+    <div class="sketch">
+      <img src="assets/interactive-hub-brainstorm.png" alt="Mumbot World(s) interactive hub brainstorm: timed events, XR experiences, art shows, digital and physical limited drops, Ghost Club events, skins and items, collaborations, a gallery, portals, giving and aid, scavenger hunts, a 3D game, 2D mini games, mini quests, workshops, panels, guest DJs, live music sessions and podcasts" data-deck-fade-ms="5000" />
+    </div>
+
+    <div class="content">
+      <div class="eyebrow" style="color: var(--ember); margin-bottom: 18px;">BEYOND THE FIRST PLAYABLE HUB</div>
+      <h2 class="mumbot">A world with<br/>room to grow</h2>
+      <p class="lede">The brainstorm explores what the hub could become. These directions extend beyond Phase 01 and will be shaped by visitor response and creative partnerships.</p>
+
+      <div class="evolution-grid">
+        <div class="evo-card">
+          <div class="num">01</div>
+          <h3 class="mumbot">Shared online space</h3>
+          <p>Meet, wander and gather around a shared campfire.</p>
+        </div>
+        <div class="evo-card">
+          <div class="num">02</div>
+          <h3 class="mumbot">Unlockables</h3>
+          <p>Keepsakes discovered through exploration and events.</p>
+        </div>
+        <div class="evo-card">
+          <div class="num">03</div>
+          <h3 class="mumbot">Timed events</h3>
+          <p>Seasonal happenings and scheduled community gatherings.</p>
+        </div>
+        <div class="evo-card">
+          <div class="num">04</div>
+          <h3 class="mumbot">Artist collaborations</h3>
+          <p>Guest artwork, installations and temporary spaces in the forest.</p>
+        </div>
+        <div class="evo-card">
+          <div class="num">05</div>
+          <h3 class="mumbot">Listening spaces</h3>
+          <p>Listening sessions, podcasts and live music shared in the world.</p>
+        </div>
+        <div class="evo-card">
+          <div class="num">06</div>
+          <h3 class="mumbot">Gallery &amp; releases</h3>
+          <p>Exhibitions and collectible releases connected to the artists behind them.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section data-label="Potential Revenue" class="bg-bark grain revenue rev">
+<div class="corner-mark tl mono">X · POTENTIAL REVENUE</div>
+<div class="corner-mark tr mono">PROPOSED MODELS TO TEST</div>
+
+  <header class="rev-head"><h2 class="mumbot">Potential<br/>revenue streams</h2><p>We plan to test collectible releases and paid creative partnerships as ways to support the world.</p></header>
+  <div class="revenue-table">
+    <div class="revenue-row"><div class="revenue-name"><span>01</span><h3 class="mumbot">Collectibles</h3></div><p><strong>Collectors buy</strong> physical editions and, later, optional digital items rooted in Mumbot’s characters.</p><p class="revenue-example">Figures, plush and prints; matching keepsakes or cosmetics when saved ownership is ready.</p></div>
+    <div class="revenue-row"><div class="revenue-name"><span>02</span><h3 class="mumbot">Creative<br/>partnerships</h3></div><p><strong>Brands, galleries and labels commission</strong> gatherings, guest spaces and artist releases.</p><p class="revenue-example">A production fee with a defined scope, hosting period and agreed sales share where relevant.</p></div>
+    <div class="revenue-row"><div class="revenue-name"><span>03</span><h3 class="mumbot">Installations</h3></div><p><strong>Venues and event organizers pay</strong> to adapt and present the world in physical spaces.</p><p class="revenue-example">Gallery launches, art-toy fairs and music events, including setup and support.</p></div>
+  </div>
+  <div class="revenue-next"><p><strong>First tests:</strong> one collectible release and one paid partner experience.</p><p><strong>Later possibilities:</strong> patron memberships, workshops and additional digital purchases, guided by repeat visitation.</p></div>
+
+</section>
+
+<section data-label="Partner Experience" class="bg-bark grain partnership rev">
+<div class="corner-mark tl mono">XI · PARTNER EXPERIENCE</div>
+<div class="corner-mark tr mono">ILLUSTRATIVE SPONSOR PACKAGE</div>
+
+  <figure class="partner-art"><img src="assets/mumbot-denim-coffee.jpg" alt="COZY MOMENTS by Mumbot artwork from the Denim Coffee collaboration"/><figcaption>EXISTING ARTWORK · DENIM COFFEE × MUMBOT</figcaption></figure>
+  <div class="partner-copy"><div class="eyebrow">A NATURAL PLACE FOR A PARTNER</div><h2 class="mumbot">Ghost Coffee<br/>at the campfire</h2>
+    <p class="lede">A proposed artist conversation or listening session, supported by a coffee or tea partner and paired with a collectible release.</p>
+    <div class="partner-detail"><h3>What the partner commissions</h3><p>A hosted gathering, artwork for the release, promotional materials and a defined period in the world.</p></div>
+    <div class="partner-detail"><h3>How it earns</h3><p>A production and hosting fee, with any product sales share agreed separately.</p></div>
+    <div class="partner-detail"><h3>What we measure</h3><p>Attendance, repeat visits, shop referrals, attributable sales and the cost to deliver.</p></div>
+    <p class="partner-source">Denim Coffee’s existing Mumbot release pairs a physical product with digital art. This event package is a new proposal.<br/><a href="https://denimcoffee.com/collections/artist-collab-series/products/cozy-moments-by-mumbot" target="_blank" rel="noopener noreferrer">View the existing collaboration ↗</a></p>
+  </div>
+
+</section>
+
+<section data-label="Core Team" class="bg-bark grain team">
+    <div class="corner-mark tl mono">XII · CORE TEAM</div>
     <div class="corner-mark tr mono">TWO PEOPLE · ONE WORLD</div>
 
-    <h2 class="mumbot">Made by two stubborn hands.</h2>
+    <h2 class="mumbot">The creators of<br/>Mumbot World</h2>
 
     <div class="grid">
       <div class="person">
@@ -1866,14 +1816,7 @@
         <div>
           <div class="name mumbot">Cyrus James Khan</div>
           <div class="role">LEAD DEVELOPER · TECH &amp; 3D ART DIRECTION</div>
-          <ul>
-            <li>15+ years as digital artist, 3D generalist and technologist</li>
-            <li>Directs the 3D art, lighting, look-dev, mood &amp; atmosphere</li>
-            <li>Environments, animation, pipelines, programming, Unreal &amp; web 3D</li>
-            <li>Translates Jade's 2D universe into a place you can walk through</li>
-            <li>Developing his own IP including independent video games, immersive VR pieces, and live performances and installations.</li>
-            <li>Produced interactive works for National Geographic, Okinawa Institute of Science and Technology, and Central Group. Has worked with numerous production studios such as Kantana, Unformat, StudioX and Supreme.</li>
-          </ul>
+          <ul><li>15+ years across digital art, interactive work and 3D production</li><li>Leads development, environments, lighting and technical art</li><li>Produced interactive work for National Geographic, Okinawa Institute of Science and Technology, and Central Group</li></ul>
         </div>
       </div>
 
@@ -1884,24 +1827,246 @@
         <div>
           <div class="name mumbot">Jade Kuei, MUMBOT</div>
           <div class="role">ART DIRECTOR · WORLD BUILDER · IP CREATOR</div>
-          <ul>
-            <li>17+ years of world-building, storytelling &amp; IP development</li>
-            <li>Creator of the MUMBOT universe, characters, mythology &amp; the 2D world it all springs from</li>
-            <li>Established multimedia artist across paintings, toys &amp; illustration</li>
-            <li>Holds the soul of the world as it expands into new media</li>
-          </ul>
+          <ul><li>Creator of the Mumbot characters, mythology and visual universe</li><li>Leads storytelling, character art and the world’s creative direction</li><li>Established practice across original artwork, toys, apparel and the Ghost Club community</li></ul>
+        </div>
+      </div>
+    </div>
+  <p class="team-footer">ADDITIONAL MUSIC AND VOICE CONTRIBUTORS · SEE APPENDIX A7</p>
+</section>
+
+<section data-label="Delivery Plan" class="bg-bark grain delivery rev">
+<div class="corner-mark tl mono">XIII · DELIVERY PLAN</div>
+<div class="corner-mark tr mono">PROPOSED SCHEDULE · FROM FUNDING</div>
+
+  <header class="rev-head"><h2 class="mumbot">Phase 01<br/>delivery plan</h2><p>A six-month plan for a joinable web demo, with reviewable milestones for the core experience and shared play.</p></header>
+  <div class="delivery-phases">
+    <div class="delivery-phase"><div class="detail-label">MONTHS 0–2</div><h3 class="mumbot">The core forest</h3><p>Build the first playable route, introduce the characters and establish the campfire interactions.</p><div class="milestone"><strong>Milestone</strong>A playable walkthrough of the core experience.</div></div>
+    <div class="delivery-phase"><div class="detail-label">MONTHS 3–4</div><h3 class="mumbot">Shared play</h3><p>Develop joinable sessions and a first gathering format. Integrate agreed music and voice work.</p><div class="milestone"><strong>Milestone</strong>A hosted playtest with multiple visitors.</div></div>
+    <div class="delivery-phase"><div class="detail-label">MONTHS 5–6</div><h3 class="mumbot">Test &amp; open</h3><p>Test supported devices, improve performance and prepare the first community pilot.</p><div class="milestone"><strong>Milestone</strong>A joinable demo with playtest findings and operating-cost estimates.</div></div>
+  </div>
+  <div class="delivery-later"><strong>AFTER PHASE 01</strong><p>Test a collectible release and a paid partner experience. Use repeat visits, feedback and delivery costs to decide which parts of the hub to expand.</p></div>
+
+</section>
+
+<section data-label="The Ask" class="bg-bark grain funding rev">
+<div class="corner-mark tl mono">XIV · THE ASK</div>
+<div class="corner-mark tr mono">PHASE 01 · PLANNING RANGE</div>
+
+  <div class="funding-copy"><div class="eyebrow">BUILD THE FIRST JOINABLE HUB</div><h2 class="mumbot">Fund the<br/>first chapter</h2>
+    <div class="funding-amount"><span>US$</span>30,000–50,000</div>
+    <p class="lede">Six months of development toward a playable browser demo and shared-play foundations.</p>
+    <div class="funding-scope"><h3>At US$30,000</h3><p>Prioritize the core forest route, initial interactions, shared sessions and essential testing.</p></div>
+    <div class="funding-scope"><h3>Up to US$50,000</h3><p>Expand character animation and sound, with more device testing and community playtests.</p></div>
+    <p class="funding-note">Proposed scope and allocation; the final production budget will be agreed with the funding partner.</p>
+  </div>
+  <div class="funding-allocation"><h3 class="allocation-title">PROPOSED USE OF FUNDS</h3>
+    <div class="funding-row"><b>40%</b><div><strong>Development &amp; engineering</strong><p>Core experience, shared play and testing</p></div></div>
+    <div class="funding-row"><b>25%</b><div><strong>Art &amp; animation</strong><p>Characters, environments and interactions</p></div></div>
+    <div class="funding-row"><b>20%</b><div><strong>Music &amp; voices</strong><p>Agreed recordings and original sound</p></div></div>
+    <div class="funding-row"><b>10%</b><div><strong>Hosting &amp; operations</strong><p>Shared sessions and pilot support</p></div></div>
+    <div class="funding-row"><b>5%</b><div><strong>Contingency</strong><p>Unplanned production costs</p></div></div>
+    <p class="allocation-result"><strong>Delivery evidence</strong><br/>Playable builds, a hosted community playtest and a report on performance and recurring costs.</p>
+  </div>
+
+</section>
+
+<section data-label="Closing" class="bg-parchment grain closing">
+    <div class="corner-mark tl mono">XV · CLOSING</div>
+    <div class="corner-mark tr mono">MAIN PRESENTATION · 15 SLIDES</div>
+
+    <h2 class="mumbot">Thank you for<br/>walking with us</h2>
+    <p class="invite">Contact us to discuss Phase 01 funding or a creative partnership.</p>
+
+    <div class="contacts">
+  <span>Jade Kuei · MUMBOT<b>ART DIRECTOR · IP CREATOR</b></span>
+  <span>Cyrus James Khan<b>DEVELOPMENT · TECH &amp; 3D</b></span>
+</div><div class="closing-links"><a href="mailto:jade@mumbotworld.com">jade@mumbotworld.com</a><a href="https://mumbotworld.com/" target="_blank" rel="noopener noreferrer">mumbotworld.com ↗</a></div>
+<p class="appendix-note">APPENDIX FOLLOWS · ARTWORK, PROTOTYPES &amp; PRODUCTION DETAILS</p>
+  </section>
+
+<section data-label="A1 · Concepts" data-appendix="true" class="bg-bark grain wip concepts">
+    <div class="corner-mark tl mono">APPENDIX A1 · CONCEPTS</div>
+    <div class="corner-mark tr mono">FROM THE SKETCHBOOK</div>
+
+    <div class="head">
+      <div>
+        <div class="eyebrow" style="color: var(--ember); margin-bottom: 18px;">DRAWINGS · PAINTINGS · BRAINSTORMS</div>
+        <h2 class="mumbot">The world on paper</h2>
+      </div>
+      <p>Jade’s drawings establish the forest, its characters and the stories behind them.</p>
+    </div>
+
+    <div class="concepts-sheet">
+      <img src="assets/concept-sketchbook-sheet.png" alt="Mumbot World sketchbook sheet — world map, tree lab, Old Grey's Grove campfire, character turnarounds, and item reaction brainstorms" />
+    </div>
+  </section>
+
+<section data-label="A2 · 3D WIP" data-appendix="true" class="bg-bark grain wip">
+    <div class="corner-mark tl mono">APPENDIX A2 · 3D WIP</div>
+    <div class="corner-mark tr mono">IN-VIEWPORT · 3D</div>
+
+    <div class="head">
+      <div>
+        <div class="eyebrow" style="color: var(--spirit); margin-bottom: 18px;">MODELING · SCULPTING · LOOK-DEV</div>
+        <h2 class="mumbot">The world taking shape</h2>
+      </div>
+      <p>A selection of <strong>characters, props and environments</strong> developed for the Mumbot world, from modeling through rigging and look development.</p>
+    </div>
+
+    <div class="wip-collage">
+      <div class="collage-cell c2"><img src="assets/slide10-collage-02-clay-forest.webp" alt="Clay render of forest campfire scene" /></div>
+      <div class="collage-cell c3"><img src="assets/slide10-collage-03-color-forest.webp" alt="Color forest scene with Mossy and bee" /></div>
+      <div class="collage-cell c4"><img src="assets/slide10-collage-04-tree-portal.webp" alt="Portal tree viewport model" /></div>
+      <div class="collage-cell c5"><img src="assets/slide10-collage-05-tree-model.webp" alt="Textured tree model viewport" /></div>
+      <div class="collage-cell c6"><img src="assets/slide10-collage-06-tree-views.webp" alt="Tree orthographic viewport views" /></div>
+      <div class="collage-cell c7"><img src="assets/slide10-collage-07-mossy-views.webp" alt="Mossy orthographic viewport views" /></div>
+      <div class="collage-cell c8"><img src="assets/slide10-collage-08-girl-rig.webp" alt="Girl character rig in viewport" /></div>
+      <div class="collage-cell c9"><img src="assets/slide10-collage-09-chair.webp" alt="Wood chair model viewport views" /></div>
+      <div class="collage-cell c10"><img src="assets/slide10-collage-10-bee.webp" alt="Bee model viewport views" /></div>
+      <div class="collage-cell c11"><img src="assets/slide10-collage-11-book-views.webp" alt="Book model viewport views" /></div>
+      <div class="collage-cell c12"><img src="assets/slide10-collage-12-books-open.webp" alt="Open book model viewport" /></div>
+      <div class="collage-cell c13"><img src="assets/slide10-collage-13-marudo-rig.webp" alt="Marudo character model viewport" /></div>
+      <div class="collage-cell c14"><img src="assets/slide10-collage-14-cloak-views.webp" alt="Cloak model viewport views" /></div>
+      <div class="collage-cell c15"><img src="assets/slide10-collage-15-mossy-close.webp" alt="Mossy close viewport model" /></div>
+      <div class="collage-cell c16"><img src="assets/slide10-collage-16-robot.webp" alt="Robot model viewport" /></div>
+    </div>
+  </section>
+
+<section data-label="A3 · Unreal Demo" data-appendix="true" class="bg-bark grain unreal">
+    <div class="corner-mark tl mono">APPENDIX A3 · UNREAL DEMO</div>
+    <div class="corner-mark tr mono">FIRST SEED · 2021</div>
+
+    <div class="head">
+      <div>
+        <div class="eyebrow" style="color: var(--ember); margin-bottom: 18px;">WHERE THE WORLD FIRST BECAME A PLACE</div>
+        <h2 class="mumbot">Early Unreal prototype</h2>
+      </div>
+      <p>The 2021 <strong>Unreal Engine</strong> prototype established the forest’s visual direction, lighting and atmosphere before development moved to the browser.</p>
+    </div>
+
+    <div class="unreal-gallery">
+    <div class="hero">
+      <img src="assets/unreal-campfire-portrait.jpg" alt="Mumbot World Game Demo campfire scene in the forest" />
+      <div class="badge">UNREAL ENGINE · 2021</div>
+    </div>
+
+    <div class="thumbs">
+      <div class="thumb">
+        <img src="assets/unreal-sunset.png" alt="Forest sunset with mushrooms" />
+        <div class="caption">DAYLIGHT · FOREST</div>
+      </div>
+      <div class="thumb">
+        <img src="assets/unreal-hut.webp" alt="Cozy hut interior with fire" />
+        <div class="caption">LAB</div>
+      </div>
+    </div>
+    <div class="thumb wide">
+      <img src="assets/unreal-forest-wide.png" alt="Mumbot World forest at night with campfire, glowing mushrooms and magical lighting" />
+      <div class="caption">FOREST · NIGHT</div>
+    </div>
+    </div>
+  </section>
+
+<section data-label="A4 · Trailer" data-appendix="true" class="bg-bark grain trailer">
+    <div class="corner-mark tl mono">APPENDIX A4 · TRAILER</div>
+    <div class="corner-mark tr mono">MUMBOT WORLD GAME DEMO &middot; 2022</div>
+
+    <div class="head">
+      <div>
+        <div class="eyebrow" style="color: var(--ember); margin-bottom: 18px;">THE WORLD IN MOTION</div>
+        <h2 class="mumbot">Early world<br/>trailer</h2>
+      </div>
+      <p>A 2022 teaser showing the early Unreal world and its visual direction. <a href="https://youtu.be/Vejneoi-ZkU" target="_blank" rel="noopener noreferrer">Watch on YouTube ↗</a></p>
+    </div>
+
+    <div class="trailer-frame">
+      <video src="assets/mumbot-world-trailer.mp4" poster="assets/mumbot-world-trailer-poster.jpg" controls playsinline preload="metadata"></video>
+    </div>
+  </section>
+
+<section data-label="A5 · Tech" data-appendix="true" class="bg-bark grain tech">
+    <div class="corner-mark tl mono">APPENDIX A5 · TECH</div>
+    <div class="corner-mark tr mono">ACCESS &amp; PHASE 01 VALIDATION</div>
+
+    <header>
+      <h2 class="mumbot">Designed for<br/>a browser link</h2>
+      <p>The browser is the delivery platform. Phase 01 will establish supported devices and test the experience of joining and spending time together.</p>
+    </header>
+
+    <div class="grid">
+      <div class="panel">
+        <div class="label">RUNTIME · 01</div>
+        <h3 class="mumbot">3D on the open web</h3>
+        <p>Development uses three.js and WebGL2. Device support will be defined through performance and compatibility testing.</p>
+        <div class="stack" style="margin-top: 32px;">
+          <div class="stack-row"><span>renderer</span><span>three.js / WebGL2</span></div>
+          <div class="stack-row"><span>delivery</span><span>web · no install</span></div>
+          <div class="stack-row"><span>device support</span><span>to be validated</span></div>
+          <div class="stack-row"><span>assets</span><span>handcrafted 3D · spirits</span></div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="label">EASE OF ACCESS · 02</div>
+        <h3 class="mumbot">Simple access</h3>
+        <p>The goal is a direct route into the forest through a shared link. Guest entry and any account features will be tested as part of the first experience.</p>
+        <p style="margin-top: 24px; color: var(--spirit); font-family: var(--font-futura); font-size: 24px; letter-spacing: 0.18em; text-transform: uppercase;">Open a link · step into the forest</p>
+      </div>
+
+      <div class="panel">
+        <div class="label">SHARED PLAY · 03</div>
+        <h3 class="mumbot">Together, gently</h3>
+        <p>Phase 01 develops and tests shared sessions. Join reliability, performance and the needs of hosted gatherings will shape the launch scope.</p>
+        <p style="margin-top: 24px; color: var(--ember); font-family: var(--font-futura); font-size: 24px; letter-spacing: 0.18em; text-transform: uppercase;">A campfire online</p>
+      </div>
+    </div>
+  </section>
+
+<section data-label="A6 · Journey" data-appendix="true" class="bg-bark grain journey">
+    <div class="corner-mark tl mono">APPENDIX A6 · JOURNEY</div>
+    <div class="corner-mark tr mono">FROM MYCELIUM → WEB</div>
+
+    <header>
+      <h2 class="mumbot">Development<br/>milestones</h2>
+      <p>The early Unreal demo established the world’s look and atmosphere. Development now focuses on a browser format and a first joinable community experience.</p>
+    </header>
+
+    <div class="timeline">
+      <div class="row">
+        <div class="tstop">
+          <div class="year">2021–2022</div>
+          <h4 class="mumbot">First seed</h4>
+          <p>Initial Mumbot World Game Demo in Unreal Engine. The mood, the protagonist, the portal-in-a-tree all take shape.</p>
+        </div>
+        <div class="tstop">
+          <div class="year">2023–2024</div>
+          <h4 class="mumbot">Art &amp; lore</h4>
+          <p>Interactive development pauses while concept art, lore and music continue.</p>
+        </div>
+        <div class="tstop">
+          <div class="year">2025</div>
+          <h4 class="mumbot">Re-awakening</h4>
+          <p>Development resumes with a focus on making the world easier to enter and share.</p>
+        </div>
+        <div class="tstop">
+          <div class="year">2026</div>
+          <h4 class="mumbot">Pivot to web</h4>
+          <p>Browser development on three.js, carrying the forest’s visual direction into a new format.</p>
+        </div>
+        <div class="tstop now">
+          <div class="year">NEXT · PHASE 01</div>
+          <h4 class="mumbot">Phase 01 demo</h4>
+          <p>Proposed funded delivery: a tested, joinable demo and shared-play foundations.</p>
         </div>
       </div>
     </div>
   </section>
 
+<section data-label="A7 · Talent Roster" data-appendix="true" class="bg-bark grain talent">
+    <div class="corner-mark tl mono">APPENDIX A7 · TALENT ROSTER</div>
+    <div class="corner-mark tr mono">PLANNED ROSTER · SCOPE TO BE FINALIZED</div>
 
-  <!-- ============ 18 TALENT ============ -->
-  <section data-label="Talent Roster" class="bg-bark grain talent">
-    <div class="corner-mark tl mono">XVIII · TALENT ROSTER</div>
-    <div class="corner-mark tr mono">VOICES &amp; SOUND</div>
-
-    <h2 class="mumbot">The people<br/>lending their voices.</h2>
+    <h2 class="mumbot">Music and voices</h2>
 
     <div class="grid">
       <div class="group">
@@ -1934,129 +2099,11 @@
         </div>
       </div>
     </div>
-  </section>
-
-
-  <!-- ============ 19 ROADMAP ============ -->
-  <section data-label="Roadmap" class="bg-bark grain roadmap">
-    <div class="corner-mark tl mono">XIX · ROADMAP</div>
-    <div class="corner-mark tr mono">WHERE THE GRANT TAKES US</div>
-
-    <h2 class="mumbot">A patient<br/>release plan.</h2>
-    <p class="lede">We don't ship to a marketing calendar, we ship when the world is ready. Here's how Phase 01 unfolds, and where it leads.</p>
-
-    <div class="phases">
-      <div class="phase now">
-        <div class="ph"><span>PHASE 01</span><span class="when">NOW · 0, 6 MO</span></div>
-        <h3 class="mumbot">First demo, joinable.</h3>
-        <ul>
-          <li>Playable web demo people can drop into via a link</li>
-          <li>Core loop: explore · befriend · sit by the campfire</li>
-          <li>Frictionless web access &amp; multiplayer foundations in place</li>
-          <li>First character voices &amp; music recorded</li>
-        </ul>
-      </div>
-
-      <div class="phase">
-        <div class="ph"><span>PHASE 02</span><span class="when">6, 12 MO</span></div>
-        <h3 class="mumbot">Collaborations &amp; events.</h3>
-        <ul>
-          <li>Guest artists &amp; brand collabs bring unique events to the world</li>
-          <li>Collectible/viewable unlockables tied to each collab</li>
-          <li>Seasonal happenings, campfire gatherings, listening sessions</li>
-          <li>Community joins as participants, not customers</li>
-        </ul>
-      </div>
-
-      <div class="phase">
-        <div class="ph"><span>PHASE 03</span><span class="when">12, 24 MO</span></div>
-        <h3 class="mumbot">A growing platform.</h3>
-        <ul>
-          <li>Steady stream of updates &amp; new regions of the forest</li>
-          <li>External support to keep the lights on between collabs</li>
-          <li>Stay true to the “come chill” feeling at scale</li>
-          <li>Reach a “happy place” for this format</li>
-        </ul>
-      </div>
-
-      <div class="phase">
-        <div class="ph"><span>PHASE 04</span><span class="when">24 MO +</span></div>
-        <h3 class="mumbot">Onward, deeper in.</h3>
-        <ul>
-          <li>Optional: evolve toward a more gamified experience</li>
-          <li>Or stay as a sanctuary platform, both endings are good ones</li>
-          <li>Decision driven by community, not roadmap pressure</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ============ 20 ASK ============ -->
-  <section data-label="The Ask" class="bg-bark grain ask">
-    <div class="corner-mark tl mono">XX · THE ASK</div>
-    <div class="corner-mark tr mono">PHASE 01 FUNDING</div>
-
-    <div class="left">
-      <div class="eyebrow" style="color: var(--ember); margin-bottom: 22px;">WHAT WE'RE ASKING FOR</div>
-      <h2 class="mumbot">Help us<br/>go forth.</h2>
-      <p class="lede">A focused grant to build out Phase 01: the first joinable demo, with the easy-access &amp; multiplayer foundations that everything after rests on.</p>
-
-      <div class="amount">
-        <div class="num mumbot">$30, 50k</div>
-      </div>
-      <div class="mono" style="margin-top: 22px; font-size: 24px; letter-spacing: 0.24em; color: var(--parchment); opacity: 0.7;">USD · PHASE 01 · FIRST PLAYABLE</div>
-    </div>
-
-    <div class="right">
-      <h3>HOW THE GRANT GETS SPENT</h3>
-      <div class="alloc">
-        <div class="alloc-row">
-          <div class="pct mumbot">40%</div>
-          <div class="what">Development &amp; engineering<small>three.js build, multiplayer, easy-access systems</small></div>
-          <div class="bar"><i style="width: 100%"></i></div>
-        </div>
-        <div class="alloc-row">
-          <div class="pct mumbot">25%</div>
-          <div class="what">Art, animation &amp; world assets<small>character rigs, environments, spirit behaviours</small></div>
-          <div class="bar"><i style="width: 62%"></i></div>
-        </div>
-        <div class="alloc-row">
-          <div class="pct mumbot">20%</div>
-          <div class="what">Voice &amp; music<small>character voices, original score, ambient sound</small></div>
-          <div class="bar"><i style="width: 50%"></i></div>
-        </div>
-        <div class="alloc-row">
-          <div class="pct mumbot">10%</div>
-          <div class="what">Hosting &amp; infrastructure<small>multiplayer servers for the first season</small></div>
-          <div class="bar"><i style="width: 25%"></i></div>
-        </div>
-        <div class="alloc-row">
-          <div class="pct mumbot">5%</div>
-          <div class="what">Contingency<small>the unknown unknowns of building a world</small></div>
-          <div class="bar"><i style="width: 12%"></i></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ============ 21 CLOSING ============ -->
-  <section data-label="Closing" class="bg-parchment grain closing">
-    <div class="corner-mark tl mono">XXI · THANK YOU</div>
-    <div class="corner-mark tr mono">END · MMBT 001</div>
-
-    <h2 class="mumbot">Thank you for<br/>walking with us.</h2>
-    <p class="invite">There's a portal in a tree, and a small fire just past the clearing. We hope you'll come sit with us.</p>
-
-    <div class="contacts">
-      <span>Jade Kuei, Mumbot<b>ART DIRECTOR · IP CREATOR</b></span>
-      <span>Cyrus James Khan<b>LEAD DEV · TECH DIRECTOR</b></span>
-      <span>The World<b>MUMBOT.WORLD</b></span>
-    </div>
-  </section>
+  <p class="talent-status">Recording scope, project roles and schedules will be finalized during Phase 01 planning.</p>
+</section>
 
 </deck-stage>
+<script type="application/json" id="speaker-notes">["", "Positioning and Phase 01 scope are proposed. No player counts, supported-device guarantees or completed multiplayer claims are asserted.", "", "", "Image: supplied assets/web-campfire-night.png, labeled as a web build in the original deck. Scene artwork is not evidence of tested multiplayer or cross-device compatibility.", "", "Sources checked 10 September 2026: https://www.kickstarter.com/projects/clutter/mumbots-girl-from-the-forest-floor-vinyl-figure — Clutter Magazine campaign, 3 March–2 April 2026, USD 37,261 pledged by 156 backers against USD 33,000 goal. Image from the campaign. https://mumbotworld.com/ and https://mumbot.myshopify.com/ — existing products and Ghost Club community. These are physical-product and IP indicators, not browser-game revenue or user traction.", "Photos and installation account supplied in the original deck. The event date, attendance and commercial outcomes are not quantified; no such figures are asserted.", "User-supplied brainstorm. Concepts including XR, additional games, digital items, events and commerce extend beyond Phase 01.", "Proposed revenue experiments, not contracted revenue, projections or existing business commitments. Recurring memberships and additional digital purchases depend on evidence of repeat visitation and the relevant product capabilities.", "Existing collaboration and image source, checked 10 September 2026: https://denimcoffee.com/collections/artist-collab-series/products/cozy-moments-by-mumbot . Its artwork is shown as an existing Mumbot example. The proposed campfire event is not a confirmed Denim Coffee sponsorship. No sponsor reach, attendance or revenue is forecast.", "", "Proposed planning schedule measured from funding. Milestones are intended deliverables, not claims of work already completed.", "The original $30, 50k wording is interpreted as a USD 30,000–50,000 planning range. Percentages are retained from the original deck and total 100%. Scope at each funding level is proposed and subject to an agreed production budget.", "Verified public contact and project site: https://mumbotworld.com/ . Do not present this as a direct playable demo link.", "", "", "Supplied screenshots of the early Unreal prototype, labeled 2021 in the original deck.", "Original local teaser labeled 2022. Public trailer link from the official Mumbot site: https://youtu.be/Vejneoi-ZkU .", "", "", "Names and general credits are retained from the supplied deck. Contributor status is presented as a planned roster pending scope finalization; no new recording or contractual status is asserted."]</script>
 
 <div id="tweaks-root"></div>
 
