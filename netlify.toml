@@ -18,6 +18,26 @@
   to = "/Mumbot%20World%20Pitch%20Deck-print.html"
   status = 200
 
+[[redirects]]
+  from = "/versions"
+  to = "/deck-versions.html"
+  status = 200
+
+[[redirects]]
+  from = "/investors"
+  to = "/investors.html"
+  status = 200
+
+[[redirects]]
+  from = "/sponsors"
+  to = "/sponsors.html"
+  status = 200
+
+[[redirects]]
+  from = "/galleries"
+  to = "/galleries.html"
+  status = 200
+
 [[edge_functions]]
   path = "/*"
   function = "password-gate"

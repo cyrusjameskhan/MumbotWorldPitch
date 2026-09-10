@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Mumbot World · Deck Editions</title>
+  <style>
+    @font-face { font-family:Mumbot; src:url('assets/Mumbotfont-Regular.ttf') format('truetype'); font-display:swap; }
+    * { box-sizing:border-box; }
+    html { color-scheme:dark; background:#12140e; }
+    body { margin:0; color:#f7eccb; font-family:Futura,'Century Gothic',Arial,sans-serif; background:radial-gradient(ellipse at 90% 0%,#343125 0,transparent 50%),linear-gradient(155deg,#191711,#10160f); min-height:100vh; }
+    main { max-width:1160px; margin:auto; padding:40px 46px 30px; }
+    header { position:relative; padding:0 150px 22px 0; }
+    .eyebrow { color:#c99c59; font-size:13px; letter-spacing:.2em; margin:0 0 21px; }
+    h1 { font:74px/.98 Mumbot,serif; margin:0 0 22px; }
+    header p:last-of-type { color:#d5cfb8; font-size:19px; line-height:1.5; max-width:760px; }
+    .ghost { position:absolute; width:78px; right:16px; top:18px; filter:drop-shadow(0 0 20px #c6ded144); }
+    .edition { display:grid; grid-template-columns:230px 1fr 150px; gap:35px; align-items:center; padding:27px 0; border-top:1px solid #f7eccb35; }
+    h2 { font:40px/1.1 Mumbot,serif; margin:0 0 10px; }
+    .count { color:#aaa897; font-size:12px; letter-spacing:.08em; margin:0; }
+    .description { font-size:17px; color:#ddd4b9; line-height:1.5; margin:0; }
+    .open { color:#c4ded0; font-size:16px; line-height:1.4; text-underline-offset:6px; }
+    a:hover { color:#fff3d0; }
+    a:focus-visible { outline:2px solid #c99c59; outline-offset:8px; }
+    footer { display:flex; justify-content:space-between; gap:30px; border-top:1px solid #f7eccb35; margin-top:5px; padding-top:24px; color:#aead9d; font-size:13px; line-height:1.5; }
+    footer a { color:#c4ded0; text-underline-offset:4px; }
+    @media(max-width:760px) { main { padding:35px 25px; } h1 { font-size:52px; } header { padding-right:80px; } .ghost { width:48px; right:0; } .edition { grid-template-columns:1fr; gap:17px; padding:27px 0; } footer { display:block; } footer p { margin-bottom:18px; } }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <p class="eyebrow">MUMBOT WORLD · PRESENTATIONS</p>
+    <h1>Deck editions</h1>
+    <p>Choose the edition for your audience. Each keeps the artwork and character of Mumbot World, with a different focus and next step.</p>
+    <img class="ghost" src="assets/aughostus.png" alt=""/>
+  </header>
+  <nav aria-label="Pitch deck editions">
+    <article class="edition">
+      <div><h2>Investors</h2><p class="count">13 MAIN SLIDES + 4 APPENDIX</p></div>
+      <p class="description">The product, business model, first audience, validation milestones and Phase 01 capital requirement.</p>
+      <a class="open" href="investors.html" aria-label="Open investor deck">Open deck ↗</a>
+    </article>
+    <article class="edition">
+      <div><h2>Sponsors</h2><p class="count">11 MAIN SLIDES + 3 APPENDIX</p></div>
+      <p class="description">Creative partnership formats, a sponsor example, pilot deliverables and ways to measure the collaboration.</p>
+      <a class="open" href="sponsors.html" aria-label="Open sponsor deck">Open deck ↗</a>
+    </article>
+    <article class="edition">
+      <div><h2>Galleries</h2><p class="count">12 MAIN SLIDES + 3 APPENDIX</p></div>
+      <p class="description">The curatorial idea, exhibition formats, visitor experience, public program and venue requirements.</p>
+      <a class="open" href="galleries.html" aria-label="Open gallery deck">Open deck ↗</a>
+    </article>
+  </nav>
+  <footer>
+    <p><a href="Mumbot%20World%20Pitch%20Deck.html">Open the general pitch deck</a></p>
+    <p>JADE KUEI · CYRUS JAMES KHAN</p>
+  </footer>
+</main>
+</body>
+</html>
